@@ -1,0 +1,22 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="200dp"
+              android:background="@color/Red900"
+              android:padding="15dp"
+              style="@style/ThemeOverlay.AppCompat.Dark"
+              android:orientation="vertical">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/nav_profile_iv"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/headerTV"
+            android:textColor="@android:color/white"
+            android:textSize="20dp"
+            style="@style/TextAppearance.AppCompat.Body1"/>
+
+</LinearLayout>
