@@ -15,7 +15,6 @@ import android.database.Cursor;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -31,7 +30,6 @@ import android.util.Log;
 import android.view.*;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.amazonaws.auth.CognitoCachingCredentialsProvider;
 import com.amazonaws.mobileconnectors.s3.transferutility.TransferListener;
 import com.amazonaws.mobileconnectors.s3.transferutility.TransferObserver;
@@ -40,9 +38,13 @@ import com.amazonaws.mobileconnectors.s3.transferutility.TransferUtility;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
-
+import org.joda.time.DateTime;
 import java.io.File;
-import java.net.URI;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle drawerToggle;
@@ -56,14 +58,16 @@ public class MainActivity extends AppCompatActivity {
     private String artist;
     private String album;
     private String track;
+
     private RecyclerView postedSongsRecyclerview;
     private SongItemAdapter songItemAdapter;
     private CognitoCachingCredentialsProvider credentialsProvider;
     private AmazonS3 s3;
     private TransferUtility transferUtility;
     private TransferObserver observer;
-    private String fullpath;
     private ProgressDialog progressDialog;
+    private ArrayList<Song> listOfUserSongs;
+    private File downloadedSong;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,10 +78,9 @@ public class MainActivity extends AppCompatActivity {
         initObjects();
         setValues();
         initRecyclerView();
+        downloadSong();
 
         IntentFilter iF = new IntentFilter();
-        // Read action when music player changed current song
-        // I just try it with stock music player form android
 
         // stock music player
         iF.addAction("com.android.music.metachanged");
@@ -115,52 +118,16 @@ public class MainActivity extends AppCompatActivity {
         drawerToggle = setupDrawerToggle();
         songItemAdapter = new SongItemAdapter();
 
-        // Initialize the Amazon Cognito credentials provider
+        // Initialize the Amazon Cognito credentials provider.
         credentialsProvider = new CognitoCachingCredentialsProvider(
                 getApplicationContext(),
                 AppConfig.S3_IDENTITY_POOL_ID,   // Identity Pool ID
-                Regions.US_EAST_1                                   // Region
+                Regions.US_EAST_1                // Region
         );
 
+        // Initialize the TransferUtility provider.
         s3 = new AmazonS3Client(credentialsProvider);
         transferUtility = new TransferUtility(s3, getApplicationContext());
-
-        File file = new File(fullpath);
-
-        observer = transferUtility.upload(
-                AppConfig.S3_BUCKET_NAME,       /* The bucket to upload to */
-                file.getName(),                    /* The key for the uploaded object */
-                file            /* The file where the data to upload exists */
-        );
-
-        // Progress Dialog
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setCancelable(false);
-        progressDialog.setTitle("Uploading Song");
-        progressDialog.setMessage("Please wait...");
-        progressDialog.show();
-
-        observer.setTransferListener(new TransferListener(){
-            @Override
-            public void onStateChanged(int id, TransferState state) {
-                if (state == TransferState.COMPLETED) {
-                    progressDialog.dismiss();
-                    ModalService.displayTest("Upload complete.", MainActivity.this);
-                }
-            }
-
-            @Override
-            public void onProgressChanged(int id, long bytesCurrent, long bytesTotal) {
-                int percentage = (int)((bytesCurrent*100)/bytesTotal);
-                progressDialog.setMessage(String.valueOf(percentage) + "%" + " complete.");
-            }
-
-            @Override
-            public void onError(int id, Exception ex) {
-                ModalService.displayTest(ex.toString(), MainActivity.this);
-            }
-        });
-
     }
 
     private void setValues() {
@@ -174,14 +141,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AudioManager manager = (AudioManager) MainActivity.this.getSystemService(Context.AUDIO_SERVICE);
+                //Validate user is playing music.
                 if (manager.isMusicActive()) {
-                    if (ModalService.displayConfirmation("Post Song?", "This song will be played for others.", MainActivity.this)) {
-                        Song song = new Song();
-                        song.artist = artist;
-                        song.title = track;
-                        song.album = album;
-                        songItemAdapter.add(song);
-                        //ModalService.displayToast(track, MainActivity.this);
+                    if (ModalService.displayConfirmation("Post Song?", "This song will be available for others to listen to.", MainActivity.this)) {
+                        //Search for song in songs from device.
+                        for (Song s : listOfUserSongs) {
+                            String songId = s.artist + s.title;
+                            String currentSongId = artist + track;
+                            if(songId.equals(currentSongId)){
+                                uploadSong(s.path);
+                                break;
+                            }
+                        }
                     } else {
                         //TODO;
                     }
@@ -192,6 +163,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Returns track info for music currently playing.
+     **/
     private BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -205,7 +179,109 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    private void scanSdcard(){
+    /**
+     * Begins upload process of MP3.
+     * @param filePath - Path to file of MP3.
+     **/
+    private void uploadSong(String filePath) {
+
+        //Create uniqueId of username combined with current time.
+        String uniqueId = "username" + DateTime.now().toDateTimeISO();
+        observer = transferUtility.upload(
+                AppConfig.S3_BUCKET_NAME,       /* The bucket to upload to */
+                uniqueId,                    /* The key for the uploaded object */
+                new File(filePath)            /* The file where the data to upload exists */
+        );
+
+        // Progress Dialog
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
+        progressDialog.setTitle("Uploading Song");
+        progressDialog.setMessage("Please wait...");
+        progressDialog.show();
+
+        observer.setTransferListener(new TransferListener() {
+            @Override
+            public void onStateChanged(int id, TransferState state) {
+                if (state == TransferState.COMPLETED) {
+                    progressDialog.dismiss();
+                    ModalService.displayTest("Upload complete.", MainActivity.this);
+                }
+            }
+
+            @Override
+            public void onProgressChanged(int id, long bytesCurrent, long bytesTotal) {
+                int percentage = (int) ((bytesCurrent * 100) / bytesTotal);
+                progressDialog.setMessage(String.valueOf(percentage) + "%" + " complete.");
+            }
+
+            @Override
+            public void onError(int id, Exception ex) {
+                progressDialog.dismiss();
+                ModalService.displayNotification("Operation Failed", "Could not upload song.", MainActivity.this);
+            }
+        });
+    }
+
+    private void downloadSong(){
+        String path = listOfUserSongs.get(0).path;
+        downloadedSong = new File(path);
+        observer = transferUtility.download(
+                AppConfig.S3_BUCKET_NAME,                   /* The bucket to download from */
+                "username2016-03-24T23:42:45.425-06:00",    /* The key for the object to download */
+                downloadedSong                              /* The file to download the object to */
+        );
+
+        // Progress Dialog
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
+        progressDialog.setTitle("Loading Song");
+        progressDialog.setMessage("Please wait...");
+        progressDialog.show();
+
+        observer.setTransferListener(new TransferListener() {
+            @Override
+            public void onStateChanged(int id, TransferState state) {
+                if (state == TransferState.COMPLETED) {
+                    progressDialog.dismiss();
+                    // Create a Player object that realizes the audio
+                    try{
+                        //TODO: MUST create new file location, otherwise current files data get overwritten.
+                        //TODO: Look into playing song from endoint.
+                        FileInputStream fis = new FileInputStream(downloadedSong);
+                        MediaPlayer mp = new MediaPlayer();
+                        mp.setDataSource(fis.getFD());
+                        mp.prepare();
+                        mp.start();
+                    }catch(FileNotFoundException e){
+                        e.printStackTrace();
+                    }catch(IOException e){
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+
+            @Override
+            public void onProgressChanged(int id, long bytesCurrent, long bytesTotal) {
+                int percentage = (int) ((bytesCurrent * 100) / bytesTotal);
+                progressDialog.setMessage(String.valueOf(percentage) + "%" + " complete.");
+            }
+
+            @Override
+            public void onError(int id, Exception ex) {
+                progressDialog.dismiss();
+                ModalService.displayNotification("Operation Failed", "Could not download song.", MainActivity.this);
+                System.out.print((ex.toString()));
+            }
+        });
+
+    }
+
+    /**
+     * Returns all MP3 files currently on the device.
+     **/
+    private void scanSdcard() {
         String selection = MediaStore.Audio.Media.IS_MUSIC + " != 0";
         String[] projection = {
                 MediaStore.Audio.Media.TITLE,
@@ -217,19 +293,19 @@ public class MainActivity extends AppCompatActivity {
         final String sortOrder = MediaStore.Audio.AudioColumns.TITLE + " COLLATE LOCALIZED ASC";
 
         Cursor cursor = null;
+        listOfUserSongs = new ArrayList<Song>();
         try {
             Uri uri = android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
             cursor = getContentResolver().query(uri, projection, selection, null, sortOrder);
-            if( cursor != null){
+            if (cursor != null) {
                 cursor.moveToFirst();
-                while( !cursor.isAfterLast() ){
-                    //MediaData media = new MediaData();
-                    String title = cursor.getString(0);
-                    String artist = cursor.getString(1);
-                    String path = cursor.getString(2);
-                    String displayName  = cursor.getString(3);
-                    String songDuration = cursor.getString(4);
-                    fullpath = path;
+                while (!cursor.isAfterLast()) {
+                    Song song = new Song();
+                    song.title = cursor.getString(0);
+                    song.artist = cursor.getString(1);
+                    song.path = cursor.getString(2);
+                    song.songDuration = cursor.getString(4);
+                    listOfUserSongs.add(song);
                     cursor.moveToNext();
                 }
 
@@ -238,13 +314,16 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             System.out.print("EXCEPTION!: " +
                     e.toString());
-        }finally{
-            if( cursor != null){
+        } finally {
+            if (cursor != null) {
                 cursor.close();
             }
         }
     }
 
+    /**
+     * Adapter that holds each song item.
+     **/
     private class SongItemAdapter extends SongListAdapter<SongListAdapter.SongViewHolder> {
 
         @Override
@@ -275,9 +354,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Initializes the recylcerview of songs.
+     **/
     private void initRecyclerView() {
-        // Set adapter populated with example dummy data
-
         songItemAdapter.addAll(null);
         postedSongsRecyclerview.setAdapter(songItemAdapter);
 

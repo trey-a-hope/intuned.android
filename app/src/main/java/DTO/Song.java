@@ -9,6 +9,8 @@ public class Song {
     public String artist;
     public String album;
     public String dateModified;
+    public String path;
+    public String songDuration;
     public Song(){
     }
 }
