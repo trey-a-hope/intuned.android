@@ -52,4 +52,8 @@ dependencies {
     compile 'com.github.ksoichiro:android-observablescrollview:1.5.0'
     compile 'com.roomorama:caldroid:2.3.1'
     compile 'org.droidparts:droidparts:2.0.5'
+    compile 'com.amazonaws:aws-android-sdk-core:2.+'
+    compile 'com.amazonaws:aws-android-sdk-cognito:2.+'
+    compile 'com.amazonaws:aws-android-sdk-s3:2.+'
+    compile 'com.amazonaws:aws-android-sdk-ddb:2.+'
 }

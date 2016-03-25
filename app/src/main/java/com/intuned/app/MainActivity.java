@@ -4,13 +4,19 @@ import Adapters.SongListAdapter;
 import DTO.Song;
 import Listeners.RecyclerItemClickListener;
 import Miscellaneous.DividerDecoration;
+import Network.AppConfig;
 import Services.ModalService;
+import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.Cursor;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -26,6 +32,17 @@ import android.view.*;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.amazonaws.auth.CognitoCachingCredentialsProvider;
+import com.amazonaws.mobileconnectors.s3.transferutility.TransferListener;
+import com.amazonaws.mobileconnectors.s3.transferutility.TransferObserver;
+import com.amazonaws.mobileconnectors.s3.transferutility.TransferState;
+import com.amazonaws.mobileconnectors.s3.transferutility.TransferUtility;
+import com.amazonaws.regions.Regions;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3Client;
+
+import java.io.File;
+import java.net.URI;
 
 public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle drawerToggle;
@@ -35,15 +52,25 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvHeader;
     private ActionBar actionBar;
     private Button btnNewSong;
-    private String artist, album, track;
+    //Song
+    private String artist;
+    private String album;
+    private String track;
     private RecyclerView postedSongsRecyclerview;
     private SongItemAdapter songItemAdapter;
+    private CognitoCachingCredentialsProvider credentialsProvider;
+    private AmazonS3 s3;
+    private TransferUtility transferUtility;
+    private TransferObserver observer;
+    private String fullpath;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         initUI();
+        scanSdcard();
         initObjects();
         setValues();
         initRecyclerView();
@@ -80,16 +107,63 @@ public class MainActivity extends AppCompatActivity {
         postedSongsRecyclerview = (RecyclerView) findViewById(R.id.rv);
     }
 
-    private void initObjects(){
+    private void initObjects() {
         toolbar.setBackgroundColor(getResources().getColor(R.color.Red900));
         setSupportActionBar(toolbar);
         setTitle("inTuned");
         actionBar = getSupportActionBar();
         drawerToggle = setupDrawerToggle();
         songItemAdapter = new SongItemAdapter();
+
+        // Initialize the Amazon Cognito credentials provider
+        credentialsProvider = new CognitoCachingCredentialsProvider(
+                getApplicationContext(),
+                AppConfig.S3_IDENTITY_POOL_ID,   // Identity Pool ID
+                Regions.US_EAST_1                                   // Region
+        );
+
+        s3 = new AmazonS3Client(credentialsProvider);
+        transferUtility = new TransferUtility(s3, getApplicationContext());
+
+        File file = new File(fullpath);
+
+        observer = transferUtility.upload(
+                AppConfig.S3_BUCKET_NAME,       /* The bucket to upload to */
+                file.getName(),                    /* The key for the uploaded object */
+                file            /* The file where the data to upload exists */
+        );
+
+        // Progress Dialog
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
+        progressDialog.setTitle("Uploading Song");
+        progressDialog.setMessage("Please wait...");
+        progressDialog.show();
+
+        observer.setTransferListener(new TransferListener(){
+            @Override
+            public void onStateChanged(int id, TransferState state) {
+                if (state == TransferState.COMPLETED) {
+                    progressDialog.dismiss();
+                    ModalService.displayTest("Upload complete.", MainActivity.this);
+                }
+            }
+
+            @Override
+            public void onProgressChanged(int id, long bytesCurrent, long bytesTotal) {
+                int percentage = (int)((bytesCurrent*100)/bytesTotal);
+                progressDialog.setMessage(String.valueOf(percentage) + "%" + " complete.");
+            }
+
+            @Override
+            public void onError(int id, Exception ex) {
+                ModalService.displayTest(ex.toString(), MainActivity.this);
+            }
+        });
+
     }
 
-    private void setValues(){
+    private void setValues() {
         actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
         actionBar.setDisplayHomeAsUpEnabled(true);
         drawerLayout.setDrawerListener(drawerToggle);
@@ -99,19 +173,19 @@ public class MainActivity extends AppCompatActivity {
         btnNewSong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AudioManager manager = (AudioManager)MainActivity.this.getSystemService(Context.AUDIO_SERVICE);
-                if(manager.isMusicActive()){
-                    if(ModalService.displayConfirmation("Post Song?", "This song will be played for others.", MainActivity.this)){
+                AudioManager manager = (AudioManager) MainActivity.this.getSystemService(Context.AUDIO_SERVICE);
+                if (manager.isMusicActive()) {
+                    if (ModalService.displayConfirmation("Post Song?", "This song will be played for others.", MainActivity.this)) {
                         Song song = new Song();
                         song.artist = artist;
                         song.title = track;
                         song.album = album;
                         songItemAdapter.add(song);
                         //ModalService.displayToast(track, MainActivity.this);
-                    }else{
+                    } else {
                         //TODO;
                     }
-                }else{
+                } else {
                     ModalService.displayToast("Turn on your music first...", MainActivity.this);
                 }
             }
@@ -130,6 +204,46 @@ public class MainActivity extends AppCompatActivity {
             Log.v("tag", artist + ":" + album + ":" + track);
         }
     };
+
+    private void scanSdcard(){
+        String selection = MediaStore.Audio.Media.IS_MUSIC + " != 0";
+        String[] projection = {
+                MediaStore.Audio.Media.TITLE,
+                MediaStore.Audio.Media.ARTIST,
+                MediaStore.Audio.Media.DATA,
+                MediaStore.Audio.Media.DISPLAY_NAME,
+                MediaStore.Audio.Media.DURATION
+        };
+        final String sortOrder = MediaStore.Audio.AudioColumns.TITLE + " COLLATE LOCALIZED ASC";
+
+        Cursor cursor = null;
+        try {
+            Uri uri = android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+            cursor = getContentResolver().query(uri, projection, selection, null, sortOrder);
+            if( cursor != null){
+                cursor.moveToFirst();
+                while( !cursor.isAfterLast() ){
+                    //MediaData media = new MediaData();
+                    String title = cursor.getString(0);
+                    String artist = cursor.getString(1);
+                    String path = cursor.getString(2);
+                    String displayName  = cursor.getString(3);
+                    String songDuration = cursor.getString(4);
+                    fullpath = path;
+                    cursor.moveToNext();
+                }
+
+            }
+
+        } catch (Exception e) {
+            System.out.print("EXCEPTION!: " +
+                    e.toString());
+        }finally{
+            if( cursor != null){
+                cursor.close();
+            }
+        }
+    }
 
     private class SongItemAdapter extends SongListAdapter<SongListAdapter.SongViewHolder> {
 
