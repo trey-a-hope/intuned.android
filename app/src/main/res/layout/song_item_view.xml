@@ -29,5 +29,10 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/song_item_date_modified"
                 android:textSize="17dp"/>
+        <SeekBar
+                android:id="@+id/song_item_seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
     </LinearLayout>
 </LinearLayout>

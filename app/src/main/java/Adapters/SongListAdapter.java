@@ -4,6 +4,7 @@ import DTO.Song;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import com.intuned.app.R;
 
@@ -19,13 +20,22 @@ public abstract class SongListAdapter<VH extends SongListAdapter.SongViewHolder>
 
     public static class SongViewHolder extends RecyclerView.ViewHolder {
         public CardView cv;
-        public TextView name, artist, dateModified;
+        public TextView name;
+        public TextView artist;
+        public TextView dateModified;
+        public SeekBar seekbar;
 
         public SongViewHolder(View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.song_item_name);
             artist = (TextView) itemView.findViewById(R.id.song_item_artist);
             dateModified = (TextView) itemView.findViewById(R.id.song_item_date_modified);
+            seekbar = (SeekBar) itemView.findViewById(R.id.song_item_seekbar);
+
+        }
+
+        public SongViewHolder getSongViewHolder(){
+            return this;
         }
     }
 

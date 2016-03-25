@@ -10,6 +10,7 @@ public class AppConfig {
      *************************/
     public static String S3_IDENTITY_POOL_ID = "us-east-1:ce289779-5e69-4b82-833d-34ff3405e939";
     public static String S3_BUCKET_NAME = "intunedbucket";
+    public static String S3_MUSIC_BUCKET_URL = "https://s3.amazonaws.com/intunedbucket/";
 
     /**************************
      * FIREBASE

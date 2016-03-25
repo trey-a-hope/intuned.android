@@ -14,7 +14,9 @@ import android.content.IntentFilter;
 import android.database.Cursor;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.session.MediaController;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.provider.MediaStore;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -39,12 +41,15 @@ import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import org.joda.time.DateTime;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle drawerToggle;
@@ -67,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
     private TransferObserver observer;
     private ProgressDialog progressDialog;
     private ArrayList<Song> listOfUserSongs;
-    private File downloadedSong;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
         initObjects();
         setValues();
         initRecyclerView();
-        downloadSong();
 
         IntentFilter iF = new IntentFilter();
 
@@ -148,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
                         for (Song s : listOfUserSongs) {
                             String songId = s.artist + s.title;
                             String currentSongId = artist + track;
-                            if(songId.equals(currentSongId)){
+                            if (songId.equals(currentSongId)) {
                                 uploadSong(s.path);
                                 break;
                             }
@@ -181,6 +185,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Begins upload process of MP3.
+     *
      * @param filePath - Path to file of MP3.
      **/
     private void uploadSong(String filePath) {
@@ -223,59 +228,31 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void downloadSong(){
-        String path = listOfUserSongs.get(0).path;
-        downloadedSong = new File(path);
-        observer = transferUtility.download(
-                AppConfig.S3_BUCKET_NAME,                   /* The bucket to download from */
-                "username2016-03-24T23:42:45.425-06:00",    /* The key for the object to download */
-                downloadedSong                              /* The file to download the object to */
-        );
 
-        // Progress Dialog
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setCancelable(false);
-        progressDialog.setTitle("Loading Song");
-        progressDialog.setMessage("Please wait...");
-        progressDialog.show();
+    private void updateProgressBar(int position, int count)
+    {
+        //This method is called directly by the timer
+        //and runs in the same thread as the timer.
 
-        observer.setTransferListener(new TransferListener() {
+        songItemAdapter.getSongViewHolder(position).seekbar.setProgress(count);
+    }
+
+
+    private void playSong(final int position) {
+        final MediaPlayer mediaPlayer = MediaPlayer.create(this, Uri.parse(AppConfig.S3_MUSIC_BUCKET_URL + "Elle+Varner+-+Leaf+Lyrics+Video.mp3"));
+        mediaPlayer.start();
+
+        Timer myTimer = new Timer();
+        //TODO: Start scheduler once media player is prepared.
+        myTimer.schedule(new TimerTask() {
+            int count = 0;
             @Override
-            public void onStateChanged(int id, TransferState state) {
-                if (state == TransferState.COMPLETED) {
-                    progressDialog.dismiss();
-                    // Create a Player object that realizes the audio
-                    try{
-                        //TODO: MUST create new file location, otherwise current files data get overwritten.
-                        //TODO: Look into playing song from endoint.
-                        FileInputStream fis = new FileInputStream(downloadedSong);
-                        MediaPlayer mp = new MediaPlayer();
-                        mp.setDataSource(fis.getFD());
-                        mp.prepare();
-                        mp.start();
-                    }catch(FileNotFoundException e){
-                        e.printStackTrace();
-                    }catch(IOException e){
-                        e.printStackTrace();
-                    }
-                }
-
+            public void run() {
+                updateProgressBar(position, count);
+                count++;
             }
 
-            @Override
-            public void onProgressChanged(int id, long bytesCurrent, long bytesTotal) {
-                int percentage = (int) ((bytesCurrent * 100) / bytesTotal);
-                progressDialog.setMessage(String.valueOf(percentage) + "%" + " complete.");
-            }
-
-            @Override
-            public void onError(int id, Exception ex) {
-                progressDialog.dismiss();
-                ModalService.displayNotification("Operation Failed", "Could not download song.", MainActivity.this);
-                System.out.print((ex.toString()));
-            }
-        });
-
+        }, 0, 1000);
     }
 
     /**
@@ -326,6 +303,17 @@ public class MainActivity extends AppCompatActivity {
      **/
     private class SongItemAdapter extends SongListAdapter<SongListAdapter.SongViewHolder> {
 
+        ArrayList<SongViewHolder> songViewHolders = new ArrayList<SongViewHolder>();
+
+        /**
+         * Returns song view (UI) at specified index.
+         * @param index
+         * @return SongViewHolder
+         */
+        public SongViewHolder getSongViewHolder(int index){
+            return songViewHolders.get(index);
+        }
+
         @Override
         public SongListAdapter.SongViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.song_item_view, parent, false);
@@ -340,6 +328,9 @@ public class MainActivity extends AppCompatActivity {
                 songViewHolder.name.setText(song.title);
                 songViewHolder.artist.setText(song.artist);
                 songViewHolder.dateModified.setText(song.dateModified);
+                songViewHolder.seekbar.setProgress(0);
+                songViewHolder.seekbar.setMax(15);
+                songViewHolders.add(songViewHolder);
             }
         }
 
@@ -372,7 +363,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(View view, int position) {
                 Song song = songItemAdapter.getItem(position);
-                ModalService.displayNotification(song.title, song.artist, MainActivity.this);
+                playSong(position);
             }
         }));
 
