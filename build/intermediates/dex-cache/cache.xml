@@ -2,39 +2,39 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\hopet\.gradle\caches\modules-2\files-2.1\com.amazonaws\aws-android-sdk-cognito\2.2.13\251ebccacaad6a5036952dc6b259a2aabba38356\aws-android-sdk-cognito-2.2.13.jar"
+        jar="C:\Users\hopet\.gradle\caches\modules-2\files-2.1\com.darwinsys\hirondelle-date4j\1.5.1\7b52de513f87ae4d9ff5d17518def0a1e9bc3df0\hirondelle-date4j-1.5.1.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="251ebccacaad6a5036952dc6b259a2aabba38356">
-        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\aws-android-sdk-cognito-2.2.13-465dbc0db6108c2d2978994175c76ba860d0c4c3.jar" />
+        sha1="7b52de513f87ae4d9ff5d17518def0a1e9bc3df0">
+        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\hirondelle-date4j-1.5.1-85f83db47512e0d869c510c43cf9cf7a9e2fb8e5.jar" />
     </item>
     <item
-        jar="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\exploded-aar\com.roomorama\caldroid\2.3.1\jars\classes.jar"
+        jar="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\exploded-aar\com.github.ksoichiro\android-observablescrollview\1.5.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="7d1b55d7a57b3212b21718d9a77b0ac40ab4f103">
-        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\classes-533d29ddd930da1a958ed31fa1f6b0ef4f9692bf.jar" />
+        sha1="010ee9e87a286afcaeaed368dcf829e42d0aa2a0">
+        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\classes-9ac3f06e7d49f13c93ebbee2d4c3667332e6ce73.jar" />
     </item>
     <item
-        jar="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\classes.jar"
+        jar="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.1.1\jars\classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
-        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\classes-3db61f3374f8d4b0622dc308a4ef75f7efcff4c0.jar" />
+        sha1="5e412e954a24c5310a459c09870e4e2081aceb03">
+        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\classes-fede21f953696701f88432961c3ccfae3550c317.jar" />
     </item>
     <item
-        jar="C:\Users\hopet\AppData\Local\Android\android-sdk\extras\android\m2repository\com\android\support\support-annotations\23.0.1\support-annotations-23.0.1.jar"
+        jar="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\exploded-aar\com.mcxiaoke.volley\library-aar\1.0.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
-        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\support-annotations-23.0.1-e8348638bf0c7aa2bd69d8d04ad35a37a041e1bf.jar" />
+        sha1="e40b9a81989bd4a846018551c280f8c4d837bf2e">
+        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\classes-3f4582cd79f64b9bf2fc9cf56c93ede5c1e559fa.jar" />
     </item>
     <item
-        jar="C:\Users\hopet\.gradle\caches\modules-2\files-2.1\com.amazonaws\aws-android-sdk-core\2.2.13\bcb160fb9cb637c7908e77d473cdbdabdd80e2b9\aws-android-sdk-core-2.2.13.jar"
+        jar="C:\Users\hopet\.gradle\caches\modules-2\files-2.1\com.firebase\firebase-client-jvm\2.5.1\11ea7eeda00b1bb92accba250ee7c8740bdebc19\firebase-client-jvm-2.5.1.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="bcb160fb9cb637c7908e77d473cdbdabdd80e2b9">
-        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\aws-android-sdk-core-2.2.13-d25414026906d02e06cecb1b73cb4a027509a4bd.jar" />
+        sha1="11ea7eeda00b1bb92accba250ee7c8740bdebc19">
+        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\firebase-client-jvm-2.5.1-4421000f2e876682d8b795b83e2e3ecb06802480.jar" />
     </item>
     <item
         jar="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\22.0.0\jars\classes.jar"
@@ -42,6 +42,27 @@
         revision="23.0.2"
         sha1="c6d79137693d494dee16372d3921f919eb724ced">
         <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\classes-7a05219488c382f2ed5a5391c19e8b541474262f.jar" />
+    </item>
+    <item
+        jar="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\libs\internal_impl-23.0.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
+        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\internal_impl-23.0.1-48a39de437575e85c1395a551f3f971dd5b6862c.jar" />
+    </item>
+    <item
+        jar="C:\Users\hopet\.gradle\caches\modules-2\files-2.1\org.droidparts\droidparts\2.0.5\e4c5854b2012f5453b0cc5f62bdd306b9765990d\droidparts-2.0.5.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="e4c5854b2012f5453b0cc5f62bdd306b9765990d">
+        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\droidparts-2.0.5-4a89c558eefc4e04163548cd66627e630043ccc9.jar" />
+    </item>
+    <item
+        jar="C:\Users\hopet\.gradle\caches\modules-2\files-2.1\com.amazonaws\aws-android-sdk-cognito\2.2.13\251ebccacaad6a5036952dc6b259a2aabba38356\aws-android-sdk-cognito-2.2.13.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="251ebccacaad6a5036952dc6b259a2aabba38356">
+        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\aws-android-sdk-cognito-2.2.13-465dbc0db6108c2d2978994175c76ba860d0c4c3.jar" />
     </item>
     <item
         jar="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\jars\classes.jar"
@@ -65,32 +86,25 @@
         <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\classes-3295b165e366af5e587b602f80791731796f9213.jar" />
     </item>
     <item
-        jar="C:\Users\hopet\.gradle\caches\modules-2\files-2.1\com.darwinsys\hirondelle-date4j\1.5.1\7b52de513f87ae4d9ff5d17518def0a1e9bc3df0\hirondelle-date4j-1.5.1.jar"
+        jar="C:\Users\hopet\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-databind\2.2.2\3c8f6018eaa72d43b261181e801e6f8676c16ef6\jackson-databind-2.2.2.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="7b52de513f87ae4d9ff5d17518def0a1e9bc3df0">
-        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\hirondelle-date4j-1.5.1-85f83db47512e0d869c510c43cf9cf7a9e2fb8e5.jar" />
+        sha1="3c8f6018eaa72d43b261181e801e6f8676c16ef6">
+        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\jackson-databind-2.2.2-427709a314f7e85d9a4d3b57a62d88515e10c104.jar" />
     </item>
     <item
-        jar="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\exploded-aar\com.github.ksoichiro\android-observablescrollview\1.5.0\jars\classes.jar"
+        jar="C:\Users\hopet\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-core\2.2.2\d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b\jackson-core-2.2.2.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="010ee9e87a286afcaeaed368dcf829e42d0aa2a0">
-        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\classes-9ac3f06e7d49f13c93ebbee2d4c3667332e6ce73.jar" />
+        sha1="d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b">
+        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\jackson-core-2.2.2-ea1298d5bad3863e62e2dad852cc36a9030b300c.jar" />
     </item>
     <item
-        jar="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.1.1\jars\classes.jar"
+        jar="C:\Users\hopet\.gradle\caches\modules-2\files-2.1\com.firebase\tubesock\0.0.12\6ec0bbd3e161a73ed672284b587fd32309a86d7a\tubesock-0.0.12.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="5e412e954a24c5310a459c09870e4e2081aceb03">
-        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\classes-fede21f953696701f88432961c3ccfae3550c317.jar" />
-    </item>
-    <item
-        jar="C:\Users\hopet\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.2.4\a60a5e993c98c864010053cb901b7eab25306568\gson-2.2.4.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="a60a5e993c98c864010053cb901b7eab25306568">
-        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\gson-2.2.4-99478e14511cc755fcb733a3b6a30bc664565c8b.jar" />
+        sha1="6ec0bbd3e161a73ed672284b587fd32309a86d7a">
+        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\tubesock-0.0.12-63f0ff4cd512f0fba50fca4d8bbebd7270f39dc8.jar" />
     </item>
     <item
         jar="C:\Users\hopet\.gradle\caches\modules-2\files-2.1\com.amazonaws\aws-android-sdk-s3\2.2.13\1b15445de91b048a6b74506dd8261daf74decdcd\aws-android-sdk-s3-2.2.13.jar"
@@ -100,11 +114,11 @@
         <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\aws-android-sdk-s3-2.2.13-87d4607ddd221e2dbe917d73107fcfbf525a96ab.jar" />
     </item>
     <item
-        jar="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\libs\internal_impl-23.0.1.jar"
+        jar="C:\Users\hopet\.gradle\caches\modules-2\files-2.1\com.firebase\firebase-client-android\2.5.1\8c94ae916de454be497782505e3e6fd437a28b95\firebase-client-android-2.5.1.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
-        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\internal_impl-23.0.1-48a39de437575e85c1395a551f3f971dd5b6862c.jar" />
+        sha1="8c94ae916de454be497782505e3e6fd437a28b95">
+        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\firebase-client-android-2.5.1-a3d3fac925795c1444413720c907522e2e6b04fd.jar" />
     </item>
     <item
         jar="C:\Users\hopet\.gradle\caches\modules-2\files-2.1\joda-time\joda-time\2.8.2\d27c24204c5e507b16fec01006b3d0f1ec42aed4\joda-time-2.8.2.jar"
@@ -114,20 +128,6 @@
         <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\joda-time-2.8.2-55406cd6ac493e48ac72759402146655f7919414.jar" />
     </item>
     <item
-        jar="C:\Users\hopet\.gradle\caches\modules-2\files-2.1\com.amazonaws\aws-android-sdk-ddb\2.2.13\c5e29c073cc8539c409c6ef39201f979031de0c1\aws-android-sdk-ddb-2.2.13.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="c5e29c073cc8539c409c6ef39201f979031de0c1">
-        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\aws-android-sdk-ddb-2.2.13-4ff0da73c059e1074b93992575d069ce4c43431c.jar" />
-    </item>
-    <item
-        jar="C:\Users\hopet\.gradle\caches\modules-2\files-2.1\org.droidparts\droidparts\2.0.5\e4c5854b2012f5453b0cc5f62bdd306b9765990d\droidparts-2.0.5.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="e4c5854b2012f5453b0cc5f62bdd306b9765990d">
-        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\droidparts-2.0.5-4a89c558eefc4e04163548cd66627e630043ccc9.jar" />
-    </item>
-    <item
         jar="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\exploded-aar\com.android.support\design\22.2.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.2"
@@ -135,11 +135,53 @@
         <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\classes-22c089214e5bfcfde7fee3d454bcbe66994d590a.jar" />
     </item>
     <item
-        jar="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\exploded-aar\com.mcxiaoke.volley\library-aar\1.0.0\jars\classes.jar"
+        jar="C:\Users\hopet\AppData\Local\Android\android-sdk\extras\android\m2repository\com\android\support\support-annotations\23.0.1\support-annotations-23.0.1.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="e40b9a81989bd4a846018551c280f8c4d837bf2e">
-        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\classes-3f4582cd79f64b9bf2fc9cf56c93ede5c1e559fa.jar" />
+        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
+        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\support-annotations-23.0.1-e8348638bf0c7aa2bd69d8d04ad35a37a041e1bf.jar" />
+    </item>
+    <item
+        jar="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\exploded-aar\com.roomorama\caldroid\2.3.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="7d1b55d7a57b3212b21718d9a77b0ac40ab4f103">
+        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\classes-533d29ddd930da1a958ed31fa1f6b0ef4f9692bf.jar" />
+    </item>
+    <item
+        jar="C:\Users\hopet\.gradle\caches\modules-2\files-2.1\com.amazonaws\aws-android-sdk-core\2.2.13\bcb160fb9cb637c7908e77d473cdbdabdd80e2b9\aws-android-sdk-core-2.2.13.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="bcb160fb9cb637c7908e77d473cdbdabdd80e2b9">
+        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\aws-android-sdk-core-2.2.13-d25414026906d02e06cecb1b73cb4a027509a4bd.jar" />
+    </item>
+    <item
+        jar="C:\Users\hopet\.gradle\caches\modules-2\files-2.1\com.amazonaws\aws-android-sdk-ddb\2.2.13\c5e29c073cc8539c409c6ef39201f979031de0c1\aws-android-sdk-ddb-2.2.13.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="c5e29c073cc8539c409c6ef39201f979031de0c1">
+        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\aws-android-sdk-ddb-2.2.13-4ff0da73c059e1074b93992575d069ce4c43431c.jar" />
+    </item>
+    <item
+        jar="C:\Users\hopet\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.2.4\a60a5e993c98c864010053cb901b7eab25306568\gson-2.2.4.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a60a5e993c98c864010053cb901b7eab25306568">
+        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\gson-2.2.4-99478e14511cc755fcb733a3b6a30bc664565c8b.jar" />
+    </item>
+    <item
+        jar="C:\Users\hopet\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-annotations\2.2.2\285cb9c666f0f0f3dd8a1be04e1f457eb7b15113\jackson-annotations-2.2.2.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="285cb9c666f0f0f3dd8a1be04e1f457eb7b15113">
+        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\jackson-annotations-2.2.2-97707417b668301620dcd5cf497183352b3af36e.jar" />
+    </item>
+    <item
+        jar="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
+        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\classes-3db61f3374f8d4b0622dc308a4ef75f7efcff4c0.jar" />
     </item>
 
 </items>

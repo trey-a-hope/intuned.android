@@ -16,6 +16,12 @@ android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
 
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE-FIREBASE.txt'
+        exclude 'META-INF/NOTICE'
+    }
+
     defaultConfig {
         applicationId "com.intuned.app"
         minSdkVersion 14
@@ -51,6 +57,7 @@ dependencies {
     compile 'com.google.code.gson:gson:2.2.4'
     compile 'com.github.ksoichiro:android-observablescrollview:1.5.0'
     compile 'com.roomorama:caldroid:2.3.1'
+    compile 'com.firebase:firebase-client-android:2.5.1+'
     compile 'org.droidparts:droidparts:2.0.5'
     compile 'com.amazonaws:aws-android-sdk-core:2.+'
     compile 'com.amazonaws:aws-android-sdk-cognito:2.+'

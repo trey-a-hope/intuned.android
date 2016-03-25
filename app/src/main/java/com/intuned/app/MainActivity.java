@@ -2,8 +2,10 @@ package com.intuned.app;
 
 import Adapters.SongListAdapter;
 import DTO.Song;
+import DTO.User;
 import Listeners.RecyclerItemClickListener;
 import Miscellaneous.DividerDecoration;
+import Navigation.AppNavigator;
 import Network.AppConfig;
 import Services.ModalService;
 import android.app.ProgressDialog;
@@ -30,6 +32,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.*;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 import com.amazonaws.auth.CognitoCachingCredentialsProvider;
@@ -40,13 +44,20 @@ import com.amazonaws.mobileconnectors.s3.transferutility.TransferUtility;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -72,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
     private TransferObserver observer;
     private ProgressDialog progressDialog;
     private ArrayList<Song> listOfUserSongs;
-
+    private Firebase firebase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         initUI();
         scanSdcard();
         initObjects();
+        initFirebase();
         setValues();
         initRecyclerView();
 
@@ -102,6 +114,22 @@ public class MainActivity extends AppCompatActivity {
         iF.addAction("com.real.IMP.metachanged");
 
         registerReceiver(mReceiver, iF);
+    }
+
+    private void addTestUser() {
+        //TODO: Remove when done testing.
+        User testUser = new User();
+        testUser.username = "Travisty92";
+        Song intunedTrack = new Song();
+        intunedTrack.id = "afefafef";
+        intunedTrack.album = "Borderline Genuis II";
+        intunedTrack.title = "Previsions";
+        intunedTrack.artist = "Travisty";
+        testUser.intunedTrack = intunedTrack;
+        //Firebase Setup
+        Firebase.setAndroidContext(getApplicationContext());
+        firebase = new Firebase(AppConfig.FIREBASE_URL);
+        firebase.child(AppConfig.TABLE_USERS).push().setValue(testUser);
     }
 
     private void initUI() {
@@ -167,6 +195,65 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void initFirebase() {
+        final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        final DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
+
+        //Tag used to cancel the request
+        String tag_string_req = "intuned_tracks";
+
+        // Progress Dialog
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
+        progressDialog.setTitle("Getting timeline.");
+        progressDialog.setMessage(AppConfig.WAITING_MESSAGE);
+        progressDialog.show();
+
+        //Firebase Setup
+        Firebase.setAndroidContext(getApplicationContext());
+        firebase = new Firebase(AppConfig.FIREBASE_URL);
+        firebase.child(AppConfig.TABLE_USERS).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                progressDialog.dismiss();
+
+                if (!songItemAdapter.isEmpty()) {
+                    songItemAdapter.clear();
+                }
+
+                for (DataSnapshot child : snapshot.getChildren()) {
+                    //For each item (child), assign data to DTO.
+                    User user = new User();
+                    //Username
+                    user.username = (String) child.child("username").getValue();
+                    Song intunedTrack = new Song();
+                    //InTuned Track - Title
+                    intunedTrack.title = (String) child.child("intunedTrack").child("title").getValue();
+                    //InTuned Track = ID
+                    intunedTrack.id = (String) child.child("intunedTrack").child("id").getValue();
+                    //InTuned Track = Artist
+                    intunedTrack.artist = (String) child.child("intunedTrack").child("artist").getValue();
+                    //InTuned Track = Album
+                    intunedTrack.album = (String) child.child("intunedTrack").child("album").getValue();
+                    //InTuned Track = Filename
+                    intunedTrack.fileName = (String) child.child("intunedTrack").child("fileName").getValue();
+                    user.intunedTrack = intunedTrack;
+                    //Add camp to service for UI.
+                    songItemAdapter.add(intunedTrack);
+                }
+                //Update the recyclerview to reflect the most recent changes to data.
+                postedSongsRecyclerview.setAdapter(songItemAdapter);
+                //Update title.
+                setTitle("InTuners (" + songItemAdapter.getItemCount() + ")");
+            }
+
+            @Override
+            public void onCancelled(FirebaseError error) {
+                ModalService.displayNotification("Lost connection to database, please try again.", "Sorry", MainActivity.this);
+            }
+        });
+    }
+
     /**
      * Returns track info for music currently playing.
      **/
@@ -191,7 +278,8 @@ public class MainActivity extends AppCompatActivity {
     private void uploadSong(String filePath) {
 
         //Create uniqueId of username combined with current time.
-        String uniqueId = "username" + DateTime.now().toDateTimeISO();
+        final String uniqueId = "Travisty92" + DateTime.now().toDateTimeISO();
+        //Upload file.
         observer = transferUtility.upload(
                 AppConfig.S3_BUCKET_NAME,       /* The bucket to upload to */
                 uniqueId,                    /* The key for the uploaded object */
@@ -208,7 +296,28 @@ public class MainActivity extends AppCompatActivity {
         observer.setTransferListener(new TransferListener() {
             @Override
             public void onStateChanged(int id, TransferState state) {
+                Song intunedTrack = new Song();
                 if (state == TransferState.COMPLETED) {
+                    //Search for song in songs from device.
+                    for (Song s : listOfUserSongs) {
+                        String songId = s.artist + s.title;
+                        String currentSongId = artist + track;
+                        if (songId.equals(currentSongId)) {
+                            intunedTrack = s;
+                            break;
+                        }
+                    }
+
+                    User newUser = new User();
+                    newUser.username = "Travisty92";
+                    newUser.intunedTrack = intunedTrack;
+                    //Firebase Setup
+                    Firebase.setAndroidContext(getApplicationContext());
+                    firebase = new Firebase(AppConfig.FIREBASE_URL);
+                    String i = firebase.child(AppConfig.TABLE_USERS).push().getKey();
+                    intunedTrack.id = i;
+                    intunedTrack.fileName = uniqueId;
+                    firebase.child(AppConfig.TABLE_USERS).child(i).setValue(newUser);
                     progressDialog.dismiss();
                     ModalService.displayTest("Upload complete.", MainActivity.this);
                 }
@@ -229,30 +338,42 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void updateProgressBar(int position, int count)
-    {
-        //This method is called directly by the timer
-        //and runs in the same thread as the timer.
-
+    private void updateProgressBar(int position, int count) {
         songItemAdapter.getSongViewHolder(position).seekbar.setProgress(count);
     }
 
 
-    private void playSong(final int position) {
-        final MediaPlayer mediaPlayer = MediaPlayer.create(this, Uri.parse(AppConfig.S3_MUSIC_BUCKET_URL + "Elle+Varner+-+Leaf+Lyrics+Video.mp3"));
-        mediaPlayer.start();
+    //TODO: Determine point in song to play from.
+    private void playSong(final int position, String fileName) {
+        final MediaPlayer mediaPlayer = MediaPlayer.create(this, Uri.parse(AppConfig.S3_MUSIC_BUCKET_URL + fileName));
+        try {
+            mediaPlayer.start();
+            mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                @Override
+                public void onPrepared(MediaPlayer mp) {
+                    final Timer myTimer = new Timer();
+                    myTimer.schedule(new TimerTask() {
+                        int count = 0;
 
-        Timer myTimer = new Timer();
-        //TODO: Start scheduler once media player is prepared.
-        myTimer.schedule(new TimerTask() {
-            int count = 0;
-            @Override
-            public void run() {
-                updateProgressBar(position, count);
-                count++;
-            }
-
-        }, 0, 1000);
+                        @Override
+                        public void run() {
+                            //Play song until time limit is reached.
+                            if (count == AppConfig.SONG_DURATION) {
+                                myTimer.cancel();
+                                mediaPlayer.stop();
+                                mediaPlayer.release();
+                                updateProgressBar(position, 0);
+                                return;
+                            }
+                            updateProgressBar(position, count);
+                            count++;
+                        }
+                    }, 0, 1000);
+                }
+            });
+        } catch (NullPointerException e) {
+            ModalService.displayNotification("Error", e.toString(), this);
+        }
     }
 
     /**
@@ -304,13 +425,15 @@ public class MainActivity extends AppCompatActivity {
     private class SongItemAdapter extends SongListAdapter<SongListAdapter.SongViewHolder> {
 
         ArrayList<SongViewHolder> songViewHolders = new ArrayList<SongViewHolder>();
+        int lastPosition = -1;
 
         /**
          * Returns song view (UI) at specified index.
+         *
          * @param index
          * @return SongViewHolder
          */
-        public SongViewHolder getSongViewHolder(int index){
+        public SongViewHolder getSongViewHolder(int index) {
             return songViewHolders.get(index);
         }
 
@@ -329,8 +452,23 @@ public class MainActivity extends AppCompatActivity {
                 songViewHolder.artist.setText(song.artist);
                 songViewHolder.dateModified.setText(song.dateModified);
                 songViewHolder.seekbar.setProgress(0);
-                songViewHolder.seekbar.setMax(15);
+                songViewHolder.seekbar.setMax(AppConfig.SONG_DURATION);
                 songViewHolders.add(songViewHolder);
+            }
+
+            // Here you apply the animation when the view is bound
+            setAnimation(songViewHolder.itemView, position);
+        }
+
+        /**
+         * Animation for each item in recyclerview.
+         **/
+        private void setAnimation(View viewToAnimate, int position) {
+            // If the bound view wasn't previously displayed on screen, it's animated
+            if (position > lastPosition) {
+                Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.fade_in);
+                viewToAnimate.startAnimation(animation);
+                lastPosition = position;
             }
         }
 
@@ -349,7 +487,6 @@ public class MainActivity extends AppCompatActivity {
      * Initializes the recylcerview of songs.
      **/
     private void initRecyclerView() {
-        songItemAdapter.addAll(null);
         postedSongsRecyclerview.setAdapter(songItemAdapter);
 
         // Set layout manager
@@ -363,7 +500,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(View view, int position) {
                 Song song = songItemAdapter.getItem(position);
-                playSong(position);
+                playSong(position, song.fileName);
             }
         }));
 
@@ -384,11 +521,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                drawerLayout.openDrawer(GravityCompat.START);
-                return true;
-        }
+        //TODO: Figure out why app is not starting new activity.
+        AppNavigator.navigate(item.getItemId(), MainActivity.this);
 
         if (drawerToggle.onOptionsItemSelected(item)) {
             return true;

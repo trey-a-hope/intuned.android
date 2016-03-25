@@ -15,6 +15,16 @@ public class AppConfig {
     /**************************
      * FIREBASE
      *************************/
-    public static String FIRE_BASE_URL = "";
-    public static String UPLOADED_SONGS = "";
+    public static String FIREBASE_URL = "https://intuned.firebaseio.com/";
+    public static String TABLE_USERS = "Users";
+
+    /**************************
+     * TIMER
+     *************************/
+    public static int SONG_DURATION = 10;
+
+    /**************************
+     * MESSAGES
+     *************************/
+    public static String WAITING_MESSAGE = "Please wait...";
 }

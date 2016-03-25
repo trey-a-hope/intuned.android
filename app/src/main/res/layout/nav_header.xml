@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="200dp"
-              android:background="@color/Red900"
+              android:background="@color/Cyan900"
               android:padding="15dp"
               style="@style/ThemeOverlay.AppCompat.Dark"
               android:orientation="vertical">

@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 
 public abstract class SongListAdapter<VH extends SongListAdapter.SongViewHolder> extends RecyclerView.Adapter<VH> {
-    private ArrayList<Song> songs;
+    private ArrayList<Song> songs = new ArrayList<Song>();
     private int count;
 
     public static class SongViewHolder extends RecyclerView.ViewHolder {
@@ -47,21 +47,15 @@ public abstract class SongListAdapter<VH extends SongListAdapter.SongViewHolder>
     }
 
     public void addAll(ArrayList<Song> list) {
-        Song song1 = new Song();
-        song1.album = "Trey's Revolution";
-        song1.title= "Oh Got Damn";
-        song1.artist = "Travisty";
-        Song song2 = new Song();
-        song2.album = "Trey's Revolution Part II";
-        song2.title= "Safehouse";
-        song2.artist = "Travisty";
         list = new ArrayList<Song>();
-        list.add(song1);
-        list.add(song2);
         if (list != null) {
             songs = list;
             notifyDataSetChanged();
         }
+    }
+
+    public void clear(){
+        songs.clear();
     }
 
     public void remove(Song song) {
@@ -87,6 +81,10 @@ public abstract class SongListAdapter<VH extends SongListAdapter.SongViewHolder>
     @Override
     public int getItemCount() {
         return songs.size();
+    }
+
+    public boolean isEmpty(){
+        return songs.size() < 1 || songs == null;
     }
 
 }
