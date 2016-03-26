@@ -12,6 +12,5 @@ public class Song {
     public String fileName;
     public String path;
     public String songDuration;
-    public Song(){
-    }
+    public int currentPosition;
 }

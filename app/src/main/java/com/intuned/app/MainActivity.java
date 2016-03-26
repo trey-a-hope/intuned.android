@@ -13,12 +13,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.media.session.MediaController;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.provider.MediaStore;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -51,12 +50,7 @@ import com.firebase.client.ValueEventListener;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
-
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Timer;
@@ -82,54 +76,72 @@ public class MainActivity extends AppCompatActivity {
     private TransferUtility transferUtility;
     private TransferObserver observer;
     private ProgressDialog progressDialog;
+    private ProgressDialog seekDialog;
     private ArrayList<Song> listOfUserSongs;
     private Firebase firebase;
+    private MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         initUI();
         scanSdcard();
         initObjects();
         initFirebase();
         setValues();
         initRecyclerView();
-
-        IntentFilter iF = new IntentFilter();
-
-        // stock music player
-        iF.addAction("com.android.music.metachanged");
-
-        // MIUI music player
-        iF.addAction("com.miui.player.metachanged");
-
-        // HTC music player
-        iF.addAction("com.htc.music.metachanged");
-
-        // WinAmp
-        iF.addAction("com.nullsoft.winamp.metachanged");
-
-        // MyTouch4G
-        iF.addAction("com.real.IMP.metachanged");
-
-        registerReceiver(mReceiver, iF);
+        registerReceiver();
     }
 
-    private void addTestUser() {
-        //TODO: Remove when done testing.
-        User testUser = new User();
-        testUser.username = "Travisty92";
-        Song intunedTrack = new Song();
-        intunedTrack.id = "afefafef";
-        intunedTrack.album = "Borderline Genuis II";
-        intunedTrack.title = "Previsions";
-        intunedTrack.artist = "Travisty";
-        testUser.intunedTrack = intunedTrack;
-        //Firebase Setup
-        Firebase.setAndroidContext(getApplicationContext());
-        firebase = new Firebase(AppConfig.FIREBASE_URL);
-        firebase.child(AppConfig.TABLE_USERS).push().setValue(testUser);
+//    private void addTestUser() {
+//        //TODO: Remove when done testing.
+//        User testUser = new User();
+//        testUser.username = "Travisty92";
+//        Song intunedTrack = new Song();
+//        intunedTrack.id = "afefafef";
+//        intunedTrack.album = "Borderline Genuis II";
+//        intunedTrack.title = "Previsions";
+//        intunedTrack.artist = "Travisty";
+//        testUser.intunedTrack = intunedTrack;
+//        //Firebase Setup
+//        Firebase.setAndroidContext(getApplicationContext());
+//        firebase = new Firebase(AppConfig.FIREBASE_URL);
+//        firebase.child(AppConfig.TABLE_USERS).push().setValue(testUser);
+//    }
+
+    private void registerReceiver(){
+        IntentFilter iF = new IntentFilter();
+
+        iF.addAction("com.android.music.metachanged");
+        iF.addAction("com.htc.music.metachanged");
+        iF.addAction("fm.last.android.metachanged");
+        iF.addAction("com.sec.android.app.music.metachanged");
+        iF.addAction("com.nullsoft.winamp.metachanged");
+        iF.addAction("com.amazon.mp3.metachanged");
+        iF.addAction("com.miui.player.metachanged");
+        iF.addAction("com.real.IMP.metachanged");
+        iF.addAction("com.sonyericsson.music.metachanged");
+        iF.addAction("com.rdio.android.metachanged");
+        iF.addAction("com.samsung.sec.android.MusicPlayer.metachanged");
+        iF.addAction("com.andrew.apollo.metachanged");
+
+        /**
+         * Returns track info for music currently playing.
+         **/
+        BroadcastReceiver mReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                String action = intent.getAction();
+                String cmd = intent.getStringExtra("command");
+                Log.v("tag ", action + " / " + cmd);
+                artist = intent.getStringExtra("artist");
+                album = intent.getStringExtra("album");
+                track = intent.getStringExtra("track");
+                Log.v("tag", artist + ":" + album + ":" + track);
+            }
+        };
+
+        registerReceiver(mReceiver, iF);
     }
 
     private void initUI() {
@@ -143,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initObjects() {
-        toolbar.setBackgroundColor(getResources().getColor(R.color.Red900));
+        toolbar.setBackgroundColor(getResources().getColor(R.color.AppToolbarColor));
         setSupportActionBar(toolbar);
         setTitle("inTuned");
         actionBar = getSupportActionBar();
@@ -160,6 +172,9 @@ public class MainActivity extends AppCompatActivity {
         // Initialize the TransferUtility provider.
         s3 = new AmazonS3Client(credentialsProvider);
         transferUtility = new TransferUtility(s3, getApplicationContext());
+
+        seekDialog = new ProgressDialog(MainActivity.this);
+        progressDialog = new ProgressDialog(this);
     }
 
     private void setValues() {
@@ -180,6 +195,7 @@ public class MainActivity extends AppCompatActivity {
                         for (Song s : listOfUserSongs) {
                             String songId = s.artist + s.title;
                             String currentSongId = artist + track;
+                            //System.out.println(songId + ":" + currentSongId);
                             if (songId.equals(currentSongId)) {
                                 uploadSong(s.path);
                                 break;
@@ -203,7 +219,6 @@ public class MainActivity extends AppCompatActivity {
         String tag_string_req = "intuned_tracks";
 
         // Progress Dialog
-        progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
         progressDialog.setTitle("Getting timeline.");
         progressDialog.setMessage(AppConfig.WAITING_MESSAGE);
@@ -254,28 +269,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    /**
-     * Returns track info for music currently playing.
-     **/
-    private BroadcastReceiver mReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            String cmd = intent.getStringExtra("command");
-            Log.v("tag ", action + " / " + cmd);
-            artist = intent.getStringExtra("artist");
-            album = intent.getStringExtra("album");
-            track = intent.getStringExtra("track");
-            Log.v("tag", artist + ":" + album + ":" + track);
-        }
-    };
-
-    /**
-     * Begins upload process of MP3.
-     *
-     * @param filePath - Path to file of MP3.
-     **/
+    //Upload song to Amazon S3;
     private void uploadSong(String filePath) {
+        final int currentPosition = 8;//TODO: GET CURRENT ELAPSED TIME
 
         //Create uniqueId of username combined with current time.
         final String uniqueId = "Travisty92" + DateTime.now().toDateTimeISO();
@@ -287,7 +283,6 @@ public class MainActivity extends AppCompatActivity {
         );
 
         // Progress Dialog
-        progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
         progressDialog.setTitle("Uploading Song");
         progressDialog.setMessage("Please wait...");
@@ -307,6 +302,8 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         }
                     }
+
+                    intunedTrack.currentPosition = currentPosition;
 
                     User newUser = new User();
                     newUser.username = "Travisty92";
@@ -337,15 +334,14 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
+    //Set song view's progress bar.
     private void updateProgressBar(int position, int count) {
         songItemAdapter.getSongViewHolder(position).seekbar.setProgress(count);
     }
 
-
-    //TODO: Determine point in song to play from.
+    //Play clip of song selected.
     private void playSong(final int position, String fileName) {
-        final MediaPlayer mediaPlayer = MediaPlayer.create(this, Uri.parse(AppConfig.S3_MUSIC_BUCKET_URL + fileName));
+        mediaPlayer = MediaPlayer.create(this, Uri.parse(AppConfig.S3_MUSIC_BUCKET_URL + fileName));
         try {
             mediaPlayer.start();
             mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
@@ -376,9 +372,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * Returns all MP3 files currently on the device.
-     **/
+    //Returns all MP3 files currently on the device.
     private void scanSdcard() {
         String selection = MediaStore.Audio.Media.IS_MUSIC + " != 0";
         String[] projection = {
@@ -419,9 +413,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * Adapter that holds each song item.
-     **/
+    //Adapter that holds each song item.
     private class SongItemAdapter extends SongListAdapter<SongListAdapter.SongViewHolder> {
 
         ArrayList<SongViewHolder> songViewHolders = new ArrayList<SongViewHolder>();
@@ -483,9 +475,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * Initializes the recylcerview of songs.
-     **/
+    //Initializes the recylcerview of songs.
     private void initRecyclerView() {
         postedSongsRecyclerview.setAdapter(songItemAdapter);
 
@@ -521,8 +511,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        //TODO: Figure out why app is not starting new activity.
-        AppNavigator.navigate(item.getItemId(), MainActivity.this);
+        // The action bar home/up action should open or close the drawer.
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                drawerLayout.openDrawer(GravityCompat.START);
+                return true;
+        }
 
         if (drawerToggle.onOptionsItemSelected(item)) {
             return true;
@@ -549,6 +543,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void selectDrawerItem(MenuItem menuItem) {
+        AppNavigator.navigate(menuItem.getItemId(), this);
 
         // Highlight the selected item, update the title, and close the drawer
         menuItem.setChecked(true);
@@ -558,5 +553,12 @@ public class MainActivity extends AppCompatActivity {
 
     private ActionBarDrawerToggle setupDrawerToggle() {
         return new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // Pass any configuration change to the drawer toggles
+        drawerToggle.onConfigurationChanged(newConfig);
     }
 }

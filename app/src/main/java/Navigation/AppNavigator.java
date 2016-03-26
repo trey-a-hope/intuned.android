@@ -14,7 +14,6 @@ import com.intuned.app.R;
 **/
 public class AppNavigator {
     public static void navigate(int menuItemId, Activity activity){
-        ModalService.displayTest(String.valueOf(menuItemId), activity);
         Class currentClass = activity.getClass();
         switch(menuItemId) {
             //Home
