@@ -1,4 +1,4 @@
-package Network;
+package Configuration;
 
 /*
     Common strings such as URLs or Preference Names.

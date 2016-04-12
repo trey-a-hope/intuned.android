@@ -5,8 +5,9 @@ import DTO.Song;
 import DTO.User;
 import Listeners.RecyclerItemClickListener;
 import Miscellaneous.DividerDecoration;
+import Miscellaneous.SoundFile;
 import Navigation.AppNavigator;
-import Network.AppConfig;
+import Configuration.AppConfig;
 import Services.ModalService;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
@@ -34,6 +35,7 @@ import android.view.*;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import com.amazonaws.auth.CognitoCachingCredentialsProvider;
 import com.amazonaws.mobileconnectors.s3.transferutility.TransferListener;
@@ -50,7 +52,10 @@ import com.firebase.client.ValueEventListener;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Timer;
@@ -64,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvHeader;
     private ActionBar actionBar;
     private Button btnNewSong;
+    private SoundFile soundFile;
     //Song
     private String artist;
     private String album;
@@ -91,6 +97,21 @@ public class MainActivity extends AppCompatActivity {
         setValues();
         initRecyclerView();
         registerReceiver();
+
+
+    }
+
+    private void SoundFileSetUp(String pathToFile) {
+        try {
+            soundFile = SoundFile.create(pathToFile, new SoundFile.ProgressListener() {
+                public boolean reportProgress(double fractionComplete) {
+                    return true;
+                }
+            });
+        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
+        } catch (SoundFile.InvalidInputException e) {
+        }
     }
 
 //    private void addTestUser() {
@@ -109,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
 //        firebase.child(AppConfig.TABLE_USERS).push().setValue(testUser);
 //    }
 
-    private void registerReceiver(){
+    private void registerReceiver() {
         IntentFilter iF = new IntentFilter();
 
         iF.addAction("com.android.music.metachanged");
@@ -195,14 +216,19 @@ public class MainActivity extends AppCompatActivity {
                         for (Song s : listOfUserSongs) {
                             String songId = s.artist + s.title;
                             String currentSongId = artist + track;
-                            //System.out.println(songId + ":" + currentSongId);
                             if (songId.equals(currentSongId)) {
-                                uploadSong(s.path);
-                                break;
+//                                if(ModalService.displayConfirmation("Where should the song start?", "0 - " + String.valueOf(Integer.parseInt(s.songDuration) / 1000), MainActivity.this)){
+//                                    uploadSong(s.path);
+//                                }
+//                                break;
+                                SoundFileSetUp(s.path);
+                                try {//TODO: Work here!
+                                    soundFile.WriteFile(new File("FILE PATH HERE"), 20, 30);
+                                } catch (IOException e) {
+                                }
                             }
                         }
                     } else {
-                        //TODO;
                     }
                 } else {
                     ModalService.displayToast("Turn on your music first...", MainActivity.this);
@@ -271,7 +297,8 @@ public class MainActivity extends AppCompatActivity {
 
     //Upload song to Amazon S3;
     private void uploadSong(String filePath) {
-        final int currentPosition = 8;//TODO: GET CURRENT ELAPSED TIME
+        //TODO: MANUALLY ASK USER TO SELECT TIME START OF SONG
+        final int currentPosition = 8;
 
         //Create uniqueId of username combined with current time.
         final String uniqueId = "Travisty92" + DateTime.now().toDateTimeISO();
@@ -334,40 +361,59 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    //Set song view's progress bar.
-    private void updateProgressBar(int position, int count) {
-        songItemAdapter.getSongViewHolder(position).seekbar.setProgress(count);
-    }
-
     //Play clip of song selected.
     private void playSong(final int position, String fileName) {
-        mediaPlayer = MediaPlayer.create(this, Uri.parse(AppConfig.S3_MUSIC_BUCKET_URL + fileName));
+        String url = AppConfig.S3_MUSIC_BUCKET_URL + fileName; // your URL here
+        mediaPlayer = new MediaPlayer();
+        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         try {
-            mediaPlayer.start();
+            mediaPlayer.setDataSource(url);
+            mediaPlayer.prepareAsync(); // might take long! (for buffering, etc)
             mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                 @Override
-                public void onPrepared(MediaPlayer mp) {
+                public void onPrepared(final MediaPlayer mp) {
+                    mp.start();
+                    songItemAdapter.getSongViewHolder(position).seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                        @Override
+                        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                            if (mp != null && mp.isPlaying() && fromUser) {
+                                mp.seekTo(progress * 1000);
+                            }
+                        }
+
+                        @Override
+                        public void onStartTrackingTouch(SeekBar seekBar) {
+
+                        }
+
+                        @Override
+                        public void onStopTrackingTouch(SeekBar seekBar) {
+
+                        }
+                    });
+
                     final Timer myTimer = new Timer();
                     myTimer.schedule(new TimerTask() {
                         int count = 0;
 
                         @Override
                         public void run() {
+                            count = songItemAdapter.getSongViewHolder(position).seekbar.getProgress();
                             //Play song until time limit is reached.
-                            if (count == AppConfig.SONG_DURATION) {
+                            if (count >= AppConfig.SONG_DURATION) {
                                 myTimer.cancel();
-                                mediaPlayer.stop();
-                                mediaPlayer.release();
-                                updateProgressBar(position, 0);
+                                mp.stop();
+                                mp.reset();
+                                songItemAdapter.getSongViewHolder(position).seekbar.setProgress(0);
                                 return;
                             }
-                            updateProgressBar(position, count);
                             count++;
+                            songItemAdapter.getSongViewHolder(position).seekbar.setProgress(count);
                         }
                     }, 0, 1000);
                 }
             });
-        } catch (NullPointerException e) {
+        } catch (IOException e) {
             ModalService.displayNotification("Error", e.toString(), this);
         }
     }
