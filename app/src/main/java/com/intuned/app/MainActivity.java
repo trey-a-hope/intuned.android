@@ -49,6 +49,7 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -109,8 +110,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         } catch (FileNotFoundException e) {
+            ModalService.displayToast(e.toString(), this);
         } catch (IOException e) {
+            ModalService.displayToast(e.toString(), this);
         } catch (SoundFile.InvalidInputException e) {
+            ModalService.displayToast(e.toString(), this);
         }
     }
 
@@ -217,14 +221,13 @@ public class MainActivity extends AppCompatActivity {
                             String songId = s.artist + s.title;
                             String currentSongId = artist + track;
                             if (songId.equals(currentSongId)) {
-//                                if(ModalService.displayConfirmation("Where should the song start?", "0 - " + String.valueOf(Integer.parseInt(s.songDuration) / 1000), MainActivity.this)){
-//                                    uploadSong(s.path);
-//                                }
-//                                break;
+                                System.out.println(s.artist);
                                 SoundFileSetUp(s.path);
-                                try {//TODO: Work here!
-                                    soundFile.WriteFile(new File("FILE PATH HERE"), 20, 30);
+                                try {//TODO: Determine how to copy new cut file to new directory instead of overwritting current file.
+                                    soundFile.WriteWAVFile(new File(s.path), 20f, 30f);
+                                    ModalService.displayTest(s.path, MainActivity.this);
                                 } catch (IOException e) {
+                                    ModalService.displayTest(e.toString(), MainActivity.this);
                                 }
                             }
                         }
@@ -298,7 +301,6 @@ public class MainActivity extends AppCompatActivity {
     //Upload song to Amazon S3;
     private void uploadSong(String filePath) {
         //TODO: MANUALLY ASK USER TO SELECT TIME START OF SONG
-        final int currentPosition = 8;
 
         //Create uniqueId of username combined with current time.
         final String uniqueId = "Travisty92" + DateTime.now().toDateTimeISO();
@@ -329,8 +331,6 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         }
                     }
-
-                    intunedTrack.currentPosition = currentPosition;
 
                     User newUser = new User();
                     newUser.username = "Travisty92";

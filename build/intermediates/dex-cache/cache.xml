@@ -2,186 +2,32 @@
 <items version="2" >
 
     <item
-        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.2.2/285cb9c666f0f0f3dd8a1be04e1f457eb7b15113/jackson-annotations-2.2.2.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="285cb9c666f0f0f3dd8a1be04e1f457eb7b15113">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/jackson-annotations-2.2.2-06ddabcf7a2f3fa858a33a3d67c7cb9be1fbf1fc.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.amazonaws/aws-android-sdk-core/2.2.14/4e96cf4e04a665f811050ca33072d01cd591b69c/aws-android-sdk-core-2.2.14.jar"
+        jar="C:\Users\hopet\.gradle\caches\modules-2\files-2.1\com.amazonaws\aws-android-sdk-core\2.2.14\4e96cf4e04a665f811050ca33072d01cd591b69c\aws-android-sdk-core-2.2.14.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="4e96cf4e04a665f811050ca33072d01cd591b69c">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/aws-android-sdk-core-2.2.14-15990cdfa08d1c3527b440c889b079f1f7e4ceff.jar" />
+        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\aws-android-sdk-core-2.2.14-98a764bf298303099f938808b822c1106ceb9c44.jar" />
     </item>
     <item
-        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.firebase/firebase-client-jvm/2.5.1/11ea7eeda00b1bb92accba250ee7c8740bdebc19/firebase-client-jvm-2.5.1.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="11ea7eeda00b1bb92accba250ee7c8740bdebc19">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/firebase-client-jvm-2.5.1-ebfa1c0a3fd52011293ce14c826125b3b4a7cf49.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.mcxiaoke.volley/library-aar/1.0.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="e40b9a81989bd4a846018551c280f8c4d837bf2e">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-d0045e1b20a4541072c37f19ad818e8ab5030619.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.firebase/tubesock/0.0.12/6ec0bbd3e161a73ed672284b587fd32309a86d7a/tubesock-0.0.12.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="6ec0bbd3e161a73ed672284b587fd32309a86d7a">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/tubesock-0.0.12-ca2426963c0278d11f9303b00050f4287a44c026.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.roomorama/caldroid/2.3.1/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="7d1b55d7a57b3212b21718d9a77b0ac40ab4f103">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-a07091086c2309baa13d87b0f0259a7fb2a9f18a.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.amazonaws/aws-android-sdk-ddb/2.2.14/3b3610947dec4593f3d0a354beb0a9fc563d117d/aws-android-sdk-ddb-2.2.14.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="3b3610947dec4593f3d0a354beb0a9fc563d117d">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/aws-android-sdk-ddb-2.2.14-e090ad5f629acd3da3a10a2acdd8447d8652638a.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-9656500a703f41390260a6e1dc51e37fb12d497c.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/org.droidparts/droidparts/2.0.5/e4c5854b2012f5453b0cc5f62bdd306b9765990d/droidparts-2.0.5.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="e4c5854b2012f5453b0cc5f62bdd306b9765990d">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/droidparts-2.0.5-f52811cca920140a006fc1548594c44a72149f43.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.timehop.stickyheadersrecyclerview/library/0.4.2/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="4967e0e95206c7ce96f6e90a4528bde27c9286c5">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-3a22292c2dd7964ab617f340ef33b3a4943caa26.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.github.ksoichiro/android-observablescrollview/1.5.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="010ee9e87a286afcaeaed368dcf829e42d0aa2a0">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-310ea939dc6e7d7d7127834adc1af1d114162c7b.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.android.support/design/22.2.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="fc63b820d54c8a27a3a614bdd93920e0076581c2">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-80ee8361a25203cfb90c9715235a30cd1717747e.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/de.hdodenhof/circleimageview/1.2.1/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="4b868b833b0887aa48c4e581558eef4f1196f6a2">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-16af1a5cce27b7e2fe37d665c5aac567cdeae47e.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.2.4/a60a5e993c98c864010053cb901b7eab25306568/gson-2.2.4.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="a60a5e993c98c864010053cb901b7eab25306568">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/gson-2.2.4-d91e9a720caa2c80800b8e84961012595cbde57a.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.firebase/firebase-client-android/2.5.1/8c94ae916de454be497782505e3e6fd437a28b95/firebase-client-android-2.5.1.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="8c94ae916de454be497782505e3e6fd437a28b95">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/firebase-client-android-2.5.1-aae0f3a86002b3013acc18d507d0eebafcdde1ad.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.amazonaws/aws-android-sdk-s3/2.2.14/2718b3fb0de5b42dee45c03fb0e16c0a1cb0537a/aws-android-sdk-s3-2.2.14.jar"
+        jar="C:\Users\hopet\.gradle\caches\modules-2\files-2.1\com.amazonaws\aws-android-sdk-s3\2.2.14\2718b3fb0de5b42dee45c03fb0e16c0a1cb0537a\aws-android-sdk-s3-2.2.14.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="2718b3fb0de5b42dee45c03fb0e16c0a1cb0537a">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/aws-android-sdk-s3-2.2.14-e1c36951b2926edf77bd722890dd00671659391a.jar" />
+        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\aws-android-sdk-s3-2.2.14-72d451d6bdaf4843f69aea4e31689eaf3bd70f76.jar" />
     </item>
     <item
-        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.darwinsys/hirondelle-date4j/1.5.1/7b52de513f87ae4d9ff5d17518def0a1e9bc3df0/hirondelle-date4j-1.5.1.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="7b52de513f87ae4d9ff5d17518def0a1e9bc3df0">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/hirondelle-date4j-1.5.1-248a7f2bc10bdb1da35889493e93e457c31296ac.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.2.2/d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b/jackson-core-2.2.2.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/jackson-core-2.2.2-dc234fe612d2dc8c97e406599cc79b81f1d5dca5.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.1.1/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="5e412e954a24c5310a459c09870e4e2081aceb03">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-624c932d31a24f267abcce30688aab3fb94bd471.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/22.0.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="c6d79137693d494dee16372d3921f919eb724ced">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-7c97d95524284357de1d370b61c6764ef15d3101.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.2.2/3c8f6018eaa72d43b261181e801e6f8676c16ef6/jackson-databind-2.2.2.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="3c8f6018eaa72d43b261181e801e6f8676c16ef6">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/jackson-databind-2.2.2-077a41dd6ae91ff26c2cda8ad07b4f3dc1e1c233.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/joda-time/joda-time/2.8.2/d27c24204c5e507b16fec01006b3d0f1ec42aed4/joda-time-2.8.2.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="d27c24204c5e507b16fec01006b3d0f1ec42aed4">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/joda-time-2.8.2-ce58231f536911bc1067430ee6408eb57b73ebc3.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.amazonaws/aws-android-sdk-cognito/2.2.14/b4826cacd5532a29d96b4d1b9f915b2a37737610/aws-android-sdk-cognito-2.2.14.jar"
+        jar="C:\Users\hopet\.gradle\caches\modules-2\files-2.1\com.amazonaws\aws-android-sdk-cognito\2.2.14\b4826cacd5532a29d96b4d1b9f915b2a37737610\aws-android-sdk-cognito-2.2.14.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="b4826cacd5532a29d96b4d1b9f915b2a37737610">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/aws-android-sdk-cognito-2.2.14-b3ed299b0a727571d829509e71b20f1be22c7844.jar" />
+        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\aws-android-sdk-cognito-2.2.14-3fa547cb3c831299050f56533906208001d02eef.jar" />
     </item>
     <item
-        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
+        jar="C:\Users\hopet\.gradle\caches\modules-2\files-2.1\com.amazonaws\aws-android-sdk-ddb\2.2.14\3b3610947dec4593f3d0a354beb0a9fc563d117d\aws-android-sdk-ddb-2.2.14.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-a1e489a9f491d0df6603fc8ab991056e380b953d.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.1-e8c50dd99e0339bde9b99216fa21dbc246a1743f.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/Desktop/adt-bundle-mac-x86_64-20131030/sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.1/support-annotations-23.0.1.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.1-c1c3f632b30d51548f3adc080fdfc43d9cd7315d.jar" />
+        sha1="3b3610947dec4593f3d0a354beb0a9fc563d117d">
+        <dex dex="C:\Users\hopet\Desktop\Projects\Android\intuned.android\app\build\intermediates\pre-dexed\debug\aws-android-sdk-ddb-2.2.14-8635a0c7730e68e19024c59260007af20acbcec1.jar" />
     </item>
 
 </items>
