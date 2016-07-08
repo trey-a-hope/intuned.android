@@ -6,24 +6,26 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="palm " />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< HEAD
     <list default="true" id="2b2af7b9-0400-43ba-8a46-47a021be4a43" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/android_observablescrollview_1_5_0.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_22_2_0.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/aws_android_sdk_cognito_2_2_14.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/aws_android_sdk_cognito_2_2_20.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/aws_android_sdk_core_2_2_14.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/aws_android_sdk_core_2_2_20.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/aws_android_sdk_ddb_2_2_14.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/aws_android_sdk_ddb_2_2_20.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/aws_android_sdk_s3_2_2_14.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/aws_android_sdk_s3_2_2_20.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/caldroid_2_3_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/cardview_v7_23_1_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/cardview_v7_24_0_0.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/circleimageview_1_2_1.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/design_22_2_0.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/droidparts_2_0_5.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/firebase_client_android_2_5_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/firebase_client_jvm_2_5_1.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/gson_2_2_4.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/hirondelle_date4j_1_5_1.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/jackson_annotations_2_2_2.xml" afterPath="" />
@@ -34,6 +36,7 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/library_aar_1_0_0.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/recyclerview_v7_22_0_0.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_annotations_23_0_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_annotations_24_0_0.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_23_0_1.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/tubesock_0_0_12.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/cache.properties.lock" />
@@ -41,23 +44,67 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/outputFileStates.bin" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/outputFileStates.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/taskArtifacts.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_menu.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_menu.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/gradle_project_sync_data.bin" afterPath="$PROJECT_DIR$/build/intermediates/gradle_project_sync_data.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/cache.properties" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/cache.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="$PROJECT_DIR$/.idea/.name" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/inTuned.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/inTuned.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/.gitignore" afterPath="$PROJECT_DIR$/app/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/proguard-rules.pro" afterPath="$PROJECT_DIR$/app/proguard-rules.pro" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/intuned/app/ApplicationTest.java" afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/intuned/app/ApplicationTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/Adapters/SongListAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/Adapters/SongListAdapter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/Configuration/AppConfig.java" afterPath="$PROJECT_DIR$/app/src/main/java/Configuration/AppConfig.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/DTO/Song.java" afterPath="$PROJECT_DIR$/app/src/main/java/DTO/Song.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/DTO/User.java" afterPath="$PROJECT_DIR$/app/src/main/java/DTO/User.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/Listeners/RecyclerItemClickListener.java" afterPath="$PROJECT_DIR$/app/src/main/java/Listeners/RecyclerItemClickListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/Miscellaneous/DividerDecoration.java" afterPath="$PROJECT_DIR$/app/src/main/java/Miscellaneous/DividerDecoration.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/Miscellaneous/MP4Header.java" afterPath="$PROJECT_DIR$/app/src/main/java/Miscellaneous/MP4Header.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/Miscellaneous/SoundFile.java" afterPath="$PROJECT_DIR$/app/src/main/java/Miscellaneous/SoundFile.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/Miscellaneous/WAVHeader.java" afterPath="$PROJECT_DIR$/app/src/main/java/Miscellaneous/WAVHeader.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/Navigation/AppNavigator.java" afterPath="$PROJECT_DIR$/app/src/main/java/Navigation/AppNavigator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/Network/AppController.java" afterPath="$PROJECT_DIR$/app/src/main/java/Network/AppController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/Network/ConnectionManager.java" afterPath="$PROJECT_DIR$/app/src/main/java/Network/ConnectionManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/Network/JSONParser.java" afterPath="$PROJECT_DIR$/app/src/main/java/Network/JSONParser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/Services/ModalService.java" afterPath="$PROJECT_DIR$/app/src/main/java/Services/ModalService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/intuned/app/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/intuned/app/MainActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/intuned/app/ProfileController.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/intuned/app/ProfileController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_profile_controller.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_profile_controller.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/nav_header.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/nav_header.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/song_item_view.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/song_item_view.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/song_list_view.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/song_list_view.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/toolbar.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/toolbar.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/drawer_view.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/drawer_view.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_profile_controller.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_profile_controller.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values-w820dp/dimens.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values-w820dp/dimens.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/intuned.android.iml" afterPath="$PROJECT_DIR$/intuned.android.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/settings.gradle" afterPath="$PROJECT_DIR$/settings.gradle" />
     </list>
-=======
-    <list default="true" id="2b2af7b9-0400-43ba-8a46-47a021be4a43" name="Default" comment="" />
->>>>>>> 915e5edbe89b69806bffe7b05cbeefcaea3c9a57
     <ignored path="InTuned.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -84,51 +131,73 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/intuned/app/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state vertical-scroll-proportion="1.145679">
-              <caret line="219" column="59" selection-start-line="219" selection-start-column="59" selection-end-line="219" selection-end-column="59" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="593" column="1" selection-start-line="593" selection-start-column="1" selection-end-line="593" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#4045#4217#0" expanded="true" />
                 <element signature="e#4216#4217#0" expanded="true" />
+                <element signature="e#5253#5796#0" expanded="true" />
+                <element signature="e#5795#5796#0" expanded="true" />
                 <element signature="e#7691#9879#0" expanded="true" />
                 <element signature="e#9878#9879#0" expanded="true" />
                 <element signature="e#10197#10525#0" expanded="true" />
                 <element signature="e#10524#10525#0" expanded="true" />
                 <element signature="e#10548#11344#0" expanded="true" />
                 <element signature="e#11343#11344#0" expanded="true" />
-                <element signature="method#firebaseStorageSetup#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#playSong#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#scanSdCard#0;class#MainActivity#0" expanded="false" />
-                <element signature="class#SongItemAdapter#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#initRecyclerView#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#onCreateOptionsMenu#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#onOptionsItemSelected#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#onPostCreate#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#setupDrawerContent#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#selectDrawerItem#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#setupDrawerToggle#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#onConfigurationChanged#0;class#MainActivity#0" expanded="false" />
-=======
-            <state vertical-scroll-proportion="-7.508333">
-              <caret line="225" column="134" selection-start-line="225" selection-start-column="134" selection-end-line="225" selection-end-column="134" />
-              <folding>
-                <element signature="imports" expanded="true" />
->>>>>>> 915e5edbe89b69806bffe7b05cbeefcaea3c9a57
+                <element signature="e#15560#17492#0" expanded="true" />
+                <element signature="e#17491#17492#0" expanded="true" />
+                <element signature="e#19365#19381#0" expanded="true" />
+                <element signature="e#19623#19624#0" expanded="true" />
+                <element signature="e#19680#19681#0" expanded="true" />
+                <element signature="e#21308#21309#0" expanded="true" />
+                <element signature="e#21347#21348#0" expanded="true" />
+                <element signature="e#21417#21418#0" expanded="true" />
+                <element signature="e#21479#21480#0" expanded="true" />
+                <element signature="e#22085#22361#0" expanded="true" />
+                <element signature="e#22360#22361#0" expanded="true" />
+                <element signature="e#22418#22594#0" expanded="true" />
+                <element signature="e#22593#22594#0" expanded="true" />
+                <element signature="e#23689#23984#0" expanded="true" />
+                <element signature="e#23983#23984#0" expanded="true" />
+                <element signature="e#24431#24451#0" expanded="true" />
+                <element signature="e#24453#24474#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SoundFile.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/Miscellaneous/SoundFile.java">
-<<<<<<< HEAD
+      <file leaf-file-name="song_item_view.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/song_item_view.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.0">
-              <caret line="544" column="27" selection-start-line="544" selection-start-column="24" selection-end-line="544" selection-end-column="27" />
+            <state vertical-scroll-proportion="-3.2075472">
+              <caret line="29" column="57" selection-start-line="29" selection-start-column="57" selection-end-line="29" selection-end-column="57" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SongListAdapter.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/Adapters/SongListAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="2.321016">
+              <caret line="89" column="1" selection-start-line="89" selection-start-column="1" selection-end-line="89" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Song.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/DTO/Song.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -137,37 +206,21 @@
       <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="70" column="58" selection-start-line="70" selection-start-column="58" selection-end-line="70" selection-end-column="58" />
+            <state vertical-scroll-proportion="-14.925926">
+              <caret line="73" column="46" selection-start-line="73" selection-start-column="46" selection-end-line="73" selection-end-column="46" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SongListAdapter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/Adapters/SongListAdapter.java">
+      <file leaf-file-name="SoundFile.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/Miscellaneous/SoundFile.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="31" column="89" selection-start-line="31" selection-start-column="65" selection-end-line="31" selection-end-column="89" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AppConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/Configuration/AppConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="23" column="35" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="35" />
-              <folding />
-=======
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-199.89655">
-              <caret line="662" column="23" selection-start-line="662" selection-start-column="16" selection-end-line="662" selection-end-column="23" />
+              <caret line="776" column="1" selection-start-line="776" selection-start-column="1" selection-end-line="776" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
->>>>>>> 915e5edbe89b69806bffe7b05cbeefcaea3c9a57
             </state>
           </provider>
         </entry>
@@ -1483,11 +1536,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-<<<<<<< HEAD
-        <entry key="$PROJECT_DIR$" value="4388854422000" />
-=======
-        <entry key="$PROJECT_DIR$" value="4374872831237" />
->>>>>>> 915e5edbe89b69806bffe7b05cbeefcaea3c9a57
+        <entry key="$PROJECT_DIR$" value="4389440066000" />
         <entry key="$PROJECT_DIR$/../musicmatch.android" value="2912589993559" />
       </map>
     </option>
@@ -1510,23 +1559,17 @@
                       <ExternalModuleBuildClasspathPojo>
                         <option name="entries">
                           <list>
-<<<<<<< HEAD
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.support/cardview-v7/24.0.0/1dfc872e68fcb6697dc3f078a72d7991570dc40e/cardview-v7-24.0.0-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.support/cardview-v7/24.0.0/341ed5ed8c9c5bcba3465477c13523b6f15c63fa/cardview-v7-24.0.0.aar" />
-=======
-                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.2.4/a6dc5db8a12928e583bd3f23e72d3ab611ecd58f/gson-2.2.4-sources.jar" />
-                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.2.4/a60a5e993c98c864010053cb901b7eab25306568/gson-2.2.4.jar" />
-                            <option value="$USER_HOME$/AppData/Local/Android/android-sdk/extras/android/m2repository/com/android/support/cardview-v7/23.1.1/cardview-v7-23.1.1.aar" />
->>>>>>> 915e5edbe89b69806bffe7b05cbeefcaea3c9a57
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/de.hdodenhof/circleimageview/1.2.1/507237329eb63442f3606c98888fd49a26e6a39d/circleimageview-1.2.1-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/de.hdodenhof/circleimageview/1.2.1/4060affb26fb33a7e8ee8450be4eee551c9987d8/circleimageview-1.2.1.aar" />
-                            <option value="$USER_HOME$/AppData/Local/Android/android-sdk/extras/android/m2repository/com/android/support/recyclerview-v7/22.0.0/recyclerview-v7-22.0.0.aar" />
-                            <option value="$USER_HOME$/AppData/Local/Android/android-sdk/extras/android/m2repository/com/android/support/design/22.2.0/design-22.2.0.aar" />
+                            <option value="$PROJECT_DIR$/../../../adt-bundle-mac-x86_64-20131030/sdk/extras/android/m2repository/com/android/support/recyclerview-v7/22.0.0/recyclerview-v7-22.0.0.aar" />
+                            <option value="$PROJECT_DIR$/../../../adt-bundle-mac-x86_64-20131030/sdk/extras/android/m2repository/com/android/support/design/22.2.0/design-22.2.0.aar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/joda-time/joda-time/2.8.2/65dd2b998571ea61a3cee68c99a1dde729b14a7e/joda-time-2.8.2-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/joda-time/joda-time/2.8.2/d27c24204c5e507b16fec01006b3d0f1ec42aed4/joda-time-2.8.2.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.timehop.stickyheadersrecyclerview/library/0.4.2/71c7de6e8da4c6e67c8a2de3ac81351ac57abbd9/library-0.4.2-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.timehop.stickyheadersrecyclerview/library/0.4.2/36b93a329b9129459b8aeb75c2c3f65c4a09e6d/library-0.4.2.aar" />
-                            <option value="$USER_HOME$/AppData/Local/Android/android-sdk/extras/android/m2repository/com/android/support/support-v4/23.0.1/support-v4-23.0.1.aar" />
+                            <option value="$PROJECT_DIR$/../../../adt-bundle-mac-x86_64-20131030/sdk/extras/android/m2repository/com/android/support/support-v4/23.0.1/support-v4-23.0.1.aar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.mcxiaoke.volley/library-aar/1.0.0/a06dc87d645fa920c025d4bdb42cab1c7d4cdd73/library-aar-1.0.0-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.mcxiaoke.volley/library-aar/1.0.0/cc8071e1ce2c478bc9974c1044c3f6f0b2a96bb0/library-aar-1.0.0.aar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.2.4/a6dc5db8a12928e583bd3f23e72d3ab611ecd58f/gson-2.2.4-sources.jar" />
@@ -1578,12 +1621,7 @@
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.2.2/285cb9c666f0f0f3dd8a1be04e1f457eb7b15113/jackson-annotations-2.2.2.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.2.2/484301cc4a756b0c9f2d77448ec51d46d8905a25/jackson-core-2.2.2-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.2.2/d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b/jackson-core-2.2.2.jar" />
-<<<<<<< HEAD
                             <option value="$PROJECT_DIR$/../../../adt-bundle-mac-x86_64-20131030/sdk/extras/android/m2repository/com/android/support/appcompat-v7/22.2.0/appcompat-v7-22.2.0.aar" />
-=======
-                            <option value="$USER_HOME$/AppData/Local/Android/android-sdk/extras/android/m2repository/com/android/support/appcompat-v7/22.2.0/appcompat-v7-22.2.0.aar" />
-                            <option value="$USER_HOME$/AppData/Local/Android/android-sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.1/support-annotations-23.0.1.jar" />
->>>>>>> 915e5edbe89b69806bffe7b05cbeefcaea3c9a57
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/gradle/1.2.3/72de4290adf91c42923ec097b2d580d6f2776ae6/gradle-1.2.3-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/gradle/1.2.3/2fc5a2f1ac2e86c5c4bb57241330198b2355e621/gradle-1.2.3.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.gms/google-services/3.0.0/32b833222c886ecfb37d79b1a05ce1eddb702db1/google-services-3.0.0-sources.jar" />
@@ -1791,6 +1829,7 @@
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/Network/AppConfig.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/nav_header.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/drawer_view.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/Navigation/AppNavigator.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
@@ -1800,28 +1839,21 @@
         <option value="$PROJECT_DIR$/app/src/main/java/Miscellaneous/AudioFileProcessor.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/Miscellaneous/MP4Header.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/Miscellaneous/WAVHeader.java" />
-<<<<<<< HEAD
+        <option value="$PROJECT_DIR$/app/app.iml" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/Adapters/SongListAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/Configuration/AppConfig.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/DTO/Song.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/DTO/User.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/Adapters/SongListAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/song_item_view.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/Configuration/AppConfig.java" />
-=======
-        <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/app.iml" />
->>>>>>> 915e5edbe89b69806bffe7b05cbeefcaea3c9a57
         <option value="$PROJECT_DIR$/app/src/main/java/Miscellaneous/SoundFile.java" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/intuned/app/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/song_item_view.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1376" />
-    <option name="height" value="744" />
+    <option name="width" value="1280" />
+    <option name="height" value="800" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -1924,7 +1956,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-<<<<<<< HEAD
               <option name="myItemId" value="res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -1981,8 +2012,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-=======
->>>>>>> 915e5edbe89b69806bffe7b05cbeefcaea3c9a57
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -2015,41 +2044,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="Miscellaneous" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="InTuned" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="intuned.android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-<<<<<<< HEAD
-              <option name="myItemId" value="Miscellaneous" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MP4Header.java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -2138,8 +2132,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-=======
->>>>>>> 915e5edbe89b69806bffe7b05cbeefcaea3c9a57
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -2161,7 +2153,6 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-<<<<<<< HEAD
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
@@ -2195,14 +2186,9 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
-=======
-          </PATH>
-        </subPane>
-      </pane>
->>>>>>> 915e5edbe89b69806bffe7b05cbeefcaea3c9a57
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2569,48 +2555,30 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-<<<<<<< HEAD
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <editor active="true" />
-=======
-    <frame x="-8" y="-8" width="1376" height="744" extended-state="6" />
-    <editor active="false" />
->>>>>>> 915e5edbe89b69806bffe7b05cbeefcaea3c9a57
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-<<<<<<< HEAD
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-=======
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3280757" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
->>>>>>> 915e5edbe89b69806bffe7b05cbeefcaea3c9a57
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-<<<<<<< HEAD
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934928" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38911024" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-=======
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38801262" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2485294" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
->>>>>>> 915e5edbe89b69806bffe7b05cbeefcaea3c9a57
+      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38778222" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24921875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934928" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2484375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32802126" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -2641,11 +2609,57 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/intuned/app/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4045#4217#0" expanded="true" />
+            <element signature="e#4216#4217#0" expanded="true" />
+            <element signature="e#5253#5796#0" expanded="true" />
+            <element signature="e#5795#5796#0" expanded="true" />
+            <element signature="e#7691#9879#0" expanded="true" />
+            <element signature="e#9878#9879#0" expanded="true" />
+            <element signature="e#10197#10525#0" expanded="true" />
+            <element signature="e#10524#10525#0" expanded="true" />
+            <element signature="e#10548#11344#0" expanded="true" />
+            <element signature="e#11343#11344#0" expanded="true" />
+            <element signature="e#15560#17492#0" expanded="true" />
+            <element signature="e#17491#17492#0" expanded="true" />
+            <element signature="e#19365#19381#0" expanded="true" />
+            <element signature="e#19623#19624#0" expanded="true" />
+            <element signature="e#19680#19681#0" expanded="true" />
+            <element signature="e#21308#21309#0" expanded="true" />
+            <element signature="e#21347#21348#0" expanded="true" />
+            <element signature="e#21417#21418#0" expanded="true" />
+            <element signature="e#21479#21480#0" expanded="true" />
+            <element signature="e#22085#22361#0" expanded="true" />
+            <element signature="e#22360#22361#0" expanded="true" />
+            <element signature="e#22418#22594#0" expanded="true" />
+            <element signature="e#22593#22594#0" expanded="true" />
+            <element signature="e#23689#23984#0" expanded="true" />
+            <element signature="e#23983#23984#0" expanded="true" />
+            <element signature="e#24431#24451#0" expanded="true" />
+            <element signature="e#24453#24474#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/Miscellaneous/SoundFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="662" column="23" selection-start-line="662" selection-start-column="16" selection-end-line="662" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/app.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2726,6 +2740,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.042821158">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3753943">
@@ -2766,27 +2787,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/nav_header.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.18411553">
           <caret line="3" column="48" selection-start-line="3" selection-start-column="48" selection-end-line="3" selection-end-column="48" />
         </state>
       </provider>
-<<<<<<< HEAD
-=======
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/song_item_view.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49097472">
-          <caret line="8" column="46" selection-start-line="8" selection-start-column="46" selection-end-line="8" selection-end-column="46" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
->>>>>>> 915e5edbe89b69806bffe7b05cbeefcaea3c9a57
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_main.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -2820,8 +2828,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.4905663">
           <caret line="287" column="32" selection-start-line="287" selection-start-column="17" selection-end-line="287" selection-end-column="32" />
-<<<<<<< HEAD
-=======
         </state>
       </provider>
     </entry>
@@ -2829,17 +2835,28 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.42618385">
           <caret line="60" column="28" selection-start-line="60" selection-start-column="28" selection-end-line="60" selection-end-column="28" />
->>>>>>> 915e5edbe89b69806bffe7b05cbeefcaea3c9a57
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_profile_controller.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.32490975">
           <caret line="22" column="49" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="49" />
         </state>
       </provider>
-<<<<<<< HEAD
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.9458485">
+          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="56" selection-end-column="42" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/Network/ConnectionManager.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -2852,26 +2869,31 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0055710305">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-=======
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.9458485">
-          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="56" selection-end-column="42" />
->>>>>>> 915e5edbe89b69806bffe7b05cbeefcaea3c9a57
         </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/Miscellaneous/DividerDecoration.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2367688">
           <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/Miscellaneous/MP4Header.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4735376">
+          <caret line="10" column="25" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="25" />
+          <folding>
+            <element signature="e#2067#2068#0" expanded="false" />
+            <element signature="e#2095#2096#0" expanded="false" />
+            <element signature="e#2415#2416#0" expanded="false" />
+            <element signature="e#2443#2444#0" expanded="false" />
+            <element signature="e#3014#3015#0" expanded="false" />
+            <element signature="e#3042#3043#0" expanded="false" />
+            <element signature="e#8898#8899#0" expanded="false" />
+            <element signature="e#8928#8929#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2887,10 +2909,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/intuned/app/ProfileController.java">
+    <entry file="file://$PROJECT_DIR$/app/app.iml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0347222">
-          <caret line="60" column="28" selection-start-line="60" selection-start-column="28" selection-end-line="60" selection-end-column="28" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.925926">
+          <caret line="73" column="46" selection-start-line="73" selection-start-column="46" selection-end-line="73" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/Configuration/AppConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0046189">
+          <caret line="29" column="1" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -2898,46 +2935,63 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/DTO/Song.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/DTO/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="40" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
+        <state vertical-scroll-proportion="0.4503464">
+          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/app.iml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/Miscellaneous/SoundFile.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <caret line="776" column="1" selection-start-line="776" selection-start-column="1" selection-end-line="776" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/song_list_view.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/intuned/app/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.1132076">
-          <caret line="11" column="40" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
-          <folding />
+          <caret line="593" column="1" selection-start-line="593" selection-start-column="1" selection-end-line="593" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4045#4217#0" expanded="true" />
+            <element signature="e#4216#4217#0" expanded="true" />
+            <element signature="e#5253#5796#0" expanded="true" />
+            <element signature="e#5795#5796#0" expanded="true" />
+            <element signature="e#7691#9879#0" expanded="true" />
+            <element signature="e#9878#9879#0" expanded="true" />
+            <element signature="e#10197#10525#0" expanded="true" />
+            <element signature="e#10524#10525#0" expanded="true" />
+            <element signature="e#10548#11344#0" expanded="true" />
+            <element signature="e#11343#11344#0" expanded="true" />
+            <element signature="e#15560#17492#0" expanded="true" />
+            <element signature="e#17491#17492#0" expanded="true" />
+            <element signature="e#19365#19381#0" expanded="true" />
+            <element signature="e#19623#19624#0" expanded="true" />
+            <element signature="e#19680#19681#0" expanded="true" />
+            <element signature="e#21308#21309#0" expanded="true" />
+            <element signature="e#21347#21348#0" expanded="true" />
+            <element signature="e#21417#21418#0" expanded="true" />
+            <element signature="e#21479#21480#0" expanded="true" />
+            <element signature="e#22085#22361#0" expanded="true" />
+            <element signature="e#22360#22361#0" expanded="true" />
+            <element signature="e#22418#22594#0" expanded="true" />
+            <element signature="e#22593#22594#0" expanded="true" />
+            <element signature="e#23689#23984#0" expanded="true" />
+            <element signature="e#23983#23984#0" expanded="true" />
+            <element signature="e#24431#24451#0" expanded="true" />
+            <element signature="e#24453#24474#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2946,122 +3000,17 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1081795">
-          <caret line="28" column="52" selection-start-line="28" selection-start-column="52" selection-end-line="28" selection-end-column="52" />
-          <folding>
-            <element signature="e#882#922#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/Miscellaneous/MP4Header.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.5">
-          <caret line="196" column="13" selection-start-line="196" selection-start-column="13" selection-end-line="196" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#24794#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/Configuration/AppConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="35" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="35" />
+        <state vertical-scroll-proportion="-3.2075472">
+          <caret line="29" column="57" selection-start-line="29" selection-start-column="57" selection-end-line="29" selection-end-column="57" />
           <folding />
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/Adapters/SongListAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="89" selection-start-line="31" selection-start-column="65" selection-end-line="31" selection-end-column="89" />
-=======
-    <entry file="file://$PROJECT_DIR$/app/app.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
->>>>>>> 915e5edbe89b69806bffe7b05cbeefcaea3c9a57
+        <state vertical-scroll-proportion="2.321016">
+          <caret line="89" column="1" selection-start-line="89" selection-start-column="1" selection-end-line="89" selection-end-column="1" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.034722224">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/Miscellaneous/SoundFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.0">
-          <caret line="544" column="27" selection-start-line="544" selection-start-column="24" selection-end-line="544" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/google-services.json">
-=======
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/Miscellaneous/SoundFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-199.89655">
-          <caret line="662" column="23" selection-start-line="662" selection-start-column="16" selection-end-line="662" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/intuned/app/MainActivity.java">
->>>>>>> 915e5edbe89b69806bffe7b05cbeefcaea3c9a57
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.508333">
-          <caret line="225" column="134" selection-start-line="225" selection-start-column="134" selection-end-line="225" selection-end-column="134" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="70" column="58" selection-start-line="70" selection-start-column="58" selection-end-line="70" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/intuned/app/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.145679">
-          <caret line="219" column="59" selection-start-line="219" selection-start-column="59" selection-end-line="219" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4045#4217#0" expanded="true" />
-            <element signature="e#4216#4217#0" expanded="true" />
-            <element signature="e#7691#9879#0" expanded="true" />
-            <element signature="e#9878#9879#0" expanded="true" />
-            <element signature="e#10197#10525#0" expanded="true" />
-            <element signature="e#10524#10525#0" expanded="true" />
-            <element signature="e#10548#11344#0" expanded="true" />
-            <element signature="e#11343#11344#0" expanded="true" />
-            <element signature="method#firebaseStorageSetup#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#playSong#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#scanSdCard#0;class#MainActivity#0" expanded="false" />
-            <element signature="class#SongItemAdapter#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#initRecyclerView#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onCreateOptionsMenu#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onOptionsItemSelected#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onPostCreate#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#setupDrawerContent#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#selectDrawerItem#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#setupDrawerToggle#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onConfigurationChanged#0;class#MainActivity#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>

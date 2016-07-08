@@ -625,7 +625,6 @@ public class SoundFile {
                 outputStream.write(buffer, 0, remaining);
             }
             outputStream.close();
-            System.out.print("Success");
         } catch (IOException e) {
             Log.e("Ringdroid", "Failed to create the .m4a file.");
             Log.e("Ringdroid", getStackTrace(e));

@@ -4,7 +4,6 @@
       <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-<<<<<<< HEAD
       <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar!/" />
       <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar!/" />
       <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/res" />
@@ -12,15 +11,6 @@
     <JAVADOC />
     <SOURCES>
       <root url="jar://$PROJECT_DIR$/../../../adt-bundle-mac-x86_64-20131030/sdk/extras/android/m2repository/com/android/support/support-v4/23.0.1/support-v4-23.0.1-sources.jar!/" />
-=======
-      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/res" />
-      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar!/" />
-      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES>
-      <root url="jar://$USER_HOME$/AppData/Local/Android/android-sdk/extras/android/m2repository/com/android/support/support-v4/23.0.1/support-v4-23.0.1-sources.jar!/" />
->>>>>>> 915e5edbe89b69806bffe7b05cbeefcaea3c9a57
     </SOURCES>
   </library>
 </component>
