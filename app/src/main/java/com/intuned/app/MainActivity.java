@@ -51,11 +51,15 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+<<<<<<< HEAD
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+=======
+
+>>>>>>> 915e5edbe89b69806bffe7b05cbeefcaea3c9a57
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -115,8 +119,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         } catch (FileNotFoundException e) {
+            ModalService.displayToast(e.toString(), this);
         } catch (IOException e) {
+            ModalService.displayToast(e.toString(), this);
         } catch (SoundFile.InvalidInputException e) {
+            ModalService.displayToast(e.toString(), this);
         }
     }
 
@@ -207,6 +214,7 @@ public class MainActivity extends AppCompatActivity {
                             String songId = s.artist + s.title;
                             String currentSongId = artist + track;
                             if (songId.equals(currentSongId)) {
+<<<<<<< HEAD
                                 SoundFileSetUp(s.path);
                                 File directory = new File("/storage/emulated/0/Music/Vibes");
                                 if (!directory.exists()) {
@@ -223,6 +231,15 @@ public class MainActivity extends AppCompatActivity {
                                     uploadSongToFirebaseStorage(file);
                                 } catch (IOException e) {
                                     ModalService.displayTest(e.getMessage(), MainActivity.this);
+=======
+                                System.out.println(s.artist);
+                                SoundFileSetUp(s.path);
+                                try {//TODO: Determine how to copy new cut file to new directory instead of overwritting current file.
+                                    soundFile.WriteWAVFile(new File(s.path), 20f, 30f);
+                                    ModalService.displayTest(s.path, MainActivity.this);
+                                } catch (IOException e) {
+                                    ModalService.displayTest(e.toString(), MainActivity.this);
+>>>>>>> 915e5edbe89b69806bffe7b05cbeefcaea3c9a57
                                 }
 
                             }
@@ -338,10 +355,74 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+<<<<<<< HEAD
     private void firebaseStorageSetup() {
         firebaseStorage = FirebaseStorage.getInstance();
         // Create a storage reference from our app-camp-central.appspot.com
         storageReference = firebaseStorage.getReferenceFromUrl("gs://project-4361900320818092365.appspot.com").child("Music");
+=======
+    //Upload song to Amazon S3;
+    private void uploadSong(String filePath) {
+        //TODO: MANUALLY ASK USER TO SELECT TIME START OF SONG
+
+        //Create uniqueId of username combined with current time.
+        final String uniqueId = "Travisty92" + DateTime.now().toDateTimeISO();
+        //Upload file.
+        observer = transferUtility.upload(
+                AppConfig.S3_BUCKET_NAME,       /* The bucket to upload to */
+                uniqueId,                    /* The key for the uploaded object */
+                new File(filePath)            /* The file where the data to upload exists */
+        );
+
+        // Progress Dialog
+        progressDialog.setCancelable(false);
+        progressDialog.setTitle("Uploading Song");
+        progressDialog.setMessage("Please wait...");
+        progressDialog.show();
+
+        observer.setTransferListener(new TransferListener() {
+            @Override
+            public void onStateChanged(int id, TransferState state) {
+                Song intunedTrack = new Song();
+                if (state == TransferState.COMPLETED) {
+                    //Search for song in songs from device.
+                    for (Song s : listOfUserSongs) {
+                        String songId = s.artist + s.title;
+                        String currentSongId = artist + track;
+                        if (songId.equals(currentSongId)) {
+                            intunedTrack = s;
+                            break;
+                        }
+                    }
+
+                    User newUser = new User();
+                    newUser.username = "Travisty92";
+                    newUser.intunedTrack = intunedTrack;
+                    //Firebase Setup
+                    Firebase.setAndroidContext(getApplicationContext());
+                    firebase = new Firebase(AppConfig.FIREBASE_URL);
+                    String i = firebase.child(AppConfig.TABLE_USERS).push().getKey();
+                    intunedTrack.id = i;
+                    intunedTrack.fileName = uniqueId;
+                    firebase.child(AppConfig.TABLE_USERS).child(i).setValue(newUser);
+                    progressDialog.dismiss();
+                    ModalService.displayTest("Upload complete.", MainActivity.this);
+                }
+            }
+
+            @Override
+            public void onProgressChanged(int id, long bytesCurrent, long bytesTotal) {
+                int percentage = (int) ((bytesCurrent * 100) / bytesTotal);
+                progressDialog.setMessage(String.valueOf(percentage) + "%" + " complete.");
+            }
+
+            @Override
+            public void onError(int id, Exception ex) {
+                progressDialog.dismiss();
+                ModalService.displayNotification("Operation Failed", "Could not upload song.", MainActivity.this);
+            }
+        });
+>>>>>>> 915e5edbe89b69806bffe7b05cbeefcaea3c9a57
     }
 
     //Play clip of song selected.
