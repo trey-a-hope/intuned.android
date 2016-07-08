@@ -484,8 +484,7 @@ public class SoundFile {
         mDecodedSamples.rewind();
         // DumpSamples();  // Uncomment this line to dump the samples in a TSV file.
     }
-
-    // should be removed in the near future...
+    /*------------------------------------------------------------------------------------*/
     public void WriteFile(File outputFile, int startFrame, int numFrames)
             throws java.io.IOException {
         float startTime = (float)startFrame * getSamplesPerFrame() / mSampleRate;
@@ -537,8 +536,7 @@ public class SoundFile {
             if (!done_reading && inputBufferIndex >= 0) {
                 if (num_samples_left <= 0) {
                     // All samples have been read.
-                    codec.queueInputBuffer(
-                            inputBufferIndex, 0, 0, -1, MediaCodec.BUFFER_FLAG_END_OF_STREAM);
+                    codec.queueInputBuffer(inputBufferIndex, 0, 0, -1, MediaCodec.BUFFER_FLAG_END_OF_STREAM);
                     done_reading = true;
                 } else {
                     inputBuffers[inputBufferIndex].clear();
@@ -567,8 +565,7 @@ public class SoundFile {
                     num_samples_left -= frame_size;
                     inputBuffers[inputBufferIndex].put(buffer);
                     presentation_time = (long) (((num_frames++) * frame_size * 1e6) / mSampleRate);
-                    codec.queueInputBuffer(
-                            inputBufferIndex, 0, buffer.length, presentation_time, 0);
+                    codec.queueInputBuffer(inputBufferIndex, 0, buffer.length, presentation_time, 0);
                 }
             }
 
@@ -617,8 +614,7 @@ public class SoundFile {
         buffer = new byte[4096];
         try {
             FileOutputStream outputStream = new FileOutputStream(outputFile);
-            outputStream.write(
-                    MP4Header.getMP4Header(mSampleRate, numChannels, frame_sizes, bitrate));
+            outputStream.write(MP4Header.getMP4Header(mSampleRate, numChannels, frame_sizes, bitrate));
             while (encoded_size - encodedBytes.position() > buffer.length) {
                 encodedBytes.get(buffer);
                 outputStream.write(buffer);
@@ -634,6 +630,7 @@ public class SoundFile {
             Log.e("Ringdroid", getStackTrace(e));
         }
     }
+    /*------------------------------------------------------------------------------------*/
 
     // Method used to swap the left and right channels (needed for stereo WAV files).
     // buffer contains the PCM data: {sample 1 right, sample 1 left, sample 2 right, etc.}

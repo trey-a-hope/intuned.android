@@ -27,7 +27,7 @@
         <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/song_item_date_modified"
+                android:id="@+id/song_item_post_date_time"
                 android:textSize="17dp"/>
         <SeekBar
                 android:id="@+id/song_item_seekbar"

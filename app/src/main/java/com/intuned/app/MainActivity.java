@@ -19,7 +19,9 @@ import android.database.Cursor;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -49,13 +51,16 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Timer;
@@ -85,20 +90,21 @@ public class MainActivity extends AppCompatActivity {
     private ProgressDialog seekDialog;
     private ArrayList<Song> listOfUserSongs;
     private Firebase firebase;
+    private FirebaseStorage firebaseStorage;
+    private StorageReference storageReference;
     private MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        firebaseStorageSetup();
         initUI();
-        scanSdcard();
+        scanSdCard();
         initObjects();
         initFirebase();
         setValues();
         initRecyclerView();
         registerReceiver();
-
-
     }
 
     private void SoundFileSetUp(String pathToFile) {
@@ -113,22 +119,6 @@ public class MainActivity extends AppCompatActivity {
         } catch (SoundFile.InvalidInputException e) {
         }
     }
-
-//    private void addTestUser() {
-//        //TODO: Remove when done testing.
-//        User testUser = new User();
-//        testUser.username = "Travisty92";
-//        Song intunedTrack = new Song();
-//        intunedTrack.id = "afefafef";
-//        intunedTrack.album = "Borderline Genuis II";
-//        intunedTrack.title = "Previsions";
-//        intunedTrack.artist = "Travisty";
-//        testUser.intunedTrack = intunedTrack;
-//        //Firebase Setup
-//        Firebase.setAndroidContext(getApplicationContext());
-//        firebase = new Firebase(AppConfig.FIREBASE_URL);
-//        firebase.child(AppConfig.TABLE_USERS).push().setValue(testUser);
-//    }
 
     private void registerReceiver() {
         IntentFilter iF = new IntentFilter();
@@ -178,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
     private void initObjects() {
         toolbar.setBackgroundColor(getResources().getColor(R.color.AppToolbarColor));
         setSupportActionBar(toolbar);
-        setTitle("inTuned");
+        setTitle("vIbes");
         actionBar = getSupportActionBar();
         drawerToggle = setupDrawerToggle();
         songItemAdapter = new SongItemAdapter();
@@ -202,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
         actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
         actionBar.setDisplayHomeAsUpEnabled(true);
         drawerLayout.setDrawerListener(drawerToggle);
-        tvHeader.setText("InTuned, what are you listening to?");
+        tvHeader.setText("vIbes, what are you listening to?");
         navigationView.setBackgroundColor(getResources().getColor(R.color.Indigo50));
         setupDrawerContent(navigationView);
         btnNewSong.setOnClickListener(new View.OnClickListener() {
@@ -217,15 +207,24 @@ public class MainActivity extends AppCompatActivity {
                             String songId = s.artist + s.title;
                             String currentSongId = artist + track;
                             if (songId.equals(currentSongId)) {
-//                                if(ModalService.displayConfirmation("Where should the song start?", "0 - " + String.valueOf(Integer.parseInt(s.songDuration) / 1000), MainActivity.this)){
-//                                    uploadSong(s.path);
-//                                }
-//                                break;
                                 SoundFileSetUp(s.path);
-                                try {//TODO: Work here!
-                                    soundFile.WriteFile(new File("FILE PATH HERE"), 20, 30);
-                                } catch (IOException e) {
+                                File directory = new File("/storage/emulated/0/Music/Vibes");
+                                if (!directory.exists()) {
+                                    if (directory.mkdir()) {
+                                        ModalService.displayTest("Directory created.", MainActivity.this);
+                                    } else {
+                                        ModalService.displayTest("Could not create directory.", MainActivity.this);
+                                    }
                                 }
+                                try {
+                                    File file = new File("/storage/emulated/0/Music/Vibes/" + s.fileName);
+                                    file.createNewFile();
+                                    soundFile.WriteWAVFile(file, 20f, 30f);
+                                    uploadSongToFirebaseStorage(file);
+                                } catch (IOException e) {
+                                    ModalService.displayTest(e.getMessage(), MainActivity.this);
+                                }
+
                             }
                         }
                     } else {
@@ -235,6 +234,50 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void uploadSongToFirebaseStorage(File file) {
+        byte[] data = readContentIntoByteArray(file);
+        //Upload image with user's ID as file name.
+        UploadTask uploadTask = storageReference.child("SESSION_MANAGER_USER_ID_HERE").putBytes(data);
+
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                progressDialog.dismiss();
+                ModalService.displayNotification("Error", exception.getMessage(), MainActivity.this);
+                // Handle unsuccessful uploads
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                progressDialog.dismiss();
+                final String imageDownloadUrl = taskSnapshot.getDownloadUrl().toString();
+                //TODO: Add new song object to user's profile.
+                //Update session's information.
+                //sessionManager.updateImageDownloadUrl(imageDownloadUrl);
+                //Update data in firebase.
+                //firebase.child(AppConfig.TABLE_USERS).child(sessionManager.getUserInstance().id).child("imageDownloadUrl").setValue(imageDownloadUrl);
+                ModalService.displayNotification("Success", "Your song has been uploaded.", MainActivity.this);
+            }
+        });
+    }
+
+    private byte[] readContentIntoByteArray(File file) {
+        FileInputStream fileInputStream = null;
+        byte[] bFile = new byte[(int) file.length()];
+        try {
+            //convert file into array of bytes
+            fileInputStream = new FileInputStream(file);
+            fileInputStream.read(bFile);
+            fileInputStream.close();
+            for (int i = 0; i < bFile.length; i++) {
+                System.out.print((char) bFile[i]);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return bFile;
     }
 
     private void initFirebase() {
@@ -285,7 +328,7 @@ public class MainActivity extends AppCompatActivity {
                 //Update the recyclerview to reflect the most recent changes to data.
                 postedSongsRecyclerview.setAdapter(songItemAdapter);
                 //Update title.
-                setTitle("InTuners (" + songItemAdapter.getItemCount() + ")");
+                setTitle("vIbes (" + songItemAdapter.getItemCount() + ")");
             }
 
             @Override
@@ -295,74 +338,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    //Upload song to Amazon S3;
-    private void uploadSong(String filePath) {
-        //TODO: MANUALLY ASK USER TO SELECT TIME START OF SONG
-        final int currentPosition = 8;
-
-        //Create uniqueId of username combined with current time.
-        final String uniqueId = "Travisty92" + DateTime.now().toDateTimeISO();
-        //Upload file.
-        observer = transferUtility.upload(
-                AppConfig.S3_BUCKET_NAME,       /* The bucket to upload to */
-                uniqueId,                    /* The key for the uploaded object */
-                new File(filePath)            /* The file where the data to upload exists */
-        );
-
-        // Progress Dialog
-        progressDialog.setCancelable(false);
-        progressDialog.setTitle("Uploading Song");
-        progressDialog.setMessage("Please wait...");
-        progressDialog.show();
-
-        observer.setTransferListener(new TransferListener() {
-            @Override
-            public void onStateChanged(int id, TransferState state) {
-                Song intunedTrack = new Song();
-                if (state == TransferState.COMPLETED) {
-                    //Search for song in songs from device.
-                    for (Song s : listOfUserSongs) {
-                        String songId = s.artist + s.title;
-                        String currentSongId = artist + track;
-                        if (songId.equals(currentSongId)) {
-                            intunedTrack = s;
-                            break;
-                        }
-                    }
-
-                    intunedTrack.currentPosition = currentPosition;
-
-                    User newUser = new User();
-                    newUser.username = "Travisty92";
-                    newUser.intunedTrack = intunedTrack;
-                    //Firebase Setup
-                    Firebase.setAndroidContext(getApplicationContext());
-                    firebase = new Firebase(AppConfig.FIREBASE_URL);
-                    String i = firebase.child(AppConfig.TABLE_USERS).push().getKey();
-                    intunedTrack.id = i;
-                    intunedTrack.fileName = uniqueId;
-                    firebase.child(AppConfig.TABLE_USERS).child(i).setValue(newUser);
-                    progressDialog.dismiss();
-                    ModalService.displayTest("Upload complete.", MainActivity.this);
-                }
-            }
-
-            @Override
-            public void onProgressChanged(int id, long bytesCurrent, long bytesTotal) {
-                int percentage = (int) ((bytesCurrent * 100) / bytesTotal);
-                progressDialog.setMessage(String.valueOf(percentage) + "%" + " complete.");
-            }
-
-            @Override
-            public void onError(int id, Exception ex) {
-                progressDialog.dismiss();
-                ModalService.displayNotification("Operation Failed", "Could not upload song.", MainActivity.this);
-            }
-        });
+    private void firebaseStorageSetup() {
+        firebaseStorage = FirebaseStorage.getInstance();
+        // Create a storage reference from our app-camp-central.appspot.com
+        storageReference = firebaseStorage.getReferenceFromUrl("gs://project-4361900320818092365.appspot.com").child("Music");
     }
 
     //Play clip of song selected.
     private void playSong(final int position, String fileName) {
+        //TODO: User song download url for playing song.
         String url = AppConfig.S3_MUSIC_BUCKET_URL + fileName; // your URL here
         mediaPlayer = new MediaPlayer();
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
@@ -419,7 +403,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Returns all MP3 files currently on the device.
-    private void scanSdcard() {
+    private void scanSdCard() {
         String selection = MediaStore.Audio.Media.IS_MUSIC + " != 0";
         String[] projection = {
                 MediaStore.Audio.Media.TITLE,
@@ -488,7 +472,7 @@ public class MainActivity extends AppCompatActivity {
             if (songViewHolder instanceof SongViewHolder) {
                 songViewHolder.name.setText(song.title);
                 songViewHolder.artist.setText(song.artist);
-                songViewHolder.dateModified.setText(song.dateModified);
+                songViewHolder.postDateTime.setText(song.postDateTime);
                 songViewHolder.seekbar.setProgress(0);
                 songViewHolder.seekbar.setMax(AppConfig.SONG_DURATION);
                 songViewHolders.add(songViewHolder);

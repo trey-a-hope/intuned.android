@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "39654552505",
+    "firebase_url": "https://intuned.firebaseio.com",
+    "project_id": "project-4361900320818092365",
+    "storage_bucket": "project-4361900320818092365.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:39654552505:android:0aa086958bb802ad",
+        "android_client_info": {
+          "package_name": "com.intuned.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "39654552505-fiffeptgc5f10upiuaakdugbr5lkghqo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2LwTmoNY_7LFUbdewGoPAOroB_jznBKk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

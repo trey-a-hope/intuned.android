@@ -22,14 +22,14 @@ public abstract class SongListAdapter<VH extends SongListAdapter.SongViewHolder>
         public CardView cv;
         public TextView name;
         public TextView artist;
-        public TextView dateModified;
+        public TextView postDateTime;
         public SeekBar seekbar;
 
         public SongViewHolder(View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.song_item_name);
             artist = (TextView) itemView.findViewById(R.id.song_item_artist);
-            dateModified = (TextView) itemView.findViewById(R.id.song_item_date_modified);
+            postDateTime = (TextView) itemView.findViewById(R.id.song_item_post_date_time);
             seekbar = (SeekBar) itemView.findViewById(R.id.song_item_seekbar);
 
         }

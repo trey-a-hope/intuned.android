@@ -21,7 +21,7 @@ public class AppConfig {
     /**************************
      * TIMER
      *************************/
-    public static int SONG_DURATION = 10;
+    public static int SONG_DURATION = 20;               //20 seconds.
 
     /**************************
      * MESSAGES
