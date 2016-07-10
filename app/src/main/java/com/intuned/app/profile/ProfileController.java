@@ -16,8 +16,10 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -40,6 +42,7 @@ public class ProfileController extends AppCompatActivity {
     private TextView followers;
     private TextView followings;
     private CardView profileCard;
+    private ImageView editProfileIcon;
     private User user;
     private SessionManager sessionManager;
     private Firebase firebase;
@@ -67,6 +70,7 @@ public class ProfileController extends AppCompatActivity {
         followers = (TextView) findViewById(R.id.profile_followers);
         followings = (TextView) findViewById(R.id.profile_followings);
         profileCard = (CardView) findViewById(R.id.profile_card);
+        editProfileIcon = (ImageView) findViewById(R.id.profile_edit_profile);
     }
 
     private void initObjects(){
@@ -93,6 +97,14 @@ public class ProfileController extends AppCompatActivity {
         progressDialog.setMessage(AppConfig.WAIT_MESSAGE);
         progressDialog.show();
 
+        editProfileIcon.setClickable(true);
+        editProfileIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ModalService.displayToast("Edit Profile", ProfileController.this);
+            }
+        });
+
         firebase.child(AppConfig.TABLE_USERS).child(sessionManager.getUserInstance().id).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -101,7 +113,7 @@ public class ProfileController extends AppCompatActivity {
                 int followersCount = (int) dataSnapshot.child("followers").getChildrenCount();
                 followers.setText("Followers " + String.valueOf(followersCount));
                 //Get Followings Count
-                int followingsCount = (int) dataSnapshot.child("followings").getChildrenCount();
+                int followingsCount = (int) dataSnapshot.child("followings").getChildrenCount() - 1;
                 followings.setText("Following " + String.valueOf(followingsCount));
                 //Set username.
                 username.setText(user.username);

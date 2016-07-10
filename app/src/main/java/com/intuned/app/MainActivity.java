@@ -1,11 +1,11 @@
 package com.intuned.app;
 
 import Adapters.SongListAdapter;
+import android.widget.ImageView;
 import com.intuned.app.authentication.SessionManager;
 import DTO.Song;
 import DTO.User;
 import Listeners.RecyclerItemClickListener;
-import Miscellaneous.DividerDecoration;
 import Miscellaneous.SoundFile;
 import Navigation.AppNavigator;
 import Configuration.AppConfig;
@@ -54,9 +54,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
-
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TextView tvHeader;
     private ActionBar actionBar;
-    private Button btnNewSong;
+    private ImageView newSongIcon;
     private SoundFile soundFile;
     //Song
     private String artist;
@@ -155,14 +155,14 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nvView);
         tvHeader = (TextView) findViewById(R.id.headerTV);
-        btnNewSong = (Button) findViewById(R.id.home_new_song_button);
+        newSongIcon = (ImageView) findViewById(R.id.home_new_song_icon);
         postedSongsRecyclerview = (RecyclerView) findViewById(R.id.rv);
     }
 
     private void initObjects() {
         toolbar.setBackgroundColor(getResources().getColor(R.color.AppToolbarColor));
         setSupportActionBar(toolbar);
-        setTitle("vIbes");
+        setTitle("Vibes");
         actionBar = getSupportActionBar();
         drawerToggle = setupDrawerToggle();
         songItemAdapter = new SongItemAdapter();
@@ -176,22 +176,23 @@ public class MainActivity extends AppCompatActivity {
         actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
         actionBar.setDisplayHomeAsUpEnabled(true);
         drawerLayout.setDrawerListener(drawerToggle);
-        tvHeader.setText("vIbes, what are you listening to?");
+        tvHeader.setText("Vibes, what are you listening to?");
         navigationView.setBackgroundColor(getResources().getColor(R.color.Indigo50));
         setupDrawerContent(navigationView);
-        btnNewSong.setOnClickListener(new View.OnClickListener() {
+        newSongIcon.setClickable(true);
+        newSongIcon.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 AudioManager manager = (AudioManager) MainActivity.this.getSystemService(Context.AUDIO_SERVICE);
                 //Validate user is playing music.
                 if (manager.isMusicActive()) {
                     if (ModalService.displayConfirmation("Post Song?", "This song will be available for others to listen to.", MainActivity.this)) {
                         //Search for song in songs from device.
-                        for (Song s : listOfUserSongs) {
-                            String songId = s.artist + s.title;
+                        for (Song song : listOfUserSongs) {
+                            String songId = song.artist + song.title;
                             String currentSongId = artist + track;
                             if (songId.equals(currentSongId)) {
-                                SoundFileSetUp(s.path);
+                                SoundFileSetUp(song.path);
                                 File directory = new File("/storage/emulated/0/Music/Vibes");
                                 if (!directory.exists()) {
                                     if (directory.mkdir()) {
@@ -201,13 +202,13 @@ public class MainActivity extends AppCompatActivity {
                                     }
                                 }
                                 try {
-                                    File file = new File("/storage/emulated/0/Music/Vibes/" + s.fileName);
+                                    File file = new File("/storage/emulated/0/Music/Vibes/" + song.fileName);
                                     //Create a new file.
                                     file.createNewFile();
                                     //Split song into segment based off start & end times in seconds.
                                     soundFile.WriteWAVFile(file, 20f, 30f);
                                     //Upload clipped song to firebase storage.
-                                    uploadSongToFirebaseStorage(file);
+                                    uploadSongToFirebaseStorage(file, song);
                                 } catch (IOException e) {
                                     ModalService.displayTest(e.getMessage(), MainActivity.this);
                                 }
@@ -223,10 +224,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void uploadSongToFirebaseStorage(File file) {
+    private void uploadSongToFirebaseStorage(File file, final Song song) {
         byte[] data = readContentIntoByteArray(file);
         //Upload image with user's ID as file name.
-        UploadTask uploadTask = storageReference.child("SESSION_MANAGER_USER_ID_HERE").putBytes(data);
+        UploadTask uploadTask = storageReference.child(sessionManager.getUserInstance().id).putBytes(data);
 
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
@@ -239,11 +240,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 progressDialog.dismiss();
-                final String mp3DownloadUrl = taskSnapshot.getDownloadUrl().toString();
-                //TODO: Add new song object to user's profile.
-                //Update session's information.
-                //Update data in firebase.
-                //firebase.child(AppConfig.TABLE_USERS).child(sessionManager.getUserInstance().id).child("imageDownloadUrl").setValue(imageDownloadUrl);
+                String mp3DownloadUrl = taskSnapshot.getDownloadUrl().toString();
+                String key = firebase.child(AppConfig.TABLE_USERS).child(sessionManager.getUserInstance().id).push().getKey();
+                String postDateTime = new DateTime().toString();
+                song.mp3DownloadUrl = mp3DownloadUrl;
+                song.id  = key;
+                song.postDateTime = postDateTime;
+                firebase.child(AppConfig.TABLE_USERS).child(sessionManager.getUserInstance().id).child("song").setValue(song);
                 ModalService.displayNotification("Success", "Your song has been uploaded.", MainActivity.this);
             }
         });
@@ -294,8 +297,6 @@ public class MainActivity extends AppCompatActivity {
                 for (DataSnapshot child : snapshot.getChildren()) {
                     //For each item (child), assign data to DTO.
                     User user = new User();
-                    //Username
-                    user.username = (String) child.child("username").getValue();
                     Song song = new Song();
                     //InTuned Track - Title
                     song.title = (String) child.child("song").child("title").getValue();
@@ -307,14 +308,17 @@ public class MainActivity extends AppCompatActivity {
                     song.album = (String) child.child("song").child("album").getValue();
                     //InTuned Track = Filename
                     song.fileName = (String) child.child("song").child("fileName").getValue();
+                    //Username
+                    user.username = (String) child.child("username").getValue();
+                    //Vibe Track
                     user.song = song;
                     //Add camp to service for UI.
-                    songItemAdapter.add(song);
+                    songItemAdapter.add(user);
                 }
                 //Update the recyclerview to reflect the most recent changes to data.
                 postedSongsRecyclerview.setAdapter(songItemAdapter);
                 //Update title.
-                setTitle("vIbes (" + songItemAdapter.getItemCount() + ")");
+                setTitle("Vibes (" + songItemAdapter.getItemCount() + ")");
             }
 
             @Override
@@ -454,11 +458,12 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(SongViewHolder songViewHolder, int position) {
-            Song song = songItemAdapter.getItem(position);
+            User user = songItemAdapter.getItem(position);
             if (songViewHolder instanceof SongViewHolder) {
-                songViewHolder.name.setText(song.title);
-                songViewHolder.artist.setText(song.artist);
-                songViewHolder.postDateTime.setText(song.postDateTime);
+                songViewHolder.name.setText(user.song.title);
+                songViewHolder.artist.setText(user.song.artist);
+                songViewHolder.postDateTime.setText("3 minutes ago");
+                songViewHolder.username.setText(user.username);
                 songViewHolder.seekbar.setProgress(0);
                 songViewHolder.seekbar.setMax(AppConfig.SONG_DURATION);
                 songViewHolders.add(songViewHolder);
@@ -499,21 +504,17 @@ public class MainActivity extends AppCompatActivity {
         final LinearLayoutManager layoutManager = new LinearLayoutManager(postedSongsRecyclerview.getContext());
         postedSongsRecyclerview.setLayoutManager(layoutManager);
 
-        // Add decoration for dividers between list items
-        postedSongsRecyclerview.addItemDecoration(new DividerDecoration(MainActivity.this));
-
         postedSongsRecyclerview.addOnItemTouchListener(new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Song song = songItemAdapter.getItem(position);
-                playSong(position, song.fileName);
+                User user = songItemAdapter.getItem(position);
+                playSong(position, user.song.fileName);
             }
         }));
 
         songItemAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
             @Override
             public void onChanged() {
-                //headersDecor.invalidateHeaders();
             }
         });
     }
