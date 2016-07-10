@@ -1,6 +1,7 @@
 package com.intuned.app;
 
 import Adapters.SongListAdapter;
+import com.intuned.app.authentication.SessionManager;
 import DTO.Song;
 import DTO.User;
 import Listeners.RecyclerItemClickListener;
@@ -19,7 +20,6 @@ import android.database.Cursor;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -40,9 +40,7 @@ import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import com.amazonaws.auth.CognitoCachingCredentialsProvider;
-import com.amazonaws.mobileconnectors.s3.transferutility.TransferListener;
 import com.amazonaws.mobileconnectors.s3.transferutility.TransferObserver;
-import com.amazonaws.mobileconnectors.s3.transferutility.TransferState;
 import com.amazonaws.mobileconnectors.s3.transferutility.TransferUtility;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
@@ -56,7 +54,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
@@ -82,10 +79,6 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView postedSongsRecyclerview;
     private SongItemAdapter songItemAdapter;
-    private CognitoCachingCredentialsProvider credentialsProvider;
-    private AmazonS3 s3;
-    private TransferUtility transferUtility;
-    private TransferObserver observer;
     private ProgressDialog progressDialog;
     private ProgressDialog seekDialog;
     private ArrayList<Song> listOfUserSongs;
@@ -93,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseStorage firebaseStorage;
     private StorageReference storageReference;
     private MediaPlayer mediaPlayer;
+    private SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -173,19 +167,9 @@ public class MainActivity extends AppCompatActivity {
         drawerToggle = setupDrawerToggle();
         songItemAdapter = new SongItemAdapter();
 
-        // Initialize the Amazon Cognito credentials provider.
-        credentialsProvider = new CognitoCachingCredentialsProvider(
-                getApplicationContext(),
-                AppConfig.S3_IDENTITY_POOL_ID,   // Identity Pool ID
-                Regions.US_EAST_1                // Region
-        );
-
-        // Initialize the TransferUtility provider.
-        s3 = new AmazonS3Client(credentialsProvider);
-        transferUtility = new TransferUtility(s3, getApplicationContext());
-
         seekDialog = new ProgressDialog(MainActivity.this);
         progressDialog = new ProgressDialog(this);
+        sessionManager = new SessionManager(this, getApplicationContext());
     }
 
     private void setValues() {
@@ -218,8 +202,11 @@ public class MainActivity extends AppCompatActivity {
                                 }
                                 try {
                                     File file = new File("/storage/emulated/0/Music/Vibes/" + s.fileName);
+                                    //Create a new file.
                                     file.createNewFile();
+                                    //Split song into segment based off start & end times in seconds.
                                     soundFile.WriteWAVFile(file, 20f, 30f);
+                                    //Upload clipped song to firebase storage.
                                     uploadSongToFirebaseStorage(file);
                                 } catch (IOException e) {
                                     ModalService.displayTest(e.getMessage(), MainActivity.this);
@@ -252,10 +239,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 progressDialog.dismiss();
-                final String imageDownloadUrl = taskSnapshot.getDownloadUrl().toString();
+                final String mp3DownloadUrl = taskSnapshot.getDownloadUrl().toString();
                 //TODO: Add new song object to user's profile.
                 //Update session's information.
-                //sessionManager.updateImageDownloadUrl(imageDownloadUrl);
                 //Update data in firebase.
                 //firebase.child(AppConfig.TABLE_USERS).child(sessionManager.getUserInstance().id).child("imageDownloadUrl").setValue(imageDownloadUrl);
                 ModalService.displayNotification("Success", "Your song has been uploaded.", MainActivity.this);
@@ -290,7 +276,7 @@ public class MainActivity extends AppCompatActivity {
         // Progress Dialog
         progressDialog.setCancelable(false);
         progressDialog.setTitle("Getting timeline.");
-        progressDialog.setMessage(AppConfig.WAITING_MESSAGE);
+        progressDialog.setMessage(AppConfig.WAIT_MESSAGE);
         progressDialog.show();
 
         //Firebase Setup
@@ -310,20 +296,20 @@ public class MainActivity extends AppCompatActivity {
                     User user = new User();
                     //Username
                     user.username = (String) child.child("username").getValue();
-                    Song intunedTrack = new Song();
+                    Song song = new Song();
                     //InTuned Track - Title
-                    intunedTrack.title = (String) child.child("intunedTrack").child("title").getValue();
+                    song.title = (String) child.child("song").child("title").getValue();
                     //InTuned Track = ID
-                    intunedTrack.id = (String) child.child("intunedTrack").child("id").getValue();
+                    song.id = (String) child.child("song").child("id").getValue();
                     //InTuned Track = Artist
-                    intunedTrack.artist = (String) child.child("intunedTrack").child("artist").getValue();
+                    song.artist = (String) child.child("song").child("artist").getValue();
                     //InTuned Track = Album
-                    intunedTrack.album = (String) child.child("intunedTrack").child("album").getValue();
+                    song.album = (String) child.child("song").child("album").getValue();
                     //InTuned Track = Filename
-                    intunedTrack.fileName = (String) child.child("intunedTrack").child("fileName").getValue();
-                    user.intunedTrack = intunedTrack;
+                    song.fileName = (String) child.child("song").child("fileName").getValue();
+                    user.song = song;
                     //Add camp to service for UI.
-                    songItemAdapter.add(intunedTrack);
+                    songItemAdapter.add(song);
                 }
                 //Update the recyclerview to reflect the most recent changes to data.
                 postedSongsRecyclerview.setAdapter(songItemAdapter);
@@ -347,7 +333,7 @@ public class MainActivity extends AppCompatActivity {
     //Play clip of song selected.
     private void playSong(final int position, String fileName) {
         //TODO: User song download url for playing song.
-        String url = AppConfig.S3_MUSIC_BUCKET_URL + fileName; // your URL here
+        String url = "MP3 DOWNLOAD URL GOES HERE"; // your URL here
         mediaPlayer = new MediaPlayer();
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         try {

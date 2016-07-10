@@ -12,5 +12,6 @@ public class Song {
     public String fileName;
     public String path;
     public String songDuration;
+    public String mp3DownloadUrl;
     public int currentPosition;
 }

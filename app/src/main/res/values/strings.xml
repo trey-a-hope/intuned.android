@@ -7,4 +7,6 @@
     <string name="drawer_open">Drawer Open</string>
     <string name="drawer_close">Drawer Close</string>
     <string name="title_activity_profile_controller">ProfileController</string>
+    <string name="title_activity_login_controller">LoginController</string>
+    <string name="title_activity_register_controller">RegisterController</string>
 </resources>

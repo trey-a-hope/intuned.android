@@ -1,12 +1,12 @@
 package Navigation;
 
-import Services.ModalService;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import com.intuned.app.MainActivity;
-import com.intuned.app.ProfileController;
+import com.intuned.app.profile.ProfileController;
 import com.intuned.app.R;
+import com.intuned.app.authentication.LoginController;
+import com.intuned.app.authentication.SessionManager;
 
 /**
  * Used for navigation within the application. Based on the menuItemId passed in on touched of one of the menu items,
@@ -15,6 +15,7 @@ import com.intuned.app.R;
 public class AppNavigator {
     public static void navigate(int menuItemId, Activity activity){
         Class currentClass = activity.getClass();
+        SessionManager sessionManager = new SessionManager(activity, activity.getApplicationContext());
         switch(menuItemId) {
             //Home
             case R.id.nav_explore:
@@ -31,6 +32,13 @@ public class AppNavigator {
                     activity.startActivity(intent);
                     activity.finish();
                 }
+                break;
+            //Sign Out
+            case R.id.nav_signout:
+                sessionManager.logout();
+                Intent intent = new Intent(activity, LoginController.class);
+                activity.startActivity(intent);
+                activity.finish();
                 break;
             default:
         }

@@ -19,6 +19,14 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".profile.ProfileController"
+            android:label="@string/title_activity_profile_controller" >
+        </activity>
+        <activity
+            android:name=".authentication.LoginController"
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,9 +34,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ProfileController"
-            android:label="@string/title_activity_profile_controller" >
+            android:name=".authentication.RegisterController"
+            android:label="@string/title_activity_register_controller" >
         </activity>
     </application>
 
-</manifest>
+</manifest> <!-- android:label="@string/title_activity_login_controller" > -->
