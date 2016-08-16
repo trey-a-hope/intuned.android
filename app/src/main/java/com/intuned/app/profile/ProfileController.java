@@ -1,7 +1,6 @@
 package com.intuned.app.profile;
 
 import Configuration.AppConfig;
-import DTO.Song;
 import DTO.User;
 import Navigation.AppNavigator;
 import Services.ModalService;
@@ -17,21 +16,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
-import com.intuned.app.MainActivity;
 import com.intuned.app.R;
 import com.intuned.app.authentication.SessionManager;
-import org.w3c.dom.Text;
-
-import java.util.Calendar;
-import java.util.HashMap;
 
 public class ProfileController extends AppCompatActivity {
     private ActionBarDrawerToggle drawerToggle;

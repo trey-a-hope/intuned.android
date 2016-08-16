@@ -9,4 +9,5 @@
     <string name="title_activity_profile_controller">ProfileController</string>
     <string name="title_activity_login_controller">LoginController</string>
     <string name="title_activity_register_controller">RegisterController</string>
+    <string name="title_activity_options_controller">OptionsController</string>
 </resources>

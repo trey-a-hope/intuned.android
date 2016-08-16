@@ -17,13 +17,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.amazonaws.auth.RegionAwareSigner;
 import com.firebase.client.*;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.intuned.app.MainActivity;
+import com.intuned.app.home.HomeController;
 import com.intuned.app.R;
 import java.util.HashMap;
 
@@ -193,7 +192,7 @@ public class LoginController extends AppCompatActivity {
     }
 
     private void goToMainScreen(){
-        Intent intent = new Intent(LoginController.this, MainActivity.class);
+        Intent intent = new Intent(LoginController.this, HomeController.class);
         startActivity(intent);
         finish();
     }

@@ -7,7 +7,7 @@ public class User {
     public String uid;
     public String email;
     public String username;
-    public Song song;
+    public Vibe vibe;
     public String favoriteGenre;
     public String favoriteArtist;
     public String favoriteSong;
