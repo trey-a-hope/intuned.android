@@ -46,7 +46,7 @@ public class AppNavigator {
                 break;
             //Sign Out
             case R.id.nav_signout:
-                if(ModalService.displayConfirmation("Log Out", "Are you sure?", activity)){
+                if(ModalService.getInstance().displayConfirmation("Log Out", "Are you sure?", activity)){
                     sessionManager.logout();
                     Intent intent = new Intent(activity, LoginController.class);
                     activity.startActivity(intent);

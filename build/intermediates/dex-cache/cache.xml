@@ -2,88 +2,11 @@
 <items version="2" >
 
     <item
-        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.timehop.stickyheadersrecyclerview/library/0.4.2/jars/classes.jar"
+        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.amazonaws/aws-android-sdk-cognito/2.3.2/8b152ca88d10cd3711d1cb18e96e8ae763253b3a/aws-android-sdk-cognito-2.3.2.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="4967e0e95206c7ce96f6e90a4528bde27c9286c5">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-3a22292c2dd7964ab617f340ef33b3a4943caa26.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-database/9.0.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="32a5a566ae197603d0bed3e6d1d275f6a771564e">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-6bb12682d21bf1540dec03591df98df5c686a222.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="cc178928721f3222b3b06bdfbd9497378ccb9792">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-46ac7efe708f8b89c41e7b0901c794b7a4488181.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.firebase/firebase-client-android/2.5.0/7d0473896b3b10b23a2f9812fec4316dff8afdd/firebase-client-android-2.5.0.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="07d0473896b3b10b23a2f9812fec4316dff8afdd">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/firebase-client-android-2.5.0-447e47b80a8e0a6135deb773919a2b1c8c2dc01f.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.0.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="4ef8ab5fee042023018249474bc93bd4b2b9c17e">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-51acc15797fdedc788f4483ae8cc8c74b12876b7.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.mcxiaoke.volley/library-aar/1.0.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="e40b9a81989bd4a846018551c280f8c4d837bf2e">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-d0045e1b20a4541072c37f19ad818e8ab5030619.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-auth/9.0.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="70ddab48594608953b20164b82f1f890a9a8174a">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-a53b192aa41f284fef2f4d1288ffd3abe129da19.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.firebase/tubesock/0.0.12/6ec0bbd3e161a73ed672284b587fd32309a86d7a/tubesock-0.0.12.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="6ec0bbd3e161a73ed672284b587fd32309a86d7a">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/tubesock-0.0.12-ca2426963c0278d11f9303b00050f4287a44c026.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.0.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="42df48c7305b08b14fa0e84561091b0c24d70d26">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-18c6687f7d39443740be2c06d284591f0b679957.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.2.2/d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b/jackson-core-2.2.2.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/jackson-core-2.2.2-dc234fe612d2dc8c97e406599cc79b81f1d5dca5.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-auth-module/9.0.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="24536a7b97926a9c155c88425da6875adeb11b51">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-2140405e3d8bcebb1261e099d47e41a489461b53.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.1-e8c50dd99e0339bde9b99216fa21dbc246a1743f.jar" />
+        sha1="8b152ca88d10cd3711d1cb18e96e8ae763253b3a">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/aws-android-sdk-cognito-2.3.2-d839729921b5b60b7e35bfc5f25ebf0ee49813eb.jar" />
     </item>
     <item
         jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.android.support/design/22.2.0/jars/classes.jar"
@@ -93,67 +16,11 @@
         <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-80ee8361a25203cfb90c9715235a30cd1717747e.jar" />
     </item>
     <item
-        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/22.0.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="c6d79137693d494dee16372d3921f919eb724ced">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-7c97d95524284357de1d370b61c6764ef15d3101.jar" />
-    </item>
-    <item
         jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.github.ksoichiro/android-observablescrollview/1.5.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="010ee9e87a286afcaeaed368dcf829e42d0aa2a0">
         <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-310ea939dc6e7d7d7127834adc1af1d114162c7b.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.2.2/3c8f6018eaa72d43b261181e801e6f8676c16ef6/jackson-databind-2.2.2.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="3c8f6018eaa72d43b261181e801e6f8676c16ef6">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/jackson-databind-2.2.2-077a41dd6ae91ff26c2cda8ad07b4f3dc1e1c233.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-a1e489a9f491d0df6603fc8ab991056e380b953d.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-database-connection/9.0.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="ef5c5c2afbd174d55cf1cfcac7d0346cbc4c1322">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-216976e7112e034b78d7fb732211905217cdb094.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics-impl/9.0.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="0dc8ab07eeceda5e99b305c8069765056b6e5c9d">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-c47d77a7e12db7c6de525f2708d8be474203a324.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-config/9.0.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="ebfde1a055aea400df77584a68aa60609f618bed">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-30dd1c2b93bd9e48accffb84fe8d3ba5a881984e.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/joda-time/joda-time/2.8.2/d27c24204c5e507b16fec01006b3d0f1ec42aed4/joda-time-2.8.2.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="d27c24204c5e507b16fec01006b3d0f1ec42aed4">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/joda-time-2.8.2-ce58231f536911bc1067430ee6408eb57b73ebc3.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/de.hdodenhof/circleimageview/1.2.1/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="4b868b833b0887aa48c4e581558eef4f1196f6a2">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-16af1a5cce27b7e2fe37d665c5aac567cdeae47e.jar" />
     </item>
     <item
         jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.0/jars/classes.jar"
@@ -163,32 +30,67 @@
         <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-d41936fd7e1c9ec5badea8422d91c0b84163ce93.jar" />
     </item>
     <item
-        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.darwinsys/hirondelle-date4j/1.5.1/7b52de513f87ae4d9ff5d17518def0a1e9bc3df0/hirondelle-date4j-1.5.1.jar"
+        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.amazonaws/aws-android-sdk-s3/2.3.2/452110449cc49b36cc53f76b84605d4c6e6b3f23/aws-android-sdk-s3-2.3.2.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="7b52de513f87ae4d9ff5d17518def0a1e9bc3df0">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/hirondelle-date4j-1.5.1-248a7f2bc10bdb1da35889493e93e457c31296ac.jar" />
+        sha1="452110449cc49b36cc53f76b84605d4c6e6b3f23">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/aws-android-sdk-s3-2.3.2-bbc0df2a7c789b6f1e0e1630f00249b05052b276.jar" />
     </item>
     <item
-        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.0.0/jars/classes.jar"
+        jar="/Users/Travisty92/Desktop/adt-bundle-mac-x86_64-20131030/sdk/extras/android/m2repository/com/android/support/support-annotations/24.0.0-beta1/support-annotations-24.0.0-beta1.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="ea4b54dcbfe5ac05efb0a314105f07258118d3a7">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-cb04abb3bfbbcd9c8aea92249d02d30fc1e6d7de.jar" />
+        sha1="04705c19cdec60364bc04e2e928c274da1ba301b">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/support-annotations-24.0.0-beta1-c3dc8d31f7e7512740feed88946229b58efa3586.jar" />
     </item>
     <item
-        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.2.4/a60a5e993c98c864010053cb901b7eab25306568/gson-2.2.4.jar"
+        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/de.hdodenhof/circleimageview/1.2.1/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="a60a5e993c98c864010053cb901b7eab25306568">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/gson-2.2.4-d91e9a720caa2c80800b8e84961012595cbde57a.jar" />
+        sha1="4b868b833b0887aa48c4e581558eef4f1196f6a2">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-16af1a5cce27b7e2fe37d665c5aac567cdeae47e.jar" />
     </item>
     <item
-        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-storage/9.0.0/jars/classes.jar"
+        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.0.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="733964f04c339e425439545b1d172c23b53f8c13">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-ce33d825a072a34ae5e5cca91d510c5605bcae4d.jar" />
+        sha1="42df48c7305b08b14fa0e84561091b0c24d70d26">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-18c6687f7d39443740be2c06d284591f0b679957.jar" />
+    </item>
+    <item
+        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.1-e8c50dd99e0339bde9b99216fa21dbc246a1743f.jar" />
+    </item>
+    <item
+        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics-impl/9.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="0dc8ab07eeceda5e99b305c8069765056b6e5c9d">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-c47d77a7e12db7c6de525f2708d8be474203a324.jar" />
+    </item>
+    <item
+        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="cc178928721f3222b3b06bdfbd9497378ccb9792">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-46ac7efe708f8b89c41e7b0901c794b7a4488181.jar" />
+    </item>
+    <item
+        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.mcxiaoke.volley/library-aar/1.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="e40b9a81989bd4a846018551c280f8c4d837bf2e">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-d0045e1b20a4541072c37f19ad818e8ab5030619.jar" />
+    </item>
+    <item
+        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.timehop.stickyheadersrecyclerview/library/0.4.2/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="4967e0e95206c7ce96f6e90a4528bde27c9286c5">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-3a22292c2dd7964ab617f340ef33b3a4943caa26.jar" />
     </item>
     <item
         jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-messaging/9.0.0/jars/classes.jar"
@@ -198,11 +100,116 @@
         <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-72ef738183717fa9427723b00375e9d76d7d909c.jar" />
     </item>
     <item
-        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.amazonaws/aws-android-sdk-s3/2.3.0/ec556691b7d8bf38e11f05c094b665431fe0f503/aws-android-sdk-s3-2.3.0.jar"
+        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-auth-common/9.0.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="ec556691b7d8bf38e11f05c094b665431fe0f503">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/aws-android-sdk-s3-2.3.0-331edce75d2c995be9e9ae46de8b341f5aca6782.jar" />
+        sha1="5f0f6913a208a126269aaa68004ed0329a832c5b">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-b2815f1e272c9a6368689cb62bc14fb23571ceea.jar" />
+    </item>
+    <item
+        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.2.2/3c8f6018eaa72d43b261181e801e6f8676c16ef6/jackson-databind-2.2.2.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="3c8f6018eaa72d43b261181e801e6f8676c16ef6">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/jackson-databind-2.2.2-077a41dd6ae91ff26c2cda8ad07b4f3dc1e1c233.jar" />
+    </item>
+    <item
+        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/24.0.0-beta1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a2d637cb6a100dd3a605bd094a8297ccb6dab18b">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-ec7f66f1c58e172d764d7921ae3f11718d621b65.jar" />
+    </item>
+    <item
+        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.2.2/285cb9c666f0f0f3dd8a1be04e1f457eb7b15113/jackson-annotations-2.2.2.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="285cb9c666f0f0f3dd8a1be04e1f457eb7b15113">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/jackson-annotations-2.2.2-06ddabcf7a2f3fa858a33a3d67c7cb9be1fbf1fc.jar" />
+    </item>
+    <item
+        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-a1e489a9f491d0df6603fc8ab991056e380b953d.jar" />
+    </item>
+    <item
+        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.amazonaws/aws-android-sdk-ddb/2.3.2/71ac649d14f1ce120a42d6e7a09b9f2121175c31/aws-android-sdk-ddb-2.3.2.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="71ac649d14f1ce120a42d6e7a09b9f2121175c31">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/aws-android-sdk-ddb-2.3.2-afdc03a9998b102bd99cbb80450d21fbd81c8bcc.jar" />
+    </item>
+    <item
+        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-storage-common/9.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ed16ff19f0a9515604a0f08104ca0317b82e29e3">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-2f3da15cb6bce225a362514317766bc3901fb6c2.jar" />
+    </item>
+    <item
+        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/22.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="c6d79137693d494dee16372d3921f919eb724ced">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-7c97d95524284357de1d370b61c6764ef15d3101.jar" />
+    </item>
+    <item
+        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.firebase/firebase-client-android/2.5.0/7d0473896b3b10b23a2f9812fec4316dff8afdd/firebase-client-android-2.5.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="07d0473896b3b10b23a2f9812fec4316dff8afdd">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/firebase-client-android-2.5.0-447e47b80a8e0a6135deb773919a2b1c8c2dc01f.jar" />
+    </item>
+    <item
+        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.roomorama/caldroid/2.3.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="7d1b55d7a57b3212b21718d9a77b0ac40ab4f103">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-a07091086c2309baa13d87b0f0259a7fb2a9f18a.jar" />
+    </item>
+    <item
+        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/joda-time/joda-time/2.8.2/d27c24204c5e507b16fec01006b3d0f1ec42aed4/joda-time-2.8.2.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="d27c24204c5e507b16fec01006b3d0f1ec42aed4">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/joda-time-2.8.2-ce58231f536911bc1067430ee6408eb57b73ebc3.jar" />
+    </item>
+    <item
+        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-9656500a703f41390260a6e1dc51e37fb12d497c.jar" />
+    </item>
+    <item
+        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ea4b54dcbfe5ac05efb0a314105f07258118d3a7">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-cb04abb3bfbbcd9c8aea92249d02d30fc1e6d7de.jar" />
+    </item>
+    <item
+        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.firebase/firebase-client-jvm/2.5.0/c0af904657634f7ab9cc21e75d80250570033321/firebase-client-jvm-2.5.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="c0af904657634f7ab9cc21e75d80250570033321">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/firebase-client-jvm-2.5.0-d86eeec42d6d9df8906f255914a97095911dde93.jar" />
+    </item>
+    <item
+        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-config/9.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ebfde1a055aea400df77584a68aa60609f618bed">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-30dd1c2b93bd9e48accffb84fe8d3ba5a881984e.jar" />
+    </item>
+    <item
+        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-database-connection/9.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ef5c5c2afbd174d55cf1cfcac7d0346cbc4c1322">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-216976e7112e034b78d7fb732211905217cdb094.jar" />
     </item>
     <item
         jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.0.0/jars/classes.jar"
@@ -219,81 +226,74 @@
         <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/droidparts-2.0.5-f52811cca920140a006fc1548594c44a72149f43.jar" />
     </item>
     <item
-        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.firebase/firebase-client-jvm/2.5.0/c0af904657634f7ab9cc21e75d80250570033321/firebase-client-jvm-2.5.0.jar"
+        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.2.2/d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b/jackson-core-2.2.2.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="c0af904657634f7ab9cc21e75d80250570033321">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/firebase-client-jvm-2.5.0-d86eeec42d6d9df8906f255914a97095911dde93.jar" />
+        sha1="d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/jackson-core-2.2.2-dc234fe612d2dc8c97e406599cc79b81f1d5dca5.jar" />
     </item>
     <item
-        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-storage-common/9.0.0/jars/classes.jar"
+        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.amazonaws/aws-android-sdk-core/2.3.2/e1ab374265a269314babb1e8e9e96452cf68b481/aws-android-sdk-core-2.3.2.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="ed16ff19f0a9515604a0f08104ca0317b82e29e3">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-2f3da15cb6bce225a362514317766bc3901fb6c2.jar" />
+        sha1="e1ab374265a269314babb1e8e9e96452cf68b481">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/aws-android-sdk-core-2.3.2-6c27757812eca671b764f53e56ef88be2ef8df04.jar" />
     </item>
     <item
-        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/jars/classes.jar"
+        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-auth-module/9.0.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-9656500a703f41390260a6e1dc51e37fb12d497c.jar" />
+        sha1="24536a7b97926a9c155c88425da6875adeb11b51">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-2140405e3d8bcebb1261e099d47e41a489461b53.jar" />
     </item>
     <item
-        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.roomorama/caldroid/2.3.1/jars/classes.jar"
+        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-storage/9.0.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="7d1b55d7a57b3212b21718d9a77b0ac40ab4f103">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-a07091086c2309baa13d87b0f0259a7fb2a9f18a.jar" />
+        sha1="733964f04c339e425439545b1d172c23b53f8c13">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-ce33d825a072a34ae5e5cca91d510c5605bcae4d.jar" />
     </item>
     <item
-        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.amazonaws/aws-android-sdk-core/2.3.0/69f7dcfa776416d4b9055523baaae672c4cb9153/aws-android-sdk-core-2.3.0.jar"
+        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-auth/9.0.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="69f7dcfa776416d4b9055523baaae672c4cb9153">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/aws-android-sdk-core-2.3.0-02ab8380715d7eaf5cc88def589d79c4659ea9c8.jar" />
+        sha1="70ddab48594608953b20164b82f1f890a9a8174a">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-a53b192aa41f284fef2f4d1288ffd3abe129da19.jar" />
     </item>
     <item
-        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.amazonaws/aws-android-sdk-ddb/2.3.0/98f83f93154800b27606c203b04bf57a6ce67a21/aws-android-sdk-ddb-2.3.0.jar"
+        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-database/9.0.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="98f83f93154800b27606c203b04bf57a6ce67a21">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/aws-android-sdk-ddb-2.3.0-5c61696b809735ca49ac869927936bff6dd690fe.jar" />
+        sha1="32a5a566ae197603d0bed3e6d1d275f6a771564e">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-6bb12682d21bf1540dec03591df98df5c686a222.jar" />
     </item>
     <item
-        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.android.support/support-annotations/24.1.1/3af19f153122737b372622fa6c81dd11a1c6b999/support-annotations-24.1.1.jar"
+        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.firebase/tubesock/0.0.12/6ec0bbd3e161a73ed672284b587fd32309a86d7a/tubesock-0.0.12.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="3af19f153122737b372622fa6c81dd11a1c6b999">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/support-annotations-24.1.1-ecd357b7f5633e3768f9a7a0a41460617565b078.jar" />
+        sha1="6ec0bbd3e161a73ed672284b587fd32309a86d7a">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/tubesock-0.0.12-ca2426963c0278d11f9303b00050f4287a44c026.jar" />
     </item>
     <item
-        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.2.2/285cb9c666f0f0f3dd8a1be04e1f457eb7b15113/jackson-annotations-2.2.2.jar"
+        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.darwinsys/hirondelle-date4j/1.5.1/7b52de513f87ae4d9ff5d17518def0a1e9bc3df0/hirondelle-date4j-1.5.1.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="285cb9c666f0f0f3dd8a1be04e1f457eb7b15113">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/jackson-annotations-2.2.2-06ddabcf7a2f3fa858a33a3d67c7cb9be1fbf1fc.jar" />
+        sha1="7b52de513f87ae4d9ff5d17518def0a1e9bc3df0">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/hirondelle-date4j-1.5.1-248a7f2bc10bdb1da35889493e93e457c31296ac.jar" />
     </item>
     <item
-        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-auth-common/9.0.0/jars/classes.jar"
+        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.2.4/a60a5e993c98c864010053cb901b7eab25306568/gson-2.2.4.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="5f0f6913a208a126269aaa68004ed0329a832c5b">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-b2815f1e272c9a6368689cb62bc14fb23571ceea.jar" />
+        sha1="a60a5e993c98c864010053cb901b7eab25306568">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/gson-2.2.4-d91e9a720caa2c80800b8e84961012595cbde57a.jar" />
     </item>
     <item
-        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/24.1.1/jars/classes.jar"
+        jar="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.0.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="4add8aa95c9f4e9a2ad64b7e2bf08e97e28955c1">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-4380c507a9f0d8a982ee91eec03ac3c2e27e8345.jar" />
-    </item>
-    <item
-        jar="/Users/Travisty92/.gradle/caches/modules-2/files-2.1/com.amazonaws/aws-android-sdk-cognito/2.3.0/f9cdadb3bc6c5973ee464f2fe829df0d15788a6c/aws-android-sdk-cognito-2.3.0.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="f9cdadb3bc6c5973ee464f2fe829df0d15788a6c">
-        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/aws-android-sdk-cognito-2.3.0-50f8c4de8ac5889fa5c3f0765466ee9c3f37ef40.jar" />
+        sha1="4ef8ab5fee042023018249474bc93bd4b2b9c17e">
+        <dex dex="/Users/Travisty92/Desktop/Mobile Applications &amp; Websites/Android/intuned.android/app/build/intermediates/pre-dexed/debug/classes-51acc15797fdedc788f4483ae8cc8c74b12876b7.jar" />
     </item>
 
 </items>

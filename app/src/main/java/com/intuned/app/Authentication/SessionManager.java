@@ -1,6 +1,6 @@
 package com.intuned.app.authentication;
 
-        import DTO.User;
+        import Models.DomainModels.User;
         import android.app.Activity;
         import android.content.Context;
         import android.content.SharedPreferences;

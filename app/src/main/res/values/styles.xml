@@ -285,6 +285,7 @@
     <color name="Grey800">#424242</color>
     <color name="Grey900">#212121</color>
 
-    <color name="AppToolbarColor">@color/LightBlue900</color>
+    <color name="White">#FFFFFF</color>
+    <color name="Black">#000000</color>
 
 </resources>

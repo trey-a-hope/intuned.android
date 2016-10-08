@@ -1,8 +1,8 @@
 package com.intuned.app.authentication;
 
 import Configuration.AppConfig;
-import DTO.User;
-import Network.ConnectionManager;
+import Models.DomainModels.User;
+import Services.NetworkService;
 import Services.ModalService;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -37,6 +37,7 @@ public class LoginController extends AppCompatActivity {
     private Firebase firebase;
     private FirebaseAuth firebaseAuth;
     private Toolbar toolbar;
+    private ModalService modalService = ModalService.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +77,7 @@ public class LoginController extends AppCompatActivity {
 
     private void initObjects(){
         sessionManager = new SessionManager(this, getApplicationContext());
-        toolbar.setBackgroundColor(getResources().getColor(R.color.AppToolbarColor));
+        toolbar.setBackgroundColor(getResources().getColor(R.color.LightBlue900));
         setSupportActionBar(toolbar);
         setTitle("Vibes");
     }
@@ -98,13 +99,13 @@ public class LoginController extends AppCompatActivity {
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ModalService.displayToast("TODO: Forgot Password", LoginController.this);
+                modalService.displayToast("TODO: Forgot Password", LoginController.this);
             }
         });
         loginFacebookButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ModalService.displayToast("TODO: Facebook Login", LoginController.this);
+                modalService.displayToast("TODO: Facebook Login", LoginController.this);
             }
         });
     }
@@ -121,9 +122,9 @@ public class LoginController extends AppCompatActivity {
 
     private void loginUser() {
         if (!isValid()) {
-            ModalService.displayNotification("Error", "Looks like the E-Mail/Password was not valid; try again.", this);
-        } else if (!ConnectionManager.isConnected(getApplicationContext())) {
-            ModalService.displayNotification("Error", "Cannot connect to internet; please check your network settings.", this);
+            modalService.displayNotification("Error", "Looks like the E-Mail/Password was not valid; try again.", this);
+        } else if (!NetworkService.getInstance().isConnected(getApplicationContext())) {
+            modalService.displayNotification("Error", "Cannot connect to internet; please check your network settings.", this);
         } else {
             final ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setCancelable(false);
@@ -168,13 +169,13 @@ public class LoginController extends AppCompatActivity {
 
                                     @Override
                                     public void onCancelled(FirebaseError firebaseError) {
-                                        ModalService.displayNotification("Error", firebaseError.getMessage(), LoginController.this);
+                                        modalService.displayNotification("Error", firebaseError.getMessage(), LoginController.this);
                                     }
                                 });
                                 //Proceed to Main Activity
                                 goToMainScreen();
                             } else {
-                                ModalService.displayNotification("Error", "Could not log in with credentials.", LoginController.this);
+                                modalService.displayNotification("Error", "Could not log in with credentials.", LoginController.this);
                             }
                         }
                     });
@@ -185,7 +186,7 @@ public class LoginController extends AppCompatActivity {
                 @Override
                 public void onAuthenticationError(FirebaseError firebaseError) {
                     progressDialog.dismiss();
-                    ModalService.displayNotification("Error", firebaseError.getMessage(), LoginController.this);
+                    modalService.displayNotification("Error", firebaseError.getMessage(), LoginController.this);
                 }
             });
         }

@@ -1,8 +1,8 @@
 package com.intuned.app.authentication;
 
 import Configuration.AppConfig;
-import DTO.User;
-import Network.ConnectionManager;
+import Models.DomainModels.User;
+import Services.NetworkService;
 import Services.ModalService;
 import android.app.ProgressDialog;
 import android.support.annotation.NonNull;
@@ -15,8 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import com.firebase.client.DataSnapshot;
+
 import com.firebase.client.Firebase;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -25,7 +24,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.intuned.app.R;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.regex.Pattern;
 
 public class RegisterController extends AppCompatActivity {
@@ -37,6 +35,7 @@ public class RegisterController extends AppCompatActivity {
     private Firebase firebase;
     private FirebaseAuth firebaseAuth;
     private Toolbar toolbar;
+    private ModalService modalService = ModalService.getInstance();
     private final String PASSWORD_PATTERN = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,15})";
     /*
     (			            # Start of group
@@ -75,7 +74,7 @@ public class RegisterController extends AppCompatActivity {
 
     private void initObjects(){
         sessionManager = new SessionManager(this, getApplicationContext());
-        toolbar.setBackgroundColor(getResources().getColor(R.color.AppToolbarColor));
+        toolbar.setBackgroundColor(getResources().getColor(R.color.LightBlue900));
         setSupportActionBar(toolbar);
         setTitle("Vibes");
         //Images.roundImage(getResources(), R.drawable.background_blank_profile, imageView); TODO: Create Images class.
@@ -116,9 +115,9 @@ public class RegisterController extends AppCompatActivity {
 
     private void registerUser() {
         if (!isValid()) {
-            ModalService.displayNotification("Error", "Your credentials were not valid; email must be formatted properly and password must contain one of each, (digit, lowercase letter, uppercase letter) and be between 6-15 characters.", this);
-        } else if (!ConnectionManager.isConnected(getApplicationContext())) {
-            ModalService.displayNotification("Error", "Cannot connect to internet; please check your network settings.", this);
+            modalService.displayNotification("Error", "Your credentials were not valid; email must be formatted properly and password must contain one of each, (digit, lowercase letter, uppercase letter) and be between 6-15 characters.", this);
+        } else if (!NetworkService.getInstance().isConnected(getApplicationContext())) {
+            modalService.displayNotification("Error", "Cannot connect to internet; please check your network settings.", this);
         } else {
             final ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setCancelable(false);
@@ -147,7 +146,7 @@ public class RegisterController extends AppCompatActivity {
                         firebase.child(AppConfig.TABLE_USERS).child(key).setValue(user);
                         finish();
                     } else {
-                        ModalService.displayNotification("Error", "Could not register account.", RegisterController.this);
+                        modalService.displayNotification("Error", "Could not register account.", RegisterController.this);
                     }
                 }
             });

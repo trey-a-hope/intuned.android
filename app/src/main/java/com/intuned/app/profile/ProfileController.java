@@ -1,7 +1,7 @@
 package com.intuned.app.profile;
 
 import Configuration.AppConfig;
-import DTO.User;
+import Models.DomainModels.User;
 import Navigation.AppNavigator;
 import Services.ModalService;
 import android.app.ProgressDialog;
@@ -38,6 +38,7 @@ public class ProfileController extends AppCompatActivity {
     private User user;
     private SessionManager sessionManager;
     private Firebase firebase;
+    private ModalService modalService = ModalService.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +68,7 @@ public class ProfileController extends AppCompatActivity {
 
     private void initObjects(){
         sessionManager = new SessionManager(this, getApplicationContext());
-        toolbar.setBackgroundColor(getResources().getColor(R.color.AppToolbarColor));
+        toolbar.setBackgroundColor(getResources().getColor(R.color.LightBlue900));
         setSupportActionBar(toolbar);
         setTitle("Profile");
         // Set the menu icon instead of the launcher icon.
@@ -93,7 +94,7 @@ public class ProfileController extends AppCompatActivity {
         editProfileIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ModalService.displayToast("Edit Profile", ProfileController.this);
+                modalService.displayToast("Edit Profile", ProfileController.this);
             }
         });
 
@@ -113,7 +114,7 @@ public class ProfileController extends AppCompatActivity {
 
             @Override
             public void onCancelled(FirebaseError error) {
-                ModalService.displayNotification("Lost connection to database, please try again.", "Sorry", ProfileController.this);
+                modalService.displayNotification("Lost connection to database, please try again.", "Sorry", ProfileController.this);
             }
         });
 
