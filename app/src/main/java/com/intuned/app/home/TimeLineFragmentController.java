@@ -9,7 +9,11 @@ import android.database.Cursor;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -42,6 +46,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -68,7 +73,6 @@ public class TimeLineFragmentController extends Fragment {
 
     private RecyclerView postedSongsRecyclerview;
     private VibeItemAdapter vibeItemAdapter;
-    private ProgressDialog progressDialog;
     private ProgressDialog seekDialog;
     private ArrayList<Song> listOfUserSongs;
     private Firebase firebase;
@@ -81,6 +85,7 @@ public class TimeLineFragmentController extends Fragment {
     private final String FILE_CREATION_DIRECTORY = "/storage/emulated/0/Music/Vibes";
     private final String FIREBASE_FILESTORAGE_PATH = "gs://project-4361900320818092365.appspot.com";
     private final String LOGTAG = "TimeLineFragController";
+    private boolean success = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -159,7 +164,6 @@ public class TimeLineFragmentController extends Fragment {
 
     private void initObjects() {
         sessionManager = new SessionManager(activity, getContext());
-        progressDialog = new ProgressDialog(activity);
         vibeItemAdapter = new VibeItemAdapter();
     }
 
@@ -171,34 +175,59 @@ public class TimeLineFragmentController extends Fragment {
                 //Validate user is playing music.
                 if (manager.isMusicActive()) {
                     if (modalService.displayConfirmation("Post Song?", "This song will be available for others to listen to.", activity)) {
-                        //Search for song in songs from device.
-                        for (Song song : listOfUserSongs) {
-                            String songId = song.artist + song.title;
-                            String currentSongId = artist + track;
-                            if (songId.equals(currentSongId)) {
-                                SoundFileSetUp(song.path);
-                                File directory = new File(FILE_CREATION_DIRECTORY);
-                                if (!directory.exists()) {
-                                    if (directory.mkdir()) {
-                                        Log.d("Success", "Directory created.");
-                                    } else {
-                                        Log.d("Failure", "Could not create directory");
+                        new AsyncTask<String, Integer, Boolean>(){
+
+                            protected void onPreExecute() {
+                                Log.d(LOGTAG,"AsyncTask Started");
+                                modalService.displayToast("Starting upload...", activity);
+                            }
+
+                            protected Boolean doInBackground(String... params) {
+                                Looper.prepare();
+                                //Search for song in songs from device.
+                                for (Song song : listOfUserSongs) {
+                                    String songId = song.artist + song.title;
+                                    String currentSongId = artist + track;
+                                    if (songId.equals(currentSongId)) {
+                                        SoundFileSetUp(song.path);
+                                        File directory = new File(FILE_CREATION_DIRECTORY);
+                                        if (!directory.exists()) {
+                                            if (directory.mkdir()) {
+                                                Log.d("Success", "Directory created.");
+                                            } else {
+                                                Log.d("Failure", "Could not create directory");
+                                            }
+                                        }
+                                        try {
+                                            File file = new File(FILE_CREATION_DIRECTORY + "/" + song.fileName);
+                                            //Create a new file.
+                                            file.createNewFile();
+                                            //Split song into segment based off start & end times in seconds.
+                                            soundFile.WriteWAVFile(file, 20f, 30f);
+                                            //Upload clipped song to firebase storage.
+                                            return uploadSongToFirebaseStorage(file, song);
+                                        } catch (IOException e) {
+                                            modalService.displayTest(e.getMessage(), activity);
+                                        }
+
                                     }
                                 }
-                                try {
-                                    File file = new File("/storage/emulated/0/Music/Vibes/" + song.fileName);
-                                    //Create a new file.
-                                    file.createNewFile();
-                                    //Split song into segment based off start & end times in seconds.
-                                    soundFile.WriteWAVFile(file, 20f, 30f);
-                                    //Upload clipped song to firebase storage.
-                                    uploadSongToFirebaseStorage(file, song);
-                                } catch (IOException e) {
-                                    modalService.displayTest(e.getMessage(), activity);
-                                }
-
+                                Looper.myLooper().quit();
+                                return false;
                             }
-                        }
+
+                            protected void onProgressUpdate(Integer... values) {
+                                Log.d(LOGTAG,"onProgressUpdate - " + values[0]);
+                            }
+
+                            protected void onPostExecute(Boolean _success) {
+                                if(_success){
+                                    modalService.displayToast("Upload finished.", activity);
+                                }else{
+                                    modalService.displayToast("Could not complete upload.", activity);
+                                }
+                            }
+                        }.execute();
                     } else {
                     }
                 } else {
@@ -208,7 +237,14 @@ public class TimeLineFragmentController extends Fragment {
         });
     }
 
-    private void uploadSongToFirebaseStorage(File file, final Song song) {
+    private boolean uploadSongToFirebaseStorage(File file, final Song song) {
+        final Handler handler = new Handler() {
+            @Override
+            public void handleMessage(Message message1) {
+                throw new RuntimeException();
+            }
+        };
+
         byte[] data = FileService.getInstance().readContentIntoByteArray(file);
         //Upload image with user's ID as file name.
         UploadTask uploadTask = storageReference.child(sessionManager.getUserInstance().id).putBytes(data);
@@ -216,14 +252,14 @@ public class TimeLineFragmentController extends Fragment {
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
-                progressDialog.dismiss();
-                modalService.displayNotification("Error", exception.getMessage(), activity);
+                handler.sendMessage(handler.obtainMessage());
+                //modalService.displayNotification("Error", exception.getMessage(), activity);
                 // Handle unsuccessful uploads
             }
-        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+        });
+        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                progressDialog.dismiss();
                 String mp3DownloadUrl = taskSnapshot.getDownloadUrl().toString();
                 String key = firebase.child(AppConfig.TABLE_USERS).child(sessionManager.getUserInstance().id).push().getKey();
                 String postDateTime = new DateTime().toString();
@@ -232,9 +268,14 @@ public class TimeLineFragmentController extends Fragment {
                 song.postDateTime = postDateTime;
                 song.emotionId = Emotion.HAPPY.getValue();
                 firebase.child(AppConfig.TABLE_USERS).child(sessionManager.getUserInstance().id).child("song").setValue(song);
-                modalService.displayNotification("Success", "Your song has been uploaded.", activity);
+                //modalService.displayNotification("Success", "Your song has been uploaded.", activity);
+                success = true;
+                handler.sendMessage(handler.obtainMessage());
             }
         });
+
+        try {Looper.loop();} catch (RuntimeException e2) {}
+        return success;
     }
 
     private void getTimeLine() {
