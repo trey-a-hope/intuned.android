@@ -23,7 +23,26 @@ public enum Emotion {
     }
 
     //Return hex code of color associated with emotion.
-    public int getColor(){
+    private int getColor(){
         return this.color;
+    }
+
+    //Return hex code of color based on user id.
+    public static int getColor(int emotionId){
+        switch (emotionId){
+            case 0:
+                return Emotion.HAPPY.getColor();
+            case 1:
+                return Emotion.SAD.getColor();
+            case 2:
+                return Emotion.ANGRY.getColor();
+            case 3:
+                return Emotion.FEARFUL.getColor();
+            case 4:
+                return Emotion.DISGUSTED.getColor();
+            default:
+                //User is happy be default :)
+                return Emotion.HAPPY.getColor();
+        }
     }
 }

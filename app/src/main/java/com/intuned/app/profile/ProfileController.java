@@ -70,7 +70,7 @@ public class ProfileController extends AppCompatActivity {
         sessionManager = new SessionManager(this, getApplicationContext());
         toolbar.setBackgroundColor(getResources().getColor(R.color.LightBlue900));
         setSupportActionBar(toolbar);
-        setTitle("Profile");
+        setTitle("Vibes");
         // Set the menu icon instead of the launcher icon.
         final ActionBar ab = getSupportActionBar();
         ab.setHomeAsUpIndicator(R.drawable.ic_menu);
@@ -169,7 +169,6 @@ public class ProfileController extends AppCompatActivity {
 
         // Highlight the selected item, update the title, and close the drawer
         menuItem.setChecked(true);
-        setTitle(menuItem.getTitle());
         drawerLayout.closeDrawers();
     }
 

@@ -46,6 +46,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -57,6 +58,8 @@ import Listeners.RecyclerItemClickListener;
 import Miscellaneous.SoundFile;
 import Models.DomainModels.Song;
 import Models.DomainModels.User;
+import Models.ViewModels.SongVM;
+import Services.DateTimeService;
 import Services.FileService;
 import Services.ModalService;
 
@@ -64,7 +67,11 @@ public class TimeLineFragmentController extends Fragment {
     private HomeController activity;
     private View view;
     private SoundFile soundFile;
+
+    //Services
     private ModalService modalService = ModalService.getInstance();
+    private DateTimeService dateTimeService = DateTimeService.getInstance();
+    private FileService fileService = FileService.getInstance();
 
     //Song
     private String artist;
@@ -81,11 +88,14 @@ public class TimeLineFragmentController extends Fragment {
     private MediaPlayer mediaPlayer;
     private SessionManager sessionManager;
     private FloatingActionButton btnNewSong;
+    private FloatingActionButton btnRefresh;
 
     private final String FILE_CREATION_DIRECTORY = "/storage/emulated/0/Music/Vibes";
     private final String FIREBASE_FILESTORAGE_PATH = "gs://project-4361900320818092365.appspot.com";
     private final String LOGTAG = "TimeLineFragController";
     private boolean success = false;
+
+    private BroadcastReceiver broadcastReceiver;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -102,6 +112,14 @@ public class TimeLineFragmentController extends Fragment {
         return view;
     }
 
+    @Override
+    public void onStop()
+    {
+        Log.v(LOGTAG, "onStop()");
+        activity.unregisterReceiver(broadcastReceiver);
+        super.onStop();
+    }
+
     private void SoundFileSetUp(String pathToFile) {
         try {
             soundFile = SoundFile.create(pathToFile, new SoundFile.ProgressListener() {
@@ -109,9 +127,12 @@ public class TimeLineFragmentController extends Fragment {
                     return true;
                 }
             });
-        } catch (FileNotFoundException e) {
-        } catch (IOException e) {
-        } catch (SoundFile.InvalidInputException e) {
+        } catch (FileNotFoundException fileNotFoundException) {
+            modalService.displayNotification("Error", fileNotFoundException.getMessage(), activity);
+        } catch (IOException ioException) {
+            modalService.displayNotification("Error", ioException.getMessage(), activity);
+        } catch (SoundFile.InvalidInputException invalidInputException) {
+            modalService.displayNotification("Error", invalidInputException.getMessage(), activity);
         }
     }
 
@@ -134,7 +155,7 @@ public class TimeLineFragmentController extends Fragment {
         /**
          * Returns track info for music currently playing.
          **/
-        BroadcastReceiver mReceiver = new BroadcastReceiver() {
+        broadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 String action = intent.getAction();
@@ -147,7 +168,7 @@ public class TimeLineFragmentController extends Fragment {
             }
         };
 
-        activity.registerReceiver(mReceiver, iF);
+        activity.registerReceiver(broadcastReceiver, iF);
     }
 
     private void initFirebase() {
@@ -159,6 +180,7 @@ public class TimeLineFragmentController extends Fragment {
         view = inflater.inflate(R.layout.fragment_time_line_fragment_controller, container, false);
         postedSongsRecyclerview = (RecyclerView) view.findViewById(R.id.rv);
         btnNewSong = (FloatingActionButton) view.findViewById(R.id.timeline_new_song_button);
+        btnRefresh = (FloatingActionButton) view.findViewById(R.id.timeline_refresh_button);
     }
 
 
@@ -168,6 +190,13 @@ public class TimeLineFragmentController extends Fragment {
     }
 
     private void setValues() {
+        btnRefresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.v(LOGTAG, "Refreshing timeline...");
+                getTimeLine();
+            }
+        });
         btnNewSong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -176,7 +205,6 @@ public class TimeLineFragmentController extends Fragment {
                 if (manager.isMusicActive()) {
                     if (modalService.displayConfirmation("Post Song?", "This song will be available for others to listen to.", activity)) {
                         new AsyncTask<String, Integer, Boolean>(){
-
                             protected void onPreExecute() {
                                 Log.d(LOGTAG,"AsyncTask Started");
                                 modalService.displayToast("Starting upload...", activity);
@@ -222,9 +250,9 @@ public class TimeLineFragmentController extends Fragment {
 
                             protected void onPostExecute(Boolean _success) {
                                 if(_success){
-                                    modalService.displayToast("Upload finished.", activity);
+                                    Log.d(LOGTAG, "Successful upload.");
                                 }else{
-                                    modalService.displayToast("Could not complete upload.", activity);
+                                    Log.d(LOGTAG, "Failed upload.");
                                 }
                             }
                         }.execute();
@@ -238,6 +266,7 @@ public class TimeLineFragmentController extends Fragment {
     }
 
     private boolean uploadSongToFirebaseStorage(File file, final Song song) {
+        Log.v(LOGTAG, "uploadSongToFirebaseStorage()");
         final Handler handler = new Handler() {
             @Override
             public void handleMessage(Message message1) {
@@ -245,16 +274,15 @@ public class TimeLineFragmentController extends Fragment {
             }
         };
 
-        byte[] data = FileService.getInstance().readContentIntoByteArray(file);
+        byte[] data = fileService.readContentIntoByteArray(file);
         //Upload image with user's ID as file name.
         UploadTask uploadTask = storageReference.child(sessionManager.getUserInstance().id).putBytes(data);
 
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
+                Log.v(LOGTAG, exception.getMessage());
                 handler.sendMessage(handler.obtainMessage());
-                //modalService.displayNotification("Error", exception.getMessage(), activity);
-                // Handle unsuccessful uploads
             }
         });
         uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -262,12 +290,18 @@ public class TimeLineFragmentController extends Fragment {
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 String mp3DownloadUrl = taskSnapshot.getDownloadUrl().toString();
                 String key = firebase.child(AppConfig.TABLE_USERS).child(sessionManager.getUserInstance().id).push().getKey();
-                String postDateTime = new DateTime().toString();
-                song.mp3DownloadUrl = mp3DownloadUrl;
-                song.id = key;
-                song.postDateTime = postDateTime;
-                song.emotionId = Emotion.HAPPY.getValue();
-                firebase.child(AppConfig.TABLE_USERS).child(sessionManager.getUserInstance().id).child("song").setValue(song);
+                SongVM songVM = new SongVM();
+                songVM.id = key;
+                songVM.album = song.album;
+                songVM.artist = song.artist;
+                songVM.title = song.title;
+                songVM.fileName = song.fileName;
+                songVM.songDuration = song.songDuration;
+                songVM.path = song.path;
+                songVM.mp3DownloadUrl = mp3DownloadUrl;
+                songVM.postDateTime = new DateTime().toString(AppConfig.DATE_TIME_FORMAT);
+                songVM.emotionId = Emotion.HAPPY.getValue();
+                firebase.child(AppConfig.TABLE_USERS).child(sessionManager.getUserInstance().id).child("song").setValue(songVM);
                 //modalService.displayNotification("Success", "Your song has been uploaded.", activity);
                 success = true;
                 handler.sendMessage(handler.obtainMessage());
@@ -280,7 +314,6 @@ public class TimeLineFragmentController extends Fragment {
 
     private void getTimeLine() {
         modalService.toggleProgressDialogOn(activity, "Getting your timeline.");
-        Log.v(LOGTAG, "Getting your timeline.");
         //Iterate over users the user is following.
         firebase.child(AppConfig.TABLE_USERS).addValueEventListener(new ValueEventListener() {
             @Override
@@ -310,13 +343,14 @@ public class TimeLineFragmentController extends Fragment {
                         song.fileName = (String) child.child("song").child("fileName").getValue();
                         //Emotion of Vibe
                         song.emotionId = ((Long) child.child("song").child("emotionId").getValue()).intValue();
+                        //Post Date Time.
+                        song.postDateTime = dateTimeService.stringToDateTime((String) child.child("song").child("postDateTime").getValue());
                         //Username
                         user.username = (String) child.child("username").getValue();
                         user.song = song;
                         //Add 'vibe'.
                         vibeItemAdapter.add(user);
                     }
-
                 }
                 //Update the recyclerview to reflect the most recent changes to data.
                 postedSongsRecyclerview.setAdapter(vibeItemAdapter);
@@ -337,6 +371,7 @@ public class TimeLineFragmentController extends Fragment {
 
     //Play clip of song selected.
     private void playSong(final int position, String fileName) {
+        Log.v(LOGTAG, "Play song button hit.");
         //TODO: User song download url for playing song.
         String url = "MP3 DOWNLOAD URL GOES HERE"; // your URL here
         mediaPlayer = new MediaPlayer();
@@ -463,11 +498,11 @@ public class TimeLineFragmentController extends Fragment {
             if (vibeViewHolder instanceof VibeViewHolder) {
                 vibeViewHolder.songName.setText(user.song.title);
                 vibeViewHolder.artistName.setText(user.song.artist);
-                vibeViewHolder.postDateTime.setText("3 minutes ago");
+                vibeViewHolder.postDateTime.setText(dateTimeService.timeDifference(user.song.postDateTime, new DateTime()));
                 vibeViewHolder.username.setText(user.username);
                 vibeViewHolder.seekbar.setProgress(0);
                 vibeViewHolder.seekbar.setMax(AppConfig.SONG_DURATION);
-                vibeViewHolder.color.setBackgroundColor(getVibeColor(user.song.emotionId));
+                vibeViewHolder.color.setBackgroundColor(Emotion.getColor(user.song.emotionId));
                 vibeViewHolders.add(vibeViewHolder);
             }
 
@@ -520,24 +555,4 @@ public class TimeLineFragmentController extends Fragment {
             }
         });
     }
-
-    private int getVibeColor(int emotionId){
-        //Ensure enums match with this method at all times.
-        switch (emotionId){
-            case 0:
-                return Emotion.HAPPY.getColor();
-            case 1:
-                return Emotion.SAD.getColor();
-            case 2:
-                return Emotion.ANGRY.getColor();
-            case 3:
-                return Emotion.FEARFUL.getColor();
-            case 4:
-                return Emotion.DISGUSTED.getColor();
-            default:
-                //User is happy be default :)
-                return Emotion.HAPPY.getColor();
-        }
-    }
-
 }

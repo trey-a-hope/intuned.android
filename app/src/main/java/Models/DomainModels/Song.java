@@ -1,5 +1,7 @@
 package Models.DomainModels;
 
+import org.joda.time.DateTime;
+
 /*
     Song information.
  */
@@ -8,7 +10,7 @@ public class Song {
     public String title;
     public String artist;
     public String album;
-    public String postDateTime;
+    public DateTime postDateTime;
     public String fileName;
     public String path;
     public String songDuration;

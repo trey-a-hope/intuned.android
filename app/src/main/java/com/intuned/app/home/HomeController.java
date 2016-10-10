@@ -161,7 +161,6 @@ public class HomeController extends AppCompatActivity {
 
         // Highlight the selected item, update the title, and close the drawer
         menuItem.setChecked(true);
-        setTitle(menuItem.getTitle());
         drawerLayout.closeDrawers();
     }
 

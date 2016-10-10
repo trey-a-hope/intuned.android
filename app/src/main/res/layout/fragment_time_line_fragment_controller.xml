@@ -27,6 +27,15 @@
                 android:src="@drawable/ic_add_64x64"
                 app:layout_anchor="@id/rv"
                 app:layout_anchorGravity="bottom|right|end" />
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/timeline_refresh_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|left"
+                android:layout_margin="16dp"
+                android:src="@drawable/ic_refresh_64x64"
+                app:layout_anchor="@id/rv"
+                app:layout_anchorGravity="bottom|left|end" />
         </android.support.design.widget.CoordinatorLayout>
     </LinearLayout>
 </FrameLayout>

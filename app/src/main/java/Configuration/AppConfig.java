@@ -20,4 +20,9 @@ public class AppConfig {
      * MESSAGES
      *************************/
     public static String WAIT_MESSAGE = "Please wait...";
+
+    /**************************
+     * FORMATS
+     *************************/
+    public static String DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
 }
