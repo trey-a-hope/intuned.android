@@ -45,6 +45,7 @@ import org.joda.time.DateTime;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -113,8 +114,7 @@ public class TimeLineFragmentController extends Fragment {
     }
 
     @Override
-    public void onStop()
-    {
+    public void onStop() {
         Log.v(LOGTAG, "onStop()");
         activity.unregisterReceiver(broadcastReceiver);
         super.onStop();
@@ -204,9 +204,9 @@ public class TimeLineFragmentController extends Fragment {
                 //Validate user is playing music.
                 if (manager.isMusicActive()) {
                     if (modalService.displayConfirmation("Post Song?", "This song will be available for others to listen to.", activity)) {
-                        new AsyncTask<String, Integer, Boolean>(){
+                        new AsyncTask<String, Integer, Boolean>() {
                             protected void onPreExecute() {
-                                Log.d(LOGTAG,"AsyncTask Started");
+                                Log.d(LOGTAG, "AsyncTask Started");
                                 modalService.displayToast("Starting upload...", activity);
                             }
 
@@ -245,13 +245,13 @@ public class TimeLineFragmentController extends Fragment {
                             }
 
                             protected void onProgressUpdate(Integer... values) {
-                                Log.d(LOGTAG,"onProgressUpdate - " + values[0]);
+                                Log.d(LOGTAG, "onProgressUpdate - " + values[0]);
                             }
 
                             protected void onPostExecute(Boolean _success) {
-                                if(_success){
+                                if (_success) {
                                     Log.d(LOGTAG, "Successful upload.");
-                                }else{
+                                } else {
                                     Log.d(LOGTAG, "Failed upload.");
                                 }
                             }
@@ -308,59 +308,69 @@ public class TimeLineFragmentController extends Fragment {
             }
         });
 
-        try {Looper.loop();} catch (RuntimeException e2) {}
+        try {
+            Looper.loop();
+        } catch (RuntimeException e2) {
+        }
         return success;
     }
 
     private void getTimeLine() {
+        //TODO: May not need modal if loading all users over a period of time.
         modalService.toggleProgressDialogOn(activity, "Getting your timeline.");
+
+        //TODO: ADD TO LIST OF FOLLOWERS
+        final ArrayList<String> followedUserIdS = new ArrayList<String>();
+        followedUserIdS.add("-KO8GEGTVW0crE4gNabD");
+
         //Iterate over users the user is following.
-        firebase.child(AppConfig.TABLE_USERS).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                modalService.toggleProgressDialogOff();
+        for (final String followedUserId : followedUserIdS) {
+            Log.v(LOGTAG, "Followed User ID " + followedUserId);
+            firebase.child(AppConfig.TABLE_USERS).child(followedUserId).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Log.v(LOGTAG, dataSnapshot.toString());
+                    modalService.toggleProgressDialogOff();
 
-                if (!vibeItemAdapter.isEmpty()) {
-                    vibeItemAdapter.clear();
-                }
+                    if (!vibeItemAdapter.isEmpty()) {
+                        vibeItemAdapter.clear();
+                    }
 
-                for (DataSnapshot child : snapshot.getChildren()) {
-                    //For each item (child), assign data to DTO.
                     User user = new User();
                     Song song = new Song();
                     //Only add user's who have a song uploaded.
-                    if (child.child("song").getValue() != null) {
-                        Log.v(LOGTAG, String.valueOf(child.child("song").child("title").getValue()));
+                    if (dataSnapshot.child("song").getValue() != null) {
+                        Log.v(LOGTAG, String.valueOf(dataSnapshot.child("song").child("title").getValue()));
                         //InTuned Track - Title
-                        song.title = (String) child.child("song").child("title").getValue();
+                        song.title = (String) dataSnapshot.child("song").child("title").getValue();
                         //InTuned Track = ID
-                        song.id = (String) child.child("song").child("id").getValue();
+                        song.id = (String) dataSnapshot.child("song").child("id").getValue();
                         //InTuned Track = Artist
-                        song.artist = (String) child.child("song").child("artist").getValue();
+                        song.artist = (String) dataSnapshot.child("song").child("artist").getValue();
                         //InTuned Track = Album
-                        song.album = (String) child.child("song").child("album").getValue();
+                        song.album = (String) dataSnapshot.child("song").child("album").getValue();
                         //InTuned Track = Filename
-                        song.fileName = (String) child.child("song").child("fileName").getValue();
+                        song.fileName = (String) dataSnapshot.child("song").child("fileName").getValue();
                         //Emotion of Vibe
-                        song.emotionId = ((Long) child.child("song").child("emotionId").getValue()).intValue();
+                        song.emotionId = ((Long) dataSnapshot.child("song").child("emotionId").getValue()).intValue();
                         //Post Date Time.
-                        song.postDateTime = dateTimeService.stringToDateTime((String) child.child("song").child("postDateTime").getValue());
+                        song.postDateTime = dateTimeService.stringToDateTime((String) dataSnapshot.child("song").child("postDateTime").getValue());
                         //Username
-                        user.username = (String) child.child("username").getValue();
+                        user.username = (String) dataSnapshot.child("username").getValue();
                         user.song = song;
                         //Add 'vibe'.
                         vibeItemAdapter.add(user);
                     }
+                    //Update the recyclerview to reflect the most recent changes to data.
+                    postedSongsRecyclerview.setAdapter(vibeItemAdapter);
                 }
-                //Update the recyclerview to reflect the most recent changes to data.
-                postedSongsRecyclerview.setAdapter(vibeItemAdapter);
-            }
 
-            @Override
-            public void onCancelled(FirebaseError error) {
-                modalService.displayNotification("Lost connection to database, please try again.", "Sorry", activity);
-            }
-        });
+                @Override
+                public void onCancelled(FirebaseError firebaseError) {
+                    modalService.displayNotification(firebaseError.getMessage(), "Error", activity);
+                }
+            });
+        }
     }
 
     private void firebaseStorageSetup() {

@@ -118,8 +118,9 @@
     <orderEntry type="library" exported="" name="support-annotations-24.0.0-beta1" level="project" />
     <orderEntry type="library" exported="" name="design-22.2.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-base-9.0.0" level="project" />
-    <orderEntry type="library" exported="" name="hirondelle-date4j-1.5.1" level="project" />
     <orderEntry type="library" exported="" name="tubesock-0.0.12" level="project" />
+    <orderEntry type="library" exported="" name="hirondelle-date4j-1.5.1" level="project" />
+    <orderEntry type="library" exported="" name="picasso-2.5.2" level="project" />
     <orderEntry type="library" exported="" name="support-v4-23.0.1" level="project" />
     <orderEntry type="library" exported="" name="firebase-client-jvm-2.5.0" level="project" />
     <orderEntry type="library" exported="" name="jackson-core-2.2.2" level="project" />
@@ -128,8 +129,6 @@
     <orderEntry type="library" exported="" name="firebase-storage-common-9.0.0" level="project" />
     <orderEntry type="library" exported="" name="firebase-client-android-2.5.0" level="project" />
     <orderEntry type="library" exported="" name="caldroid-2.3.1" level="project" />
-    <orderEntry type="library" exported="" name="aws-android-sdk-s3-2.3.2" level="project" />
-    <orderEntry type="library" exported="" name="aws-android-sdk-cognito-2.3.2" level="project" />
     <orderEntry type="library" exported="" name="circleimageview-1.2.1" level="project" />
     <orderEntry type="library" exported="" name="firebase-messaging-9.0.0" level="project" />
     <orderEntry type="library" exported="" name="android-observablescrollview-1.5.0" level="project" />
@@ -154,7 +153,5 @@
     <orderEntry type="library" exported="" name="firebase-config-9.0.0" level="project" />
     <orderEntry type="library" exported="" name="firebase-auth-9.0.0" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-22.2.0" level="project" />
-    <orderEntry type="library" exported="" name="aws-android-sdk-ddb-2.3.2" level="project" />
-    <orderEntry type="library" exported="" name="aws-android-sdk-core-2.3.2" level="project" />
   </component>
 </module>

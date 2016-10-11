@@ -142,7 +142,6 @@ public class RegisterController extends AppCompatActivity {
                         user.uid = uid;
                         user.email = _registerEmail;
                         user.username = _registerUsername;
-                        user.followings = new ArrayList<String>() {{add(key);}};
                         firebase.child(AppConfig.TABLE_USERS).child(key).setValue(user);
                         finish();
                     } else {

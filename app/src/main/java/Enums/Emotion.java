@@ -17,6 +17,7 @@ public enum Emotion {
         this.color = color;
     }
 
+
     //Return Id of emotion.
     public int getValue(){
         return this.id;

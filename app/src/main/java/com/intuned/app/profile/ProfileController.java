@@ -1,10 +1,17 @@
 package com.intuned.app.profile;
 
 import Configuration.AppConfig;
+import Enums.Font;
 import Models.DomainModels.User;
 import Navigation.AppNavigator;
+import Services.ImageService;
 import Services.ModalService;
+
 import android.app.ProgressDialog;
+import android.content.res.AssetManager;
+import android.graphics.Paint;
+import android.graphics.Typeface;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -18,12 +25,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 import com.intuned.app.R;
 import com.intuned.app.authentication.SessionManager;
+import com.squareup.picasso.Picasso;
+
+import org.w3c.dom.Text;
 
 public class ProfileController extends AppCompatActivity {
     private ActionBarDrawerToggle drawerToggle;
@@ -33,12 +44,14 @@ public class ProfileController extends AppCompatActivity {
     private TextView username;
     private TextView followers;
     private TextView followings;
-    private CardView profileCard;
+    private TextView bio;
+    private FloatingActionButton followBtn;
     private ImageView editProfileIcon;
-    private User user;
+    private ImageView profileImage;
     private SessionManager sessionManager;
     private Firebase firebase;
     private ModalService modalService = ModalService.getInstance();
+    private ImageService imageService = ImageService.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,24 +62,26 @@ public class ProfileController extends AppCompatActivity {
         setValues();
     }
 
-    private void initFirebase(){
+    private void initFirebase() {
         Firebase.setAndroidContext(getApplicationContext());
         firebase = new Firebase(AppConfig.FIREBASE_URL);
     }
 
-    private void initUI(){
+    private void initUI() {
         setContentView(R.layout.activity_profile_controller);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nvView);
-        username = (TextView) findViewById(R.id.profile_username);
-        followers = (TextView) findViewById(R.id.profile_followers);
-        followings = (TextView) findViewById(R.id.profile_followings);
-        profileCard = (CardView) findViewById(R.id.profile_card);
+        username = (TextView) findViewById(R.id.user_profile_username);
+        followers = (TextView) findViewById(R.id.user_profile_followers);
+        followings = (TextView) findViewById(R.id.user_profile_followings);
         editProfileIcon = (ImageView) findViewById(R.id.profile_edit_profile);
+        followBtn = (FloatingActionButton) findViewById(R.id.user_profile_follow_btn);
+        bio = (TextView) findViewById(R.id.user_profile_bio);
+        profileImage = (ImageView) findViewById(R.id.user_profile_photo);
     }
 
-    private void initObjects(){
+    private void initObjects() {
         sessionManager = new SessionManager(this, getApplicationContext());
         toolbar.setBackgroundColor(getResources().getColor(R.color.LightBlue900));
         setSupportActionBar(toolbar);
@@ -80,15 +95,17 @@ public class ProfileController extends AppCompatActivity {
         drawerLayout.setDrawerListener(drawerToggle);
         // Setup drawer view
         setupDrawerContent(navigationView);
-        user = sessionManager.getUserInstance();
     }
 
-    private void setValues(){
-        final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setCancelable(false);
-        progressDialog.setTitle("Loading Profile");
-        progressDialog.setMessage(AppConfig.WAIT_MESSAGE);
-        progressDialog.show();
+    private void setValues() {
+        modalService.toggleProgressDialogOn(this, "Loading Profile");
+
+        followBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                modalService.displayToast("Follow user with ID " + sessionManager.getUserInstance().id, ProfileController.this);
+            }
+        });
 
         editProfileIcon.setClickable(true);
         editProfileIcon.setOnClickListener(new View.OnClickListener() {
@@ -98,26 +115,27 @@ public class ProfileController extends AppCompatActivity {
             }
         });
 
-        firebase.child(AppConfig.TABLE_USERS).child(sessionManager.getUserInstance().id).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                progressDialog.dismiss();
-                //Get Followers Count
-                int followersCount = (int) dataSnapshot.child("followers").getChildrenCount();
-                followers.setText("Followers " + String.valueOf(followersCount));
-                //Get Followings Count
-                int followingsCount = (int) dataSnapshot.child("followings").getChildrenCount() - 1;
-                followings.setText("Following " + String.valueOf(followingsCount));
-                //Set username.
-                username.setText(user.username);
-            }
+        User currentUser = sessionManager.getUserInstance();
+        //Set Followers Count
+        followers.setText(currentUser.followerCount + " Followers");
+        followers.setTypeface(Font.Coolvetica.getFont(getAssets()));
+        //Set Followings Count
+        followings.setText(currentUser.followingCount + " Following");
+        followings.setTypeface(Font.Coolvetica.getFont(getAssets()));
+        //Set username.
+        username.setText(currentUser.username);
+        username.setTypeface(Font.Coolvetica.getFont(getAssets()));
+        //Set bio.
+        bio.setText("It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.");
+        bio.setTypeface(Font.Coolvetica.getFont(getAssets()));
+        //Set user's profile image.
+        if(currentUser.imageDownloadUrl != null){
+            Picasso.with(getApplicationContext()).load(currentUser.imageDownloadUrl).transform(new ImageService.CircleTransform()).into(profileImage);
+        }else{
+            imageService.roundImage(getResources(), R.drawable.bg_blank_profile, profileImage);
+        }
 
-            @Override
-            public void onCancelled(FirebaseError error) {
-                modalService.displayNotification("Lost connection to database, please try again.", "Sorry", ProfileController.this);
-            }
-        });
-
+        modalService.toggleProgressDialogOff();
     }
 
     @Override
@@ -169,6 +187,7 @@ public class ProfileController extends AppCompatActivity {
 
         // Highlight the selected item, update the title, and close the drawer
         menuItem.setChecked(true);
+        setTitle(menuItem.getTitle());
         drawerLayout.closeDrawers();
     }
 

@@ -160,6 +160,8 @@ public class LoginController extends AppCompatActivity {
                                                 user.uid = (String) dataSnapshot.child(id).child("uid").getValue();
                                                 user.email = (String) dataSnapshot.child(id).child("email").getValue();
                                                 user.username = (String) dataSnapshot.child(id).child("username").getValue();
+                                                user.followerCount = 23;//TODO: Calculate properly.
+                                                user.followingCount = 19;//TODO: Calculate properly.
                                                 sessionManager.setUserInstance(user);
                                             }
                                         }else{
