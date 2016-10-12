@@ -9,6 +9,7 @@ public class AppConfig {
      * FIREBASE
      *************************/
     public static String FIREBASE_URL = "https://intuned.firebaseio.com/";
+    public static String FIREBASE_STORAGE_URL = "gs://project-4361900320818092365.appspot.com";
     public static String TABLE_USERS = "Users";
 
     /**************************

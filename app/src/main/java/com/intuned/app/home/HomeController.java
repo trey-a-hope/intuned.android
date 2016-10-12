@@ -87,11 +87,11 @@ public class HomeController extends AppCompatActivity {
     private void createTabLayout() {
         //Create Time Line tab.
         Tab timeLineTab = tabLayout.newTab();
-        timeLineTab.setIcon(R.drawable.ic_menu);
+        timeLineTab.setIcon(R.drawable.ic_headphones_64x64);
         tabLayout.addTab(timeLineTab);
         //Create Notifications tab.
         Tab notificationsTab = tabLayout.newTab();
-        notificationsTab.setIcon(R.drawable.ic_menu);
+        notificationsTab.setIcon(R.drawable.ic_bell_64x64);
         tabLayout.addTab(notificationsTab);
         //Set tabs background color.
         tabLayout.getChildAt(0).setBackgroundColor(getResources().getColor(R.color.LightBlue800));

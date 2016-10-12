@@ -3,4 +3,5 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="cardview_cornerRadius">3dp</dimen>
+    <dimen name="cardview_elevation">5dp</dimen>
 </resources>

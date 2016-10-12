@@ -1,9 +1,12 @@
 package Adapters;
 
 import Models.DomainModels.User;
+
+import android.media.Image;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -21,6 +24,7 @@ public abstract class VibeListAdapter<VH extends VibeListAdapter.VibeViewHolder>
 
     public static class VibeViewHolder extends RecyclerView.ViewHolder {
         public CardView cv;
+        public ImageView profileImage;
         public TextView username;
         public TextView songName;
         public TextView artistName;
@@ -30,6 +34,7 @@ public abstract class VibeListAdapter<VH extends VibeListAdapter.VibeViewHolder>
 
         public VibeViewHolder(View itemView) {
             super(itemView);
+            profileImage = (ImageView) itemView.findViewById(R.id.user_profile_photo);
             songName = (TextView) itemView.findViewById(R.id.vibe_song_name);
             artistName = (TextView) itemView.findViewById(R.id.vibe_song_artist);
             postDateTime = (TextView) itemView.findViewById(R.id.vibe_post_date_time);

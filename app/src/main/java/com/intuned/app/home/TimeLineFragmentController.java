@@ -39,6 +39,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.intuned.app.R;
 import com.intuned.app.authentication.SessionManager;
+import com.squareup.picasso.Picasso;
 
 import org.joda.time.DateTime;
 
@@ -62,6 +63,7 @@ import Models.DomainModels.User;
 import Models.ViewModels.SongVM;
 import Services.DateTimeService;
 import Services.FileService;
+import Services.ImageService;
 import Services.ModalService;
 
 public class TimeLineFragmentController extends Fragment {
@@ -73,6 +75,7 @@ public class TimeLineFragmentController extends Fragment {
     private ModalService modalService = ModalService.getInstance();
     private DateTimeService dateTimeService = DateTimeService.getInstance();
     private FileService fileService = FileService.getInstance();
+    private ImageService imageService = ImageService.getInstance();
 
     //Song
     private String artist;
@@ -92,7 +95,6 @@ public class TimeLineFragmentController extends Fragment {
     private FloatingActionButton btnRefresh;
 
     private final String FILE_CREATION_DIRECTORY = "/storage/emulated/0/Music/Vibes";
-    private final String FIREBASE_FILESTORAGE_PATH = "gs://project-4361900320818092365.appspot.com";
     private final String LOGTAG = "TimeLineFragController";
     private boolean success = false;
 
@@ -116,7 +118,7 @@ public class TimeLineFragmentController extends Fragment {
     @Override
     public void onStop() {
         Log.v(LOGTAG, "onStop()");
-        activity.unregisterReceiver(broadcastReceiver);
+        //activity.unregisterReceiver(broadcastReceiver);
         super.onStop();
     }
 
@@ -194,6 +196,10 @@ public class TimeLineFragmentController extends Fragment {
             @Override
             public void onClick(View view) {
                 Log.v(LOGTAG, "Refreshing timeline...");
+                //Clear adapter before retrieving items.
+                if (!vibeItemAdapter.isEmpty()) {
+                    vibeItemAdapter.clear();
+                }
                 getTimeLine();
             }
         });
@@ -322,6 +328,7 @@ public class TimeLineFragmentController extends Fragment {
         //TODO: ADD TO LIST OF FOLLOWERS
         final ArrayList<String> followedUserIdS = new ArrayList<String>();
         followedUserIdS.add("-KO8GEGTVW0crE4gNabD");
+        followedUserIdS.add("-KTrTQYJdQi54blBchd9");
 
         //Iterate over users the user is following.
         for (final String followedUserId : followedUserIdS) {
@@ -331,10 +338,6 @@ public class TimeLineFragmentController extends Fragment {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     Log.v(LOGTAG, dataSnapshot.toString());
                     modalService.toggleProgressDialogOff();
-
-                    if (!vibeItemAdapter.isEmpty()) {
-                        vibeItemAdapter.clear();
-                    }
 
                     User user = new User();
                     Song song = new Song();
@@ -357,6 +360,9 @@ public class TimeLineFragmentController extends Fragment {
                         song.postDateTime = dateTimeService.stringToDateTime((String) dataSnapshot.child("song").child("postDateTime").getValue());
                         //Username
                         user.username = (String) dataSnapshot.child("username").getValue();
+                        //Image Url
+                        user.imageDownloadUrl = (String) dataSnapshot.child("imageDownloadUrl").getValue();
+                        //Add song to user.
                         user.song = song;
                         //Add 'vibe'.
                         vibeItemAdapter.add(user);
@@ -376,7 +382,7 @@ public class TimeLineFragmentController extends Fragment {
     private void firebaseStorageSetup() {
         firebaseStorage = FirebaseStorage.getInstance();
         // Create a storage reference from our app-camp-central.appspot.com
-        storageReference = firebaseStorage.getReferenceFromUrl(FIREBASE_FILESTORAGE_PATH).child("Music");
+        storageReference = firebaseStorage.getReferenceFromUrl(AppConfig.FIREBASE_STORAGE_URL).child("Music");
     }
 
     //Play clip of song selected.
@@ -506,7 +512,13 @@ public class TimeLineFragmentController extends Fragment {
         public void onBindViewHolder(VibeViewHolder vibeViewHolder, int position) {
             User user = vibeItemAdapter.getItem(position);
             if (vibeViewHolder instanceof VibeViewHolder) {
+                if(user.imageDownloadUrl != null){
+                    Picasso.with(getContext()).load(user.imageDownloadUrl).transform(new ImageService.CircleTransform()).into(vibeViewHolder.profileImage);
+                }else{
+                    imageService.roundImage(getResources(), R.drawable.bg_blank_profile, vibeViewHolder.profileImage);
+                }
                 vibeViewHolder.songName.setText(user.song.title);
+                vibeViewHolder.songName.setTextColor(Emotion.getColor(user.song.emotionId));
                 vibeViewHolder.artistName.setText(user.song.artist);
                 vibeViewHolder.postDateTime.setText(dateTimeService.timeDifference(user.song.postDateTime, new DateTime()));
                 vibeViewHolder.username.setText(user.username);
